@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/bootstrap.css">
+     <link rel="stylesheet" href="/css/myBackStyle.css">
+     <script src="/js/jquery-3.6.0.js"></script>
+
+     <title>Document</title>
+</head>
+<body>
+     <header class="d-flex justify-content-start">
+          <div>
+               <%- include('share/back_nav.ejs')%> 
+          </div>
+          <div class="backBlock"></div>
+          <div>
+               <h2>會員管理</h2>
+               <form action="/memberSelect">
+                    <label for="">搜尋</label>
+                    <input type="text" placeholder="會員編號、姓名">
+               </form>
+               <table class="backtable">
+                    <tr class="bg-info">
+                         <th class="backCol-s">會員編號</th>
+                         <th class="backCol">帳號</th>
+                         <th class="backCol-s">姓名</th>
+                         <th class="backCol-s">性別</th>
+                         <th class="backCol">Email</th>
+                         <th class="backCol">地址</th>
+                         <th></th>
+                    </tr>
+                    <% for(var i = 0;i < data.length; i++){ %>
+                    <tr>
+                         <td><%= data[i].uid %></td>
+                         <td><%= data[i].username %></td>
+                         <td><%= data[i].name %></td>
+                         <td><%= data[i].sex %></td>
+                         <td><%= data[i].email %></td>
+                         <td><%= data[i].address %></td>
+                         <td><button class="btn btn-info m-2" id="member" onclick="member(<%= data[i].uid %>)">檢視</button></td>
+                    </tr>
+                    <% } %>
+               </table>
+          </div>
+     </header>
+
+     <script>
+          function member(id){
+               console.log(id);
+               var memberData ={
+                    memberID:id
+               }
+               $.ajax({
+                    type:"post",
+                    url:"/background/member",
+                    data: memberData,
+                    success:function(e){
+
+                    }
+               })
+          }
+     </script>
+
+     
+</body>
+</html>

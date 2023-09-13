@@ -1,0 +1,70 @@
+body {
+     overflow-x: hidden;
+     margin: 0;
+
+}
+
+.navBack {
+     height: 100vh;
+     width: 222px;
+     position: fixed;
+     background-color: azure;
+     /* border: 1px solid black; */
+}
+.navBack div ul {
+     list-style-type:none;
+
+}
+.navBack div ul li a{
+     text-decoration: none;
+     color: cadetblue;
+}
+
+.login {
+     width: 550px;
+     height: 400px;
+     background-color: #F5F5F5;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     margin-top: -200px;
+     margin-left: -275px;
+     text-align: center;
+}
+.backBlock{
+     height: 100vh;
+     width: 250px;
+     /* background-color: aqua; */
+}
+
+.backtable {
+     border: 1px solid black;
+
+}
+
+.backCol {
+     width: 200px;
+     height: 50px;
+     overflow: hidden;
+     padding: 5px;
+}
+.backCol-s {
+     width: 100px;
+     height: 50px;
+     overflow: hidden;
+     padding: 5px;
+}
+
+label {
+     margin-top: 20px;
+     /* background-color: aqua; */
+}
+
+textarea {
+     margin-top: 2%;
+}
+
+input {
+     margin-top: 2%;
+}
+

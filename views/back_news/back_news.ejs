@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/bootstrap.css">
+     <link rel="stylesheet" href="/css/myBackStyle.css">
+     <script src="/js/jquery-3.6.0.js"></script>
+
+     <title>Document</title>
+</head>
+<body>
+     <header class="d-flex justify-content-start">
+          <div>
+               <%- include('../share/back_nav.ejs')%> 
+          </div>
+          <div class="backBlock"></div>
+          <div>
+               <a href="/background/newsAdd">新增消息</a>
+               <h2>消息管理</h2>
+               <table class="backtable">
+                    <tr class="bg-info">
+                         <th class="backCol">日期</th>
+                         <th class="backCol">題目</th>
+                         <th class="backCol">內容</th>
+                         <th></th>
+                         <th></th>
+                    </tr>
+                    <% for(var i = 0;i < data.length; i++){ %>
+                    <tr>
+                         <!-- <td><p class="backCol"><%= data[i].newsid   %></p></td> -->
+                         <td><p class="backCol"><%= data[i].dd   %></p></td>
+                         <td><p class="backCol"><%= data[i].title   %></p></td>
+                         <td><p class="backCol"><%= data[i].contents   %></p></td>
+                         <td>
+                              <button id="edit" class="btn btn-warning m-2" onclick="edit( <%= data[i].newsid  %>)">修改</button>
+                         </td>
+                         <td>
+                              <button id="delete" class="btn btn-danger m-2" onclick="newsDelete(<%= data[i].newsid  %>)">刪除</button>
+                         </td>
+                    </tr>
+                    <% } %>
+               </table>
+
+          </div>
+     </header>
+
+     <script>
+          
+          function edit(id){
+               newsData = {id:id};
+               console.log(newsData);
+               $.ajax({
+                    type:"post",
+                    url:"/newsEdit",
+                    data: newsData,
+                    success:function(e){
+                         console.log(e);
+                    }
+               })
+               
+               $(location).attr('href','/background/newsEdit');
+          }
+
+          function newsDelete(id){
+               newsData = {id:id};
+               console.log(newsData);
+               $.ajax({
+                    type:"post",
+                    url:"/newsDelete",
+                    data: newsData,
+                    success:function(e){
+                         window.location.assign(window.location.href);
+                    }
+               })
+          }
+
+
+
+     </script>
+
+     
+</body>
+</html>

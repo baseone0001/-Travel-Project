@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/bootstrap.css">
+     <link rel="stylesheet" href="/css/myBackStyle.css">
+     <script src="/js/jquery-3.6.0.js"></script>
+     <title>Document</title>
+</head>
+<body>
+     <header class="d-flex justify-content-start">
+          <div>
+               <%- include('../share/back_nav.ejs')%> 
+          </div>
+          <div class="backBlock"></div>
+          <div>
+               <a href="/background/news">消息管理</a>
+               <h2>消息修改</h2>
+               <form action="/newsuplowd" method="post" enctype="multipart/form-data">
+                    <label for="newsTitle">題目</label>
+                    <input id="newsTitle" type="text" value="<%= row.title %>">
+                    <br>
+                    <!-- newsContext -->
+                    <label for="newsContext">內容</label>
+                    <textarea  id="newsContext" cols="30" rows="5" ><%= row.contents %></textarea>
+                    <br>
+                    <input type="file" id="newsImg" name="newsImg" multiple>
+                    <br>
+                    <img id="img" src="<%= row.img %>" style="width: 300px; height: 200px; object-fit: cover;
+                    overflow: hidden;">
+                    <br>
+
+
+                    <p id="pid" style="display: none;"><%= row.newsid %></p>
+                    <button id="submit" class="btn btn-info">送出</button>
+                    <!-- <input class="btn btn-danger" type="submit" value="取消"> -->
+               </form>
+          </div>
+     </header>
+
+     <script>
+          $('#newsImg').on('change',function(){
+               console.log($('#newsImg').prop('files')[0].name);
+               var newsImg = $('#newsImg').prop('files')[0];
+               console.log(URL.createObjectURL(newsImg));
+               img.src = URL.createObjectURL(newsImg);
+
+          })
+          
+          $('#submit').on('click',function(){
+               var newsTitle = $('#newsTitle').val();
+               var newsContext = $('#newsContext').val();
+               var newsid = $('#pid').text();
+               console.log(newsid);
+               
+
+
+               var newsay = confirm(`題目：${newsTitle} \n內容：${newsContext}`)
+               // console.log(img.src);
+               if(newsay){
+                    var d = new Date();
+     
+                    var newsData = {
+                         newsTitleAJAX: newsTitle,
+                         newsContextAJAX: newsContext,
+                         // newsImgUrl:'/uploud/'+d.getDate()+ '-' + $('#newsImg').prop('files')[0].name,
+                         newsid:newsid
+                    }
+                    $.ajax({
+                         type:"post",
+                         url:"/newsUpdate",
+                         data: newsData,
+                         success:function(e){
+                              window.location.replace("/background/news");
+                         }
+                    })
+               }
+          })
+
+          
+
+     </script>
+
+     
+</body>
+</html>
