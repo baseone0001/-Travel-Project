@@ -17,26 +17,6 @@ var myDBconn = require('./db');
 
 // //---------------------資料庫-----------------------------
 
-// var myDBconn = mysql.createConnection({  //啟動套件並連結資料庫
-//      host: '127.0.0.1',// or 'localhost'
-//      port: '8889',
-//      user: 'root',
-//      password: 'root',
-//      database: 'travel'
-// })
-
-
-// myDBconn.connect(function (err) {
-//      if (err) {
-//           console.log('資料庫有問題----------------檢查有沒有開mamp');
-//           console.log(err);//這邊必須看到null才等於有連上DB
-//      } else {
-//           console.log('資料庫OK----------------------');
-
-//      }
-// })
-// //---------------------資料庫-----------------------------
-
 //---------------------session---------------------------
 app.use(session({
      secret: 'iamagooddeveloperofjavascript,iwoilllearnaboutallofthisapplication',
