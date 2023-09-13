@@ -18,7 +18,8 @@ function db(sql,data,callback) {
                console.log('資料庫有問題----------------檢查有沒有開mamp');
                console.log(err);//這邊必須看到null才等於有連上DB
           } else {
-               console.log('資料庫OK----------------------');
+               // console.log('資料庫OK----------------------');    
+               //若覺得consle很煩可以關掉
      
           }
      })
