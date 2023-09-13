@@ -15,8 +15,6 @@ app.use(cors());
 var myDBconn = require('./db');
 
 
-// //---------------------資料庫-----------------------------
-
 //---------------------session---------------------------
 app.use(session({
      secret: 'iamagooddeveloperofjavascript,iwoilllearnaboutallofthisapplication',
