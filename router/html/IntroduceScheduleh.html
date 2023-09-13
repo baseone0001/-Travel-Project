@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徜徉和旅</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/Mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <!-- 行程總頁的圖片 -->
+    <div class="MyImgDiv">
+        <img src="/img/tokyo.jpg" class="MyImg">
+    </div>
+
+    <div class="bg-white m-5 rounded-4">
+
+        <!-- 航班資訊 -->
+        <div class="row">
+            <div class="col-md-2 MyListTitle">航班資訊</div>
+            <div class="col-md-9">
+                <div class="mt-4 d-flex" style="justify-content: center;">
+                    <div class="FlyTitleStyle ps-5 text-nowrap">台灣</div>
+                    <div>
+                        <img src="/img/flyTo.PNG" width="100%" class="ps-5 pe-5">
+                    </div>
+                    <div class="FlyTitleStyle pe-5 text-nowrap">東京</div>
+                </div>
+                <div class="flyInfo-div">
+                    <table class="flyInfo-table">
+                        <tr class="flyInfo-tr">
+                            <td class="flyInfo-text">
+                                <div class="float-start">出發日期</div>
+                                <div class="flyInfo-textStyle">09/30</div>
+                            </td>
+                            <td class="flyInfo-text">
+                                <div class="float-start">抵達日期</div>
+                                <div class="flyInfo-textStyle">10/10</div>
+                            </td>
+                        </tr>
+                        <tr class="flyInfo-tr">
+                            <td class="flyInfo-text">
+                                <div class="float-start">訂單狀態</div>
+                                <div class="flyInfo-textStyle">報名中</div>
+                            </td>
+                            <td class="flyInfo-text">
+                                <div class="float-start">優惠</div>
+                                <div class="flyInfo-textStyle">無</div>
+                            </td>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <td class="flyInfo-text">
+                                <div class="float-start">價格</div>
+                                <div class="flyInfo-textStyle">NT$ 69,900 /人</div>
+                            </td>
+                            <td class="flyInfo-text">
+                                <div class="float-start">備註</div>
+                                <div class="flyInfo-textStyle">無</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr class="SeparateLine">
+
+        <!-- 參考航班 -->
+        <div class="row">
+            <div class="col-md-2 MyListTitle">參考航班</div>
+            <div class="col-md-9">
+                <div>
+                    <!-- 去程 -->
+                    <h5 class="fw-bolder mt-4 ms-5" id="flyi">去程</h5>
+                    <div class="ms-5">
+                        <img src="/img/EvaAir.png">
+                        長榮航空 BR196
+                    </div>
+                    <div class="flyInfo-div">
+                        <table class="flyInfo-table">
+                            <tr class="text-center">
+                                <td class="text-nowrap">TPE 台北</td>
+                                <td class="flyInfo-time text-nowrap">3小時20分</td>
+                                <td rowspan="2" style="width: 50px;">
+                                    <div class="d-flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-airplane-fill"
+                                            viewBox="0 0 16 16" style="transform: rotate(90deg);">
+                                            <path
+                                                d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
+                                        </svg>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap">NRT 東京成田</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>14:50</td>
+                                <td></td>
+                                <td>19:10</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- 回程 -->
+                <h5>回程</h5>
+            </div>
+        </div>
+        <hr class="SeparateLine">
+
+        <!-- 住宿 -->
+        <div class="row" style="justify-content: space-between;">
+            <div class="col-md-2 MyListTitle">住宿</div>
+            <div class="col-md-3 MyListImgDiv">
+                <img src="/img/pexels-amar-saleem-70441.jpg" class="MyListImg">
+            </div>
+            <div class="col-md-3 MyListImgDiv">
+                <img src="/img/pexels-donald-tong-189296.jpg" class="MyListImg">
+            </div>
+            <div class="col-md-3 MyListImgDiv">
+                <img src="/img/pexels-amar-saleem-70441.jpg" class="MyListImg">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <hr class="SeparateLine">
+
+        <!-- 附餐 -->
+        <div class="row">
+            <div class="col-md-2 MyListTitle">附餐</div>
+        </div>
+        <hr class="SeparateLine">
+        </hr>
+
+        <!-- 主題 -->
+        <div class="row" style="justify-content: space-between;">
+            <div class="col-md-2 MyListTitle">景點</div>
+            <div class="col-md-3 MyListImgDiv">
+                <img src="/img/pexels-amar-saleem-70441.jpg" class="MyListImg">
+                <h6 class="MyListImgTitle">主題</h6>
+                <p class="MyListImgText">主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容</p>
+            </div>
+            <div class="col-md-3 MyListImgDiv">
+                <img src="/img/pexels-donald-tong-189296.jpg" class="MyListImg">
+                <h6 class="MyListImgTitle">主題</h6>
+                <p class="MyListImgText">主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容</p>
+            </div>
+            <div class="col-md-3 MyListImgDiv">
+                <img src="/img/pexels-amar-saleem-70441.jpg" class="MyListImg">
+                <h6 class="MyListImgTitle">主題</h6>
+                <p class="MyListImgText">主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容</p>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <hr class="SeparateLine">
+
+        <!-- 詳細行程 -->
+        <div class="row">
+            <div class="col-md-2 MyListTitle">詳細行程</div>
+        </div>
+        <hr class="SeparateLine">
+
+        <!-- 參團說明 -->
+        <div class="row">
+            <div class="col-md-2 MyListTitle mb-4">參團說明</div>
+        </div>
+    </div>
+</body>
+
+
+
+<!-- JavaScript -->
+<script>
+    $(document).ready(function () {
+        function MyTitle() {
+            if (window.innerWidth < 768) {
+                $(".MyListTitle").css("text-align ", "");
+                $(".MyListTitle").css("padding-left", "");
+                $(".MyListTitle").css("text-align", "center");
+            } else {
+                $(".MyListTitle").css("text-align", " ");
+                $(".MyListTitle").css("padding-left", "5rem");
+                $(".MyListTitle").css("text-align", "left");
+            }
+        }
+        MyTitle();
+        $(window).resize(function () {
+            MyTitle();
+        });
+    })
+</script>
+
+</html>

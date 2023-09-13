@@ -3,8 +3,8 @@ var mysql = require('mysql');
 function db(sql,data,callback) {
      const connection = mysql.createConnection({
           //根據自己的電腦輸入資訊
-          host: '127.0.0.1',// or 'localhost'
-          port: '8889',
+          host: 'localhost',
+          port: '3306',
           user: 'root',
           password: 'root',
           database: 'travel',
