@@ -11,8 +11,8 @@ nav {
      /* background-color: #F5F5F5; */
      background-color: #83C9D2;
      border-radius: 0 0 10px 10px;
-          box-shadow: 0px 0.5px 11px 1px rgb(184, 184, 184);
-          ;
+     box-shadow: 0px 0.5px 11px 1px rgb(184, 184, 184);
+     ;
      position: fixed;
      top: 0;
      z-index: 1000;
@@ -27,15 +27,29 @@ nav>span {
 
 .logo {
      display: inline-block;
-     padding: 16px;
+     width: 180px;
+     height: 40px;
+          background-image: url(/img/logo_w.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          margin-left: 15px;
+          margin-top: 7px;
 
 }
 
+.titleStyle {
+     color: #FFF;
+     letter-spacing: 16px;
+     text-shadow: -1px -1px 0 black,
+          1px -1px 0 black,
+          -1px 1px 0 black,
+          1px 1px 0 black;
+}
 
 .nav_a {
      padding: 16px;
      display: inline-block;
-     color: black;
+     color: white;
      text-decoration-line: none;
 
 }
@@ -47,7 +61,7 @@ nav>span {
      height: 100vh;
      background-color: #F5F5F5;
      /* border: 1px solid black; */
-     overflow: hidden;
+     /* overflow: hidden; */
      position: relative;
 }
 
@@ -209,6 +223,7 @@ nav>span {
      margin-top: 20px;
 
 }
+
 .searchFontc {
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      font-size: 20px;
@@ -253,6 +268,7 @@ nav>span {
      margin-top: 100px;
 
 }
+
 .searchBtn {
      width: 150px;
      height: 150px;
@@ -261,11 +277,13 @@ nav>span {
      margin-left: 20px;
      text-align: center;
 }
+
 .searchBtn>span {
      font-size: 10px;
      position: relative;
      top: 10px;
 }
+
 .searchBtn>p {
      font-size: 20px;
      position: relative;
@@ -275,7 +293,7 @@ nav>span {
 
 .arrows {
      position: absolute;
-          bottom: 0px;
+     bottom: 0px;
      left: 48%;
      animation-name: arrowsMove;
      animation-duration: 1s;
@@ -309,9 +327,10 @@ nav>span {
 }
 
 .topContent>div:nth-child(3) {
-     position: relative;
+     position: absolute;
      font-size: 20px;
-          top: 290px;
+     /* bottom: 10px; */
+     margin-bottom: 80px;
           left: 48.7%;
           color: #FFF;
           text-shadow: -1px -1px 0 black,
@@ -342,10 +361,10 @@ nav>span {
      width: 100%;
      height: 100vh;
      flex-direction: column;
-          /* flex-direction: column-reverse; */
+     /* align-content: center; */
      align-items: center;
-     /* background-color:lightcoral; */
-     padding: 9%;
+     /* padding: 9%; */
+          /* border: 1px solid black; */
 }
 
 .newsText {
@@ -363,6 +382,52 @@ nav>span {
      margin-top: 15px;
 }
 
+.BtnStyle {
+     position: relative;
+     display: inline-block;
+     transform-style: preserve-3d;
+     perspective: 300px;
+     width: 150px;
+     height: 50px;
+     margin: 0 auto;
+     cursor: pointer;
+     border-style: none;
+}
+
+.BtnStyle>span {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     border: 1px solid #83C9D2;
+     box-sizing: border-box;
+     line-height: 48px;
+     text-align: center;
+     transform: all 0.3s;
+     transform-origin: center center -25px;
+}
+
+.btnHover {
+     background-color: white;
+     color: #83C9D2;
+     transform: rotateX(90deg);
+}
+
+.btnstop {
+     background-color: #83C9D2;
+     color: white;
+     transform: rotateX(0);
+     
+     }
+     
+     .BtnStyle:hover .btnHover {
+          transform: rotateX(0);
+     }
+
+.BtnStyle:hover .btnstop {
+     transform: rotateX(-90deg);
+}
 .overText {
      overflow: hidden;
      display: -webkit-box;
@@ -419,6 +484,19 @@ footer {
 
 }
 
+.aboutText {
+     /* border: 1px solid black; */
+     display: flex;
+     width: 100%;
+     flex-direction: column;
+     /* align-items: center; */
+     margin-top: 50%;
+     margin-left: 15%;
+     position: relative;
+     bottom: 150px;
+
+
+}
 .feedback_space {
      width: 263px;
      height: 270px;

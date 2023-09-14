@@ -190,7 +190,7 @@ app.post('/newsInsert', function (req, res) {
 
 
 app.post('/newsEdit', function (req, res) {
-     console.log(req.body.id);
+     // console.log(req.body.id);
      var newsID = req.body.id;
      var sql = "SELECT * FROM news WHERE newsid = ?";
 
