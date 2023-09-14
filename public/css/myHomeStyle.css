@@ -29,7 +29,7 @@ nav>span {
      display: inline-block;
      width: 180px;
      height: 40px;
-          background-image: url(/img/logo_w.png);
+     background-image: url(/img/logo_w.png);
           background-repeat: no-repeat;
           background-position: center;
           margin-left: 15px;
@@ -39,11 +39,12 @@ nav>span {
 
 .titleStyle {
      color: #FFF;
-     letter-spacing: 16px;
+     word-spacing: 16px;
      text-shadow: -1px -1px 0 black,
           1px -1px 0 black,
           -1px 1px 0 black,
           1px 1px 0 black;
+     /* border: 1px solid black; */
 }
 
 .nav_a {
@@ -331,7 +332,7 @@ nav>span {
      font-size: 20px;
      /* bottom: 10px; */
      margin-bottom: 80px;
-          left: 48.7%;
+     left: 48.7%;
           color: #FFF;
           text-shadow: -1px -1px 0 black,
                1px -1px 0 black,
@@ -361,10 +362,8 @@ nav>span {
      width: 100%;
      height: 100vh;
      flex-direction: column;
-     /* align-content: center; */
      align-items: center;
-     /* padding: 9%; */
-          /* border: 1px solid black; */
+     /* border: 1px solid black; */
 }
 
 .newsText {
@@ -375,13 +374,91 @@ nav>span {
      margin-left: 20px;
      margin-right: 20px;
      margin-top: 50px;
+     animation-name: newsMove;
+          animation-duration: 2s;
+     }
+     
+     @keyframes newsMove {
+          0% {
+               transform: translateY(-20px);
+               opacity: 0.5;
+          }
 
+          100% {
+               transform: translateY(0px);
+               opacity: 1;
+          }
 }
 
 .newsText>h4 {
      margin-top: 15px;
 }
 
+.newsMarquee {
+     font-size: 18px;
+     width: 60%;
+     height: 40px;
+     line-height: 40px;
+     text-align: center;
+     color: white;
+     overflow: hidden;
+     text-shadow: -1px -1px 0 #83C9D2,
+          1px -1px 0 #83C9D2,
+          -1px 1px 0 #83C9D2,
+          1px 1px 0 #83C9D2;
+}
+
+.dash {
+     width: 1920px;
+     height: 3px;
+     background-image: linear-gradient(to right, #83C9D2 0%, #83C9D2 50%, transparent 50%);
+     background-size: 20px 3px;
+     background-repeat: repeat-x;
+     animation-name: dashMove;
+     animation-duration: 100s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+
+}
+
+@keyframes dashMove {
+     0% {
+          background-position: 0 0;
+
+     }
+
+
+     100% {
+          background-position: -300vw 0;
+
+     }
+}
+
+
+
+
+.newsMarquee p {
+     height: 100%;
+     width: 100%;
+     background-repeat: repeat-x;
+     animation-name: MarqueeMove;
+     animation-duration: 20s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     position: relative;
+     overflow: hidden;
+}
+
+@keyframes MarqueeMove {
+     0% {
+          transform: translateX(900px);
+     }
+
+     100% {
+          transform: translateX(-1000px)
+     }
+
+}
 .BtnStyle {
      position: relative;
      display: inline-block;
@@ -392,9 +469,10 @@ nav>span {
      margin: 0 auto;
      cursor: pointer;
      border-style: none;
+     overflow: hidden;
 }
 
-.BtnStyle>span {
+.BtnStyle span {
      position: absolute;
      top: 0;
      left: 0;
@@ -404,8 +482,8 @@ nav>span {
      box-sizing: border-box;
      line-height: 48px;
      text-align: center;
-     transform: all 0.3s;
-     transform-origin: center center -25px;
+     transition: transform 0.3s;
+          transform-origin: 55% 55% -25px;
 }
 
 .btnHover {
@@ -414,20 +492,22 @@ nav>span {
      transform: rotateX(90deg);
 }
 
+
 .btnstop {
      background-color: #83C9D2;
      color: white;
      transform: rotateX(0);
-     
-     }
-     
-     .BtnStyle:hover .btnHover {
-          transform: rotateX(0);
-     }
+}
+
+.BtnStyle:hover .btnHover {
+     transform: rotateX(0);
+}
+
 
 .BtnStyle:hover .btnstop {
      transform: rotateX(-90deg);
 }
+
 .overText {
      overflow: hidden;
      display: -webkit-box;
@@ -497,6 +577,7 @@ footer {
 
 
 }
+
 .feedback_space {
      width: 263px;
      height: 270px;

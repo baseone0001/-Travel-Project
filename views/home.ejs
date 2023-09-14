@@ -34,16 +34,16 @@
                                    <span class="searchFontB">時間區間</span>
                                    <input type="date" class="searchDate"><span class="searchFontc">~</span>
                                    <input type="date" class="searchDate">
-                                   </form>
-                                   </div>
-                                   <div class="col-3">
-                                        <button class="searchBtn">
-                                             <span>SEARCH</span>
-                                             <p>搜尋</p>
+                              </form>
+                              </div>
+                              <div class="col-3">
+                                   <button class="searchBtn">
+                                        <span>SEARCH</span>
+                                        <p>搜尋</p>
 
                               </button>
-                              </div>
-                              </div>
+                         </div>
+                         </div>
 
 
 
@@ -83,7 +83,7 @@
                               $('.search_space').toggle();
 
                          })
-                         </script>
+</script>
 
 
 
@@ -91,8 +91,12 @@
           <!-- ----------------------------最新消息------------------------------ -->
           <div class="space">
                <div class="place_center">
-                    <h2 class="titleStyle mt-5">最新消息</h2>
-                    <div class="newsMarquee">字報</div>
+                    <h2 class="titleStyle mt-5">最 新 消 息</h2>
+                    <div class="dash mt-5"></div>
+                    <div class="newsMarquee ">
+                         <p>帶您走遍各大景點，一同體驗不同傳統文化、吃遍美食；以最優惠的價格，最優質的服務，帶您一同遨遊日本。</p>
+                    </div>
+                    <div class="dash"></div>
                     <div>
                          <% for(var i=0;i < 3; i++){ %>
                               <div class="newsText">
@@ -103,26 +107,30 @@
                                    <p class="overText">
                                         <%= data[i].contents %>
                                    </p>
-                                   <button class="BtnStyle"><span class="btnHover">go</span><span class="btnstop">了解更多</span></button>
+                                   <button class="BtnStyle">
+                                        <span class="btnHover">go</span>
+                                        <span class="btnstop">了解更多</span>
+                                   </button>
                                    </div>
                                    <% } %>
                                         </div>
                                         </div>
                                         </div>
-                                        <script>
-                                             $('.newsText>button').each(function (index, elm) {
-                                                  $(elm).prop('id', 'newsBtn' + index);
-                                             })
-                                             $("#newsBtn0").on('click', function () {
-                                                  alert('ok');
-                                             })
-                                        </script>
+
+          <script>
+               $('.newsText>button').each(function (index, elm) {
+                    $(elm).prop('id', 'newsBtn' + index);
+               })
+               $("#newsBtn0").on('click', function () {
+                    alert('ok');
+               })
+          </script>
 
           <!-- ---------------------------熱門景點------------------------------ -->
 
           <div class="space">
                <div class="place_center">
-                    <h2 class="titleStyle">熱門景點</h2>
+                    <h2 class="titleStyle">熱 門 景 點</h2>
                     <div class="ticket">
                          <div class="row ">
                               <div class="col-1">
@@ -158,7 +166,7 @@
                               </div>
                          </div>
                     </div>
-                    </div>
+               </div>
 
           </div>
           <!-- ---------------------------------------------------------- -->
@@ -174,84 +182,87 @@
                     <div class="col-6">
                          <img class="about_img_a" src="/img/wall.jpg" alt="about">
                          <img class="about_img_b" src="/img/sakura.jpg" alt="about">
-                         </div>
-                         <div class="col-6">
+                    </div>
+                    <div class="col-6">
                          <div>
                               <div class="aboutText">
-                                   <h2 class="titleStyle">關於我們</h2>
+                                   <h2 class="titleStyle">關 於 我 們</h2>
                                    <div class="mt-5">
                                         <p>專門為小型團體特別製作行程，</p>
                                         <p>注重於品質而不是價格，</p>
                                         <p>讓每位參與的旅客能有與眾不同的美好經驗，</p>
                                         <p>徜徉和旅在此為您服務！</p>
                                    </div>
-                         
-                                   <button class="BtnStyle mt-5">了解更多</button>
+
+                                   <button class="BtnStyle mt-3">
+                                        <span class="btnHover">go</span>
+                                        <span class="btnstop">了解更多</span>
+                                   </button>
                               </div>
                          </div>
-                         </div>
-                         </div>
-                         </div>
-                         <div class="space">
-                              <div class="place_center">
-                                   <h2>旅客回顧</h2>
-                                   <div>
-                                        <div class="feedback_space">
-                                             <img class="feedback_img" src="" alt="">
-                                             <div class="feedback_w">大阪</div>
-                                             <p>內文</p>
-                                        </div>
-                                        <div class="feedback_space">
-                                             <img class="feedback_img" src="" alt="">
-                                             <div class="feedback_w">大阪</div>
-                                             <p>內文</p>
-                                        </div>
-                                        <div class="feedback_space">
-                                             <img class="feedback_img" src="" alt="">
-                                             <div class="feedback_w">大阪</div>
-                                             <p>內文</p>
-                                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="space">
+                         <div class="place_center">
+                              <h2>旅客回顧</h2>
+                              <div>
+                                   <div class="feedback_space">
+                                        <img class="feedback_img" src="" alt="">
+                                        <div class="feedback_w">大阪</div>
+                                        <p>內文</p>
                                    </div>
-                                   <div>
-                                        <div class="feedback_space">
-                                             <img class="feedback_img" src="" alt="">
-                                             <div class="feedback_w">大阪</div>
-                                             <p>內文</p>
-                                        </div>
-                                        <div class="feedback_space">
-                                             <img class="feedback_img" src="" alt="">
-                                             <div class="feedback_w">大阪</div>
-                                             <p>內文</p>
-                                        </div>
-                                        <div class="feedback_space">
-                                             <img class="feedback_img" src="" alt="">
-                                             <div class="feedback_w">大阪</div>
-                                             <p>內文</p>
-                                        </div>
+                                   <div class="feedback_space">
+                                        <img class="feedback_img" src="" alt="">
+                                        <div class="feedback_w">大阪</div>
+                                        <p>內文</p>
                                    </div>
+                                   <div class="feedback_space">
+                                        <img class="feedback_img" src="" alt="">
+                                        <div class="feedback_w">大阪</div>
+                                        <p>內文</p>
+                                   </div>
+                              </div>
+                              <div>
+                                   <div class="feedback_space">
+                                        <img class="feedback_img" src="" alt="">
+                                        <div class="feedback_w">大阪</div>
+                                        <p>內文</p>
+                                   </div>
+                                   <div class="feedback_space">
+                                        <img class="feedback_img" src="" alt="">
+                                        <div class="feedback_w">大阪</div>
+                                        <p>內文</p>
+                                   </div>
+                                   <div class="feedback_space">
+                                        <img class="feedback_img" src="" alt="">
+                                        <div class="feedback_w">大阪</div>
+                                        <p>內文</p>
+                                   </div>
+                              </div>
 
                </div>
-               </div>
-               <footer>
-                    <ul>
-                         <li>行程方案</li>
-                         <li>最新消息</li>
-                         <li>聯絡我們</li>
-                         <li>旅遊資訊</li>
-                         <li>會員專區</li>
-                    </ul>
-                    <ul>
-                         <li>行程方案</li>
-                         <li>最新消息</li>
-                         <li>聯絡我們</li>
-                         <li>旅遊資訊</li>
-                         <li>會員專區</li>
-                    </ul>
-                    <div>logo</div>
-                    <p>文字</p>
-                    <p>電話</p>
-                    <p>地址</p>
-               </footer>
+          </div>
+          <footer>
+               <ul>
+                    <li>行程方案</li>
+                    <li>最新消息</li>
+                    <li>聯絡我們</li>
+                    <li>旅遊資訊</li>
+                    <li>會員專區</li>
+               </ul>
+               <ul>
+                    <li>行程方案</li>
+                    <li>最新消息</li>
+                    <li>聯絡我們</li>
+                    <li>旅遊資訊</li>
+                    <li>會員專區</li>
+               </ul>
+               <div>logo</div>
+               <p>文字</p>
+               <p>電話</p>
+               <p>地址</p>
+          </footer>
 
 
 </body>

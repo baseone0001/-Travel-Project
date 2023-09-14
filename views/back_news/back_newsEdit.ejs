@@ -53,19 +53,21 @@
                var newsTitle = $('#newsTitle').val();
                var newsContext = $('#newsContext').val();
                var newsid = $('#pid').text();
-               console.log(newsid);
+               var newsImg = $('#newsImg').prop('files')[0].name;
+               // console.log(newsid);
+               // console.log($('#newsImg').prop('files')[0].name);
                
 
 
                var newsay = confirm(`題目：${newsTitle} \n內容：${newsContext}`)
-               // console.log(img.src);
+               console.log(img.src);
                if(newsay){
                     var d = new Date();
      
                     var newsData = {
                          newsTitleAJAX: newsTitle,
                          newsContextAJAX: newsContext,
-                         // newsImgUrl:'/uploud/'+d.getDate()+ '-' + $('#newsImg').prop('files')[0].name,
+                         newsImgUrl: '/uploud/' + d.getDate() + '-' + newsImg,
                          newsid:newsid
                     }
                     $.ajax({

@@ -210,20 +210,32 @@ app.get('/background/newsEdit', up, function (req, res) {
      // 在这里，数据已经设置到req.session.news中
      // console.log('================data.newsData[0]=======================');
      // console.log(req.session.news);
-     var data = req.session.news;
      // console.log(data.newsData[0]);
 
-     // 渲染頁面
-     res.render('back_news/back_newsEdit', {
-          row: data.newsData[0]
-     });
+     // var data = req.session.news;
+     // // 渲染頁面
+     // res.render('back_news/back_newsEdit', {
+     //      row: data.newsData[0]
+     // });
+     var data = req.session.news;
+     if (!req.session.news == "") {
+          res.render('back_news/back_newsEdit', {
+               row: data.newsData[0]
+          });
+     } else {
+          data = req.session.news;
+          res.redirect('/background/newsEdit');
+     }
+
+
+
 
 });
 
 app.post('/newsUpdate', function (req, res) {
      res.setHeader('Content-type', 'text/html ; charset=utf-8');  //中文編碼
-     var data = [req.body.newsTitleAJAX, req.body.newsContextAJAX, req.body.newsid];
-     var sql = "UPDATE news SET title = ? ,contents = ? WHERE newsid = ?";
+     var data = [req.body.newsTitleAJAX, req.body.newsContextAJAX, req.body.newsImgUrl, req.body.newsid];
+     var sql = "UPDATE news SET title = ? ,contents = ? ,img = ? WHERE newsid = ?";
      myDBconn.exec(sql, data, function (results, fields) {
           console.log('UPDATE success')
      })
@@ -246,32 +258,35 @@ app.post('/newsDelete', function (req, res) {
 //-------------------------------會員--------------------------------
 app.get('/background/members', function (req, res) {
      var sql = "SELECT * FROM users"
-     myDBconn.exec(sql,[],function(results, fields){
+     myDBconn.exec(sql, [], function (results, fields) {
           // console.log(results);
-          res.render('back_member',{
-               data:results
+          res.render('back_member', {
+               data: results
           });
 
      })
 })
-app.post('/background/member',function(req,res){
+app.post('/background/member', function (req, res) {
      // console.log(req.body);
      var memberId = req.body.memberID;
      req.session.member = memberId;
      res.redirect('/background/memberview');
-     
+
 })
-app.get('/background/memberview',function(req,res){
+app.get('/background/memberview', function (req, res) {
      var memberId = req.session.member;
      console.log(memberId);
      var sql = "SELECT * FROM users WHERE uid = ?";
-     // myDBconn.exec(sql,memberId,function(results, fields){
-     //      console.log(results);
-     // })
-     render('back_memberview');
+     myDBconn.exec(sql, memberId, function (results, fields) {
+          console.log(results);
+          res.render('back_memberview', {
+               data: results
+          });
+     })
 })
 
-app.get('/memberSelect',function(req,res){
+app.post('/memberSelect', function (req, res) {
+     console.log(req.body);
 
 })
 

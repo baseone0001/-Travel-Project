@@ -18,9 +18,9 @@
           <div class="backBlock"></div>
           <div>
                <h2>會員管理</h2>
-               <form action="/memberSelect">
-                    <label for="">搜尋</label>
-                    <input type="text" placeholder="會員編號、姓名">
+               <form action="/memberSelect" method="post">
+                    <label for="memberSelect">搜尋</label>
+                    <input id="memberSelect" type="text" placeholder="會員編號、姓名">
                </form>
                <table class="backtable">
                     <tr class="bg-info">
@@ -31,6 +31,7 @@
                          <th class="backCol">Email</th>
                          <th class="backCol">地址</th>
                          <th></th>
+                         <th></th>
                     </tr>
                     <% for(var i = 0;i < data.length; i++){ %>
                     <tr>
@@ -40,7 +41,8 @@
                          <td><%= data[i].sex %></td>
                          <td><%= data[i].email %></td>
                          <td><%= data[i].address %></td>
-                         <td><button class="btn btn-info m-2" id="member" onclick="member(<%= data[i].uid %>)">檢視</button></td>
+                         <td><button class="btn btn-info m-1" id="member" onclick="member(<%= data[i].uid %>)">檢視</button></td>
+                         <td><button class="btn btn-danger m-1">刪除</button></td>
                     </tr>
                     <% } %>
                </table>
@@ -58,10 +60,15 @@
                     url:"/background/member",
                     data: memberData,
                     success:function(e){
-
+                              $(location).attr('href','/background/memberview');
                     }
                })
           }
+
+          $('#memberSelect').v al().on('change',function(){
+                console.log($('#memberSelect').val());
+          })
+
      </script>
 
      
