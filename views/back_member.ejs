@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,19 +11,23 @@
 
      <title>Document</title>
 </head>
+
 <body>
      <header class="d-flex justify-content-start">
           <div>
-               <%- include('share/back_nav.ejs')%> 
+               <%- include('share/back_nav.ejs')%>
           </div>
           <div class="backBlock"></div>
           <div>
                <h2>會員管理</h2>
-               <form action="/memberSelect">
-                    <label for="">搜尋</label>
-                    <input type="text" placeholder="會員編號、姓名">
+               <form action="/memberSelect" method="post">
+                    <label for="memberSelectID">會員編號：</label>
+                    <input id="memberSelectID" type="number" placeholder="搜尋">
+                    <label for="memberSelectName">姓名：</label>
+                    <input id="memberSelectName" type="text" placeholder="搜尋">
+                    
                </form>
-               <table class="backtable">
+               <table class="backtable mt-2">
                     <tr class="bg-info">
                          <th class="backCol-s">會員編號</th>
                          <th class="backCol">帳號</th>
@@ -31,39 +36,142 @@
                          <th class="backCol">Email</th>
                          <th class="backCol">地址</th>
                          <th></th>
+                         <th></th>
                     </tr>
-                    <% for(var i = 0;i < data.length; i++){ %>
-                    <tr>
-                         <td><%= data[i].uid %></td>
-                         <td><%= data[i].username %></td>
-                         <td><%= data[i].name %></td>
-                         <td><%= data[i].sex %></td>
-                         <td><%= data[i].email %></td>
-                         <td><%= data[i].address %></td>
-                         <td><button class="btn btn-info m-2" id="member" onclick="member(<%= data[i].uid %>)">檢視</button></td>
-                    </tr>
-                    <% } %>
+                    <% for(var i=0;i < data.length; i++){ %>
+                         <tr>
+                              <td>
+                                   <%= data[i].uid %>
+                              </td>
+                              <td>
+                                   <%= data[i].username %>
+                              </td>
+                              <td>
+                                   <%= data[i].name %>
+                              </td>
+                              <td>
+                                   <%= data[i].sex %>
+                              </td>
+                              <td>
+                                   <%= data[i].email %>
+                              </td>
+                              <td>
+                                   <%= data[i].address %>
+                              </td>
+                              <td><button class="btn btn-info m-1" id="member"
+                                        onclick="member('<%= data[i].uid %>')">檢視</button></td>
+                              <td><button class="btn btn-danger m-1">刪除</button></td>
+                         </tr>
+                         <% } %>
                </table>
+               <button class="btn btn-info mt-2" onclick="fresh()">顯示全部會員</button>
           </div>
      </header>
 
      <script>
-          function member(id){
-               console.log(id);
-               var memberData ={
-                    memberID:id
+          function member(id) {
+               // console.log(id);
+               memberData = {
+                    memberID: id
                }
                $.ajax({
-                    type:"post",
-                    url:"/background/member",
+                    type: "post",
+                    url: "/background/member",
                     data: memberData,
-                    success:function(e){
-
+                    success: function (e) {
+                         $(location).attr('href', '/background/memberview');
                     }
                })
           }
+
+          function clearData() {
+               $('tr:not(:first-child)').empty();
+          }
+
+          $('#memberSelectID').on('change', function () {
+          
+               // console.log($('#memberSelectID').val());
+               var id = $('#memberSelectID').val();
+               memberData = {
+                    memberID: id
+               }
+               
+               $.ajax({
+                    type: "post",
+                    url: "/background/memberSelectId",
+                    data: memberData,
+                    success: function (data) {
+                         // console.log(data);
+                         clearData();
+                         if(data.length == 0){
+                              var memberRow =
+                                   '<td>' +'查無此資訊'+ '</td>' 
+                                   
+                              $('tr:nth-child(2)').html(memberRow);
+
+                         }else{
+                              var memberRow =
+                                   '<td class="backCol-s">' + data[0].uid + '</td>' +
+                                   '<td class="backCol">' + data[0].username + '</td>' +
+                                   '<td class="backCol-s">' + data[0].name + '</td>' +
+                                   '<td class="backCol-s">' + data[0].sex + '</td>' +
+                                   '<td class="backCol">' + data[0].email + '</td>' +
+                                   '<td class="backCol">' + data[0].address + '</td>' +
+                                   '<td><button class="btn btn-info m-1" onclick="member(\'' + data[0].uid + '\')">檢視</button></td>' +
+                                   '<td><button class="btn btn-danger m-1">刪除</button></td>' ;
+                              $('tr:nth-child(2)').html(memberRow);
+
+                         }
+                    }
+               })
+
+          })
+
+          $('#memberSelectName').on('change', function () {
+          
+               // console.log($('#memberSelectName').val());
+               var name = $('#memberSelectName').val();
+               memberData = {
+                    memberName: name
+               }
+               
+               $.ajax({
+                    type: "post",
+                    url: "/background/memberSelectName",
+                    data: memberData,
+                    success: function (data) {
+                         // console.log(data);
+                         clearData();
+                         if(data.length == 0){
+                              var memberRow =
+                                   '<td>' +'查無此資訊'+ '</td>' 
+                                   
+                              $('tr:nth-child(2)').html(memberRow);
+
+                         }else{
+                         var memberRow =
+                              '<td class="backCol-s">' + data[0].uid + '</td>' +
+                              '<td class="backCol">' + data[0].username + '</td>' +
+                              '<td class="backCol-s">' + data[0].name + '</td>' +
+                              '<td class="backCol-s">' + data[0].sex + '</td>' +
+                              '<td class="backCol">' + data[0].email + '</td>' +
+                              '<td class="backCol">' + data[0].address + '</td>' +
+                              '<td><button class="btn btn-info m-1" onclick="member(\'' + data[0].uid + '\')">檢視</button></td>' +
+                              '<td><button class="btn btn-danger m-1">刪除</button></td>' ;
+                         $('tr:nth-child(2)').html(memberRow);
+                         }
+                    }
+               })
+
+          })
+
+          function fresh(){
+               window.location.assign(window.location.href);
+          }
+
      </script>
 
-     
+
 </body>
+
 </html>

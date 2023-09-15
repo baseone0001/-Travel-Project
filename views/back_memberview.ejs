@@ -4,10 +4,60 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/bootstrap.css">
+     <link rel="stylesheet" href="/css/myBackStyle.css">
      <title>Document</title>
 </head>
 <body>
-     <h2>view</h2>
+     <header class="d-flex justify-content-start">
+          <div>
+               <%- include('share/back_nav.ejs')%>
+          </div>
+          <div class="backBlock"></div>
+          <div>
+               <h2>會員資料</h2>
+               <table>
+                    <tr>
+                         <th class="bg-info">會員編號</th>
+                         <td>
+                              <%= data[0].uid %>
+                         </td>
+                    </tr>
+                    <tr>
+                         <th class="bg-info">會員帳號</th>
+                         <td>
+                              <%= data[0].username %>
+                         </td>
+                    </tr>
+                    <tr>
+                         <th class="bg-info">會員姓名</th>
+                         <td>
+                              <%= data[0].name %>
+                         </td>
+                    </tr>
+                    <tr>
+                         <th class="bg-info">電子郵件</th>
+                         <td>
+                              <%= data[0].email %>
+                         </td>
+                    </tr>
+                    <tr>
+                         <th class="bg-info">性別</th>
+                         <td>
+                              <%= data[0].sex %>
+                         </td>
+                    </tr>
+                    <tr>
+                         <th class="bg-info">住址</th>
+                         <td>
+                              <%= data[0].address %>
+                         </td>
+                    </tr>
+     
+               </table>
+     
+          </div>
+     </header>
      
 </body>
 </html>
