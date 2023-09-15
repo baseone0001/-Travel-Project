@@ -1,0 +1,255 @@
+body {
+    background-color: #F5F5F5;
+}
+
+td {
+    padding: 0.5rem;
+    /* border: solid 2px black; */
+    width: 100%;
+    font-weight: bolder;
+}
+
+.flyInfo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flyInfo-table {
+    width: 100%;
+    margin: 2rem;
+    table-layout: fixed;
+}
+
+.flyInfo-tr {
+    border-bottom: solid 1px #35475C;
+    text-align: center;
+}
+
+.flyInfo-text {
+    font-weight: bolder;
+    font-size: 0.5rem;
+}
+
+.flyInfo-textStyle {
+    color: #83C9D2;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.flyInfo-time {
+    border-bottom: dotted 2px lightgray;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+.SeparateLine {
+    border: none;
+    height: 2px;
+    /* background-color: #83C9D2; */
+    background: repeating-linear-gradient(90deg, #35475C, #35475C 1rem, transparent 0, transparent 2rem);
+}
+
+.FlyTitleStyle {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.MyImgDiv {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background-color: black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.MyImg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    align-items: center;
+    object-fit: cover;
+}
+
+.MyListTitle {
+    color: #83C9D2;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.MyListImgDiv {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.MyListImg {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.MyListImgTitle {
+    color: #83C9D2;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+.MyListImgText {
+    color: #35475C;
+    font-size: 1rem;
+    letter-spacing: 0.25rem;
+    display: -webkit-box;
+    /* -webkit-box-orient: vertical; */
+    /* -webkit-line-clamp: 3; */
+    /* overflow: hidden; */
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    text-align: left;
+}
+
+.MyHotelTel {
+    background-color: #CEE1E3;
+    color: gray;
+    font-size: 0.5rem;
+    margin: 1rem;
+    border-radius: 2rem;
+}
+
+.MyImgDivName {
+    position: absolute;
+    font-weight: bolder;
+    font-size: 3rem;
+    bottom: 10%;
+    left: 10%;
+}
+
+.MyTitle {
+    display: flex;
+    justify-content: center;
+    background-color: #83C9D2;
+    color: white;
+    border-radius:2rem 2rem 0 0;
+    font-weight: bolder;
+    font-size: 2rem;
+    letter-spacing: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.btn-MyArea {
+    text-align: center;
+    margin: 5% 5% 0;
+    justify-content: center;
+    display: flex;
+}
+
+.btn-form {
+    width: 100%;
+    background-color: #CEE1E3;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 10px 4% 10px;
+    margin: 0;
+}
+
+.btn-MyArea>button:hover {
+    background-color: #83C9D2;
+}
+
+.btn-MyArea>button:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-active-style {
+    background-color: #83C9D2;
+}
+
+.btn-detail-Scheduleh {
+    width: 9rem;
+    height: 2.5rem;
+    font-size: 0.75rem;
+    background-color: #83C9D2;
+    color: white;
+    border: none;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.btn-detail-text {
+    letter-spacing: 0.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.card-title-style {
+    color: #35475C;
+    font-weight: bolder;
+    font-size: 2rem;
+    letter-spacing: 1rem;
+}
+
+.card-detail-text-style {
+    width: 90%;
+    color: #35475C;
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    letter-spacing: 0.5rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.card-text-style {
+    color: #35475C;
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    letter-spacing: 0.5rem;
+}
+
+.form-card {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.subscribe-heart {
+    color: #83C9D2;    
+}
+
+.fly-days {
+    border: solid 2px #83C9D2;
+    padding: 0.25rem 1rem;
+}
+
+.bi-airplane-fill {
+    color: #83C9D2;
+    width: 2rem;
+    height: 1.5rem;
+    fill: currentColor;
+    transform: rotate(45deg);
+}
+
+.bi-arrow-up-short {
+    width: 3rem;
+    height: 3rem;
+    fill: currentColor;
+    transform: rotate(45deg);
+}

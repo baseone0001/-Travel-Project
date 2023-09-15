@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徜徉和旅</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/Mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <!-- 還缺一個總頁導覽列 -->
+    <div class="MyImgDiv">
+        <!-- 行程總頁的圖片 -->
+        <img src="/img/MyScheduleh.jpg" class="MyImg">
+        <h1 class="text-white MyImgDivName">日本 Japan</h1>
+    </div>
+
+    <div>
+        <!-- 地區列表 -->
+        <div class="btn-MyArea">
+            <button class="btn-form btn-active-style" data-target="form1" style="border-radius: 30px 0 0;">關東地區</button>
+            <button class="btn-form" data-target="form2">關西地區</button>
+            <button class="btn-form" data-target="form3">中部地區</button>
+            <button class="btn-form" data-target="form4">四國地區</button>
+            <button class="btn-form" data-target="form5">中國地區</button>
+            <button class="btn-form" data-target="form6">九州地區</button>
+            <button class="btn-form" data-target="form7" style="border-radius: 0 30px 0 0">東北地區</button>
+        </div>
+
+        <!-- 關東地區 -->
+        <form id="form1">
+            <div class="bg-white form-card" style="margin: 0 5%;">
+                <!-- 行程一 -->
+                <div class="mb-3 p-5">
+                    <div class="row">
+                        <!-- 空白 1/12 -->
+                        <div class="col-md-1"></div>
+                        <!-- IMG 5/12 -->
+                        <div class="col-md-5 pb-3 d-flex">
+                            <img src="/img/tokyo.jpg" class="rounded-5 w-100" style="object-fit: cover;">
+                        </div>
+                        <!-- 空白 1/12 -->
+                        <div class="col-md-1"></div>
+                        <!-- 資訊 5/12 -->
+                        <div class="col-md-5 p-3">
+                            <div>
+                                <div>
+                                    <!-- 行程標題 -->
+                                    <h5 class="card-title-style position-relative d-flex" style="justify-content: space-between;">
+                                        <div>東京五日行</div>
+                                        <!-- 加到收藏 -->
+                                        <div class="fa fa-heart-o subscribe-heart"></div>
+                                    </h5>
+                                </div>
+                                <hr>
+                                <!-- 行程內容 -->
+                                <p class="card-detail-text-style">
+                                    行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容
+                                </p>
+                                <!-- 出發日期 -->
+                                <div class="card-text-style d-flex">
+                                    <div class="d-flex align-items-center text-nowrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi-airplane-fill"
+                                            viewBox="0 0 17 17">
+                                            <path
+                                                d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
+                                        </svg>
+                                        出發日
+                                    </div>
+                                    <div class="fly-days rounded-3 text-center">09/30</div>
+                                </div>
+                                <!-- 行程價格 -->
+                                <p class="card-text-style">價格 <span>NT$ 69900</span> 起/人</p>
+                                <!-- 點擊可觀看詳細內容 -->
+                                <button class="btn-detail-Scheduleh rounded-3 mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="bi-arrow-up-short"
+                                        viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
+                                    </svg>
+                                    <div>
+                                        <span>MORE</span><br>
+                                        <span class="btn-detail-text">詳細行程</span>
+                                    </div>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 行程二 -->
+                <div class="mb-3 p-5">
+                    <div class="row">
+                        <div class="col-md-1" id="changeArea-A"></div>
+                        <div class="col-md-5 pb-3 d-flex" id="changeArea-B">
+                            <img src="/img/MyScheduleh.jpg" class="rounded-5 w-100" style="object-fit: cover;">
+                        </div>
+                        <div class="col-md-1" id="changeArea-C"></div>
+                        <div class="col-md-5 p-3" id="changeArea-D">
+                            <div>
+                                <!-- 行程標題 -->
+                                <h5 class="card-title-style position-relative d-flex" style="justify-content: space-between;">
+                                    <div>東京五日行</div>
+                                    <!-- 加到收藏 -->
+                                    <div class="fa fa-heart-o subscribe-heart"></div>
+                                </h5>
+                                <hr>
+                                <!-- 行程內容 -->
+                                <p class="card-detail-text-style">
+                                    行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容
+                                </p>
+                                <!-- 出發日期 -->
+                                <div class="card-text-style d-flex">
+                                    <div class="d-flex align-items-center text-nowrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi-airplane-fill"
+                                            viewBox="0 0 17 17">
+                                            <path
+                                                d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
+                                        </svg>
+                                        出發日
+                                    </div>
+                                    <div class="fly-days rounded-3 text-center">09/30</div>
+                                </div>
+                                <!-- 行程價格 -->
+                                <p class="card-text-style">價格 <span>NT$ 69900</span> 起/人</p>
+                                <!-- 點擊可觀看詳細內容 -->
+                                <button class="btn-detail-Scheduleh rounded-3 mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="bi-arrow-up-short"
+                                        viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
+                                    </svg>
+                                    <div>
+                                        <span>MORE</span><br>
+                                        <span class="btn-detail-text">詳細行程</span>
+                                    </div>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+        <!-- 關西地區 -->
+        <form id="form2" class="hidden">
+            <div class="bg-white" style="margin: 0 5%;">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/img/MyScheduleh.jpg" class="rounded-start" style="width: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">東京五日行</h5>
+                                <p class="card-text">行程的內容</p>
+                                <p class="card-text">出發日 &nbsp; <span>09/30</span></p>
+                                <p class="card-text">價格 <span>NT$ 69900</span> 起/人</p>
+                                <p class="card-text"><small class="text-muted">觀看詳細內容</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 中部地區 -->
+        <form id="form3" class="hidden">
+            <div class="bg-white" style="margin: 0 5%;">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/img/tokyo.jpg" class="rounded-start" style="width: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">東京五日行</h5>
+                                <p class="card-text">行程的內容</p>
+                                <p class="card-text">出發日 &nbsp; <span>09/30</span></p>
+                                <p class="card-text">價格 <span>NT$ 69900</span> 起/人</p>
+                                <p class="card-text"><small class="text-muted">觀看詳細內容</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 四國地區 -->
+        <form id="form4" class="hidden">
+            <div class="bg-white" style="margin: 0 5%;">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/img/MyScheduleh-01.png" class="rounded-start" style="width: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">東京五日行</h5>
+                                <p class="card-text">行程的內容</p>
+                                <p class="card-text">出發日 &nbsp; <span>09/30</span></p>
+                                <p class="card-text">價格 <span>NT$ 69900</span> 起/人</p>
+                                <p class="card-text"><small class="text-muted">觀看詳細內容</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 中國地區 -->
+        <form id="form5" class="hidden">
+            <div class="bg-white" style="margin: 0 5%;">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/img/tokyo.jpg" class="rounded-start" style="width: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">東京五日行</h5>
+                                <p class="card-text">行程的內容</p>
+                                <p class="card-text">出發日 &nbsp; <span>09/30</span></p>
+                                <p class="card-text">價格 <span>NT$ 69900</span> 起/人</p>
+                                <p class="card-text"><small class="text-muted">觀看詳細內容</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 九州地區 -->
+        <form id="form6" class="hidden">
+            <div class="bg-white" style="margin: 0 5%;">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/img/MyScheduleh-01.png" class="rounded-start" style="width: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">東京五日行</h5>
+                                <p class="card-text">行程的內容</p>
+                                <p class="card-text">出發日 &nbsp; <span>09/30</span></p>
+                                <p class="card-text">價格 <span>NT$ 69900</span> 起/人</p>
+                                <p class="card-text"><small class="text-muted">觀看詳細內容</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 東北地區 -->
+        <form id="form7" class="hidden">
+            <div class="bg-white" style="margin: 0 5%;">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/img/tokyo.jpg" class="rounded-start" style="width: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">東京五日行</h5>
+                                <p class="card-text">行程的內容</p>
+                                <p class="card-text">出發日 &nbsp; <span>09/30</span></p>
+                                <p class="card-text">價格 <span>NT$ 69900</span> 起/人</p>
+                                <p class="card-text"><small class="text-muted">觀看詳細內容</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- footer -->
+
+    <script>
+        // 當點選到地區時對應的動作
+        $(document).ready(function () {
+            $(".btn-form").click(function () {
+                var targetFormId = $(this).data("target");
+                $("form").addClass("hidden");
+                $(".btn-form").removeClass("btn-active-style");
+                $(this).addClass("btn-active-style");
+                $("#" + targetFormId).removeClass("hidden");
+            });
+        });
+
+        // 當畫面小於768px時，div位置互換
+        $(document).ready(function () {
+            function moveElement() {
+                if (window.innerWidth < 768) {
+                    $('#changeArea-A').after($('#changeArea-B')); // 在小於768px的視窗寬度下，順序 A,B,C,D
+                    $('#changeArea-C').after($('#changeArea-D'));
+                } else {
+                    $('#changeArea-A').after($('#changeArea-D')); // 在大於或等於768px的視窗寬度下，順序 A,D,C,B
+                    $('#changeArea-C').after($('#changeArea-B'));
+                }
+            }
+            // 首次加載頁面時執行一次
+            moveElement();
+            // 視窗大小改變時再執行
+            $(window).resize(function () {
+                moveElement();
+            });
+        });
+
+
+        document.querySelectorAll('.subscribe-heart').forEach(function (heart) {
+            heart.addEventListener('click', function () {
+                if (heart.classList.contains('fa-heart-o')) {
+                    heart.classList.remove('fa-heart-o');
+                    heart.classList.add('fa-heart');
+                } else {
+                    heart.classList.remove('fa-heart');
+                    heart.classList.add('fa-heart-o');
+                }
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

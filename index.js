@@ -43,6 +43,9 @@ app.use('/', homePage);
 var backPage = require('./router/back');
 app.use('/', backPage);
 
+var SchedulehPage = require('./router/Scheduleh');
+app.use('/', SchedulehPage);
+
 // var memberPage = require('./router/member');
 // app.use('/', memberPage);
 
