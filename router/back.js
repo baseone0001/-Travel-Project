@@ -275,19 +275,34 @@ app.post('/background/member', function (req, res) {
 })
 app.get('/background/memberview', function (req, res) {
      var memberId = req.session.member;
-     console.log(memberId);
+     // console.log(memberId);
      var sql = "SELECT * FROM users WHERE uid = ?";
      myDBconn.exec(sql, memberId, function (results, fields) {
-          console.log(results);
+          // console.log(results);
           res.render('back_memberview', {
                data: results
           });
      })
 })
 
-app.post('/memberSelect', function (req, res) {
-     console.log(req.body);
+app.post('/background/memberSelectId', function (req, res) {
+     // console.log(req.body.memberID);//數字
+     var sql = "SELECT * FROM users WHERE uid = '%'+?+'%'"
+     var data = req.body.memberID;
+     myDBconn.exec(sql,data,function(results, fields){
+          // console.log(results);
+          res.send(results);
+     })
 
+})
+app.post('/background/memberSelectName', function (req, res) {
+     // console.log(req.body.memberName);//name
+     var sql = "SELECT * FROM users WHERE name LIKE CONCAT('%', ?, '%') "
+     var data = req.body.memberName;
+     myDBconn.exec(sql,data,function(results, fields){
+          // console.log(results);
+          res.send(results);
+     })
 })
 
 

@@ -14,7 +14,7 @@ app.get('/home', function (req, res) {
 
      myDBconn.exec(sql,[], function (data, fields) {
           // res.redirect('/page/1'); ==============================>可以直接轉到第一頁
-          console.log(data);
+          // console.log(data);
           res.render('home', { //渲染檔案home.ejs  ->一定要在views資料夾底下 
                data: data,
                // rows是資料庫回傳
