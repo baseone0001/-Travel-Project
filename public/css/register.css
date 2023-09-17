@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: #83C9D2;
+}
+
+#allthing {
+    margin-top: 5%;
+}
+
+
+
+/* 註冊 */
+.registerPage {
+    position: relative;
+    width: 82%;
+    margin-left: auto;
+    box-sizing: border-box;
+    padding-left: 5%;
+    background-clip: content-box;
+    background-color: #F5F5F5;
+}
+
+.container {
+    line-height: 2;
+    padding: 5%;
+    overflow: auto;
+    height: 75%;
+}
+
+.textDiv,
+.footerDiv {
+    text-align: center;
+    line-height: 3;
+}
+
+.formDiv {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .inputflex {
+    text-align: center;
+} */
+
+#email,
+#password,
+#username,
+#address,
+#phone,
+#name,
+#identity {
+    height: 40px;
+    width: 270px;
+    border: 1px solid lightblue;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+div>label,
+.nn {
+    font-weight: bolder;
+}
+
+.btnregister {
+    margin-top: 10px;
+    line-height: 2;
+    width: 60px;
+    margin-left: 60%;
+    background-color: #ace5ed;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+.btnregister:hover {
+    background-color: #83C9D2;
+}
+
+.btnlogin{
+    border: none;
+    font-weight: bolder;
+    background-color: rgb(201, 237, 164);
+}
+.btnlogin:hover{
+    background-color: rgb(112, 142, 81);
+}
+
+#click {
+    color: red;
+}
+
+/* 縮放設定 */
+@media screen and (max-width:768px) {
+    .registerPage {
+        padding-left: 5px;
+        width: 60%;
+    }
+
+}
