@@ -11,7 +11,13 @@
      <title>Home page</title>
 </head>
 
-<body>
+<body onload="loading()">
+     <div id="loading">
+          <div class="icon">
+               <div class="paper"></div>
+               <div class="stroke"></div>
+          </div>
+     </div>
      <%- include('share/home_nav.ejs')%>
           <div class="space">
                <!-- <div class="garyZone"></div> -->
@@ -35,15 +41,15 @@
                                    <input type="date" class="searchDate"><span class="searchFontc">~</span>
                                    <input type="date" class="searchDate">
                               </form>
-                              </div>
-                              <div class="col-3">
-                                   <button class="searchBtn">
-                                        <span>SEARCH</span>
-                                        <p>搜尋</p>
+                         </div>
+                         <div class="col-3">
+                              <button class="searchBtn">
+                                   <span>SEARCH</span>
+                                   <p>搜尋</p>
 
                               </button>
                          </div>
-                         </div>
+                    </div>
 
 
 
@@ -66,6 +72,11 @@
                </div>
 
                <script>
+                    function loading() {
+                         setTimeout(function () {
+                              document.getElementById("loading").style.height = "0%";
+                         }, 2000)
+                    }
                     $('.search_space').hide();
                     $('body').on('click', function (e) {
                          console.log(e);
@@ -78,12 +89,12 @@
 
 
                     })
-                         $('#search').on('click', function () {
-                              // console.log('btnok');
-                              $('.search_space').toggle();
+                    $('#search').on('click', function () {
+                         // console.log('btnok');
+                         $('.search_space').toggle();
 
-                         })
-</script>
+                    })
+               </script>
 
 
 
@@ -111,11 +122,11 @@
                                         <span class="btnHover">go</span>
                                         <span class="btnstop">了解更多</span>
                                    </button>
-                                   </div>
-                                   <% } %>
-                                        </div>
-                                        </div>
-                                        </div>
+                              </div>
+                              <% } %>
+                    </div>
+               </div>
+          </div>
 
           <script>
                $('.newsText>button').each(function (index, elm) {
@@ -128,141 +139,174 @@
 
           <!-- ---------------------------熱門景點------------------------------ -->
 
-          <div class="space">
+          <div class="space_a">
                <div class="place_center">
                     <h2 class="titleStyle">熱 門 景 點</h2>
-                    <div class="ticket">
-                         <div class="row ">
-                              <div class="col-1">
-                                   <div style="width: 51px; height: 285px; background-color:#83C9D2;"></div>
-                              </div>
-                              <div class="col-4">
-                                   <h3>東京</h3>
-                                   <h3>TICKET</h3>
-                                   <h3>五天四夜</h3>
-                                   <h3>56000</h3>
-                                   <small>起</small>
-                              </div>
-                              <div class="col-7 bg-warning">
-                                   <img src="" alt="">
-                              </div>
-                         </div>
-                    </div>
                     <hr>
-                    <div class="ticket">
-                         <div class="row ">
-                              <div class="col-1">
-                                   <div style="width: 51px; height: 250px; background-color:#83C9D2;"></div>
+                    <a href="" class="ticA">
+                         <div class="ticket">
+                              <div class="row ">
+                                   <div class="col-1">
+                                        <div style="width: 51px; height: 285px; background-color:#83C9D2;"></div>
+                                   </div>
+                                   <div class="col-4">
+                                        <div class="ticFont">
+                                             <h3>東京</h3>
+                                             <h3>TICKET</h3>
+                                             <h3>五天四夜</h3>
+                                             <h3>56000</h3>
+                                             <small>起</small>
+                                        </div>
+                                   </div>
+                                   <div class="col-7">
+                                        <img src="/img/s_tokyo.png" alt="">
+                                   </div>
                               </div>
-                              <div class="col-4">
-                                   <h3>東京</h3>
-                                   <h3>TICKET</h3>
-                                   <h3>五天四夜</h3>
-                                   <h3>56000</h3>
-                                   <small>起</small>
+                         </div>
+                    </a>
+
+                    <hr>
+                    <a href="" class="ticA">
+                         <div class="ticket">
+                              <div class="row ">
+                                   <div class="col-1">
+                                        <div style="width: 51px; height: 250px; background-color:#83C9D2;"></div>
+                                   </div>
+                                   <div class="col-4 ">
+                                        <div class="ticFont">
+                                             <h3>大阪</h3>
+                                             <h3>TICKET</h3>
+                                             <h3>五天四夜</h3>
+                                             <h3>48000</h3>
+                                             <small>起</small>
+                                        </div>
+                                   </div>
+                                   <div class="col-7">
+                                        <img src="/img/s_osaka.png" alt="">
+                                   </div>
                               </div>
-                              <div class="col-7 bg-warning">
-                                   <img src="" alt="">
+                         </div>
+                    </a>
+
+                    <hr>
+
+                    <!-- <a href="#">
+                         <div class="ticket">
+                              <div class="row ">
+                                   <div class="col-1">
+                                        <div style="width: 100%; height: 250px; background-color:#83C9D2;"></div>
+                                   </div>
+                                   <div class="col-4 tic">
+                                        <h3>京都</h3>
+                                        <h3>TICKET</h3>
+                                        <h3>五天四夜</h3>
+                                        <h3>56000</h3>
+                                        <small>起</small>
+                                   </div>
+                                   <div class="col-7">
+                                        <img src="/img/s_kyoto.png" alt="">
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    </a> -->
+
+
+               </div>
+               <!-- ---------------------------------------------------------- -->
+
+               <div class="space">
+                    <div class="fuji">
+                         <div class="fujiFont">
+                              <h4>訂製專屬您的行程</h4>
+                              <div>
+                                   <p>旅行，不該只是一趟離開家裡的移動。</p>
+                                   <p>如果沒時間規劃，那就讓我們為您量身規劃。</p>
+
+                              </div>
+                              <button class="fujibtn">去 訂 製</button>
+                         </div>
+                    </div>
+                    <!-- <img src="/img/fujiyama.png" alt=""> -->
+
+               </div>
+
+               <!-- ----------------------------關於我們------------------------------ -->
+
+               <div class="space">
+                    <div class="row">
+                         <div class="col-6">
+                              <img class="about_img_a" src="/img/wall.jpg" alt="about">
+                              <img class="about_img_b" src="/img/sakura.jpg" alt="about">
+                         </div>
+                         <div class="col-6">
+                              <div>
+                                   <div class="aboutText">
+                                        <h2 class="titleStyle">關 於 我 們</h2>
+                                        <div class="mt-5">
+                                             <p>專門為小型團體特別製作行程，</p>
+                                             <p>注重於品質而不是價格，</p>
+                                             <p>讓每位參與的旅客能有與眾不同的美好經驗，</p>
+                                             <p>徜徉和旅在此為您服務！</p>
+                                        </div>
+
+                                        <button class="BtnStyle mt-3">
+                                             <span class="btnHover">go</span>
+                                             <span class="btnstop">了解更多</span>
+                                        </button>
+                                   </div>
                               </div>
                          </div>
                     </div>
                </div>
 
-          </div>
-          <!-- ---------------------------------------------------------- -->
 
-          <div class="space">
-               <img src="/img/fujiyama.png" alt="">
-          </div>
+               <!-- ------------------------------旅客回顧---------------------------- -->
 
-          <!-- ----------------------------關於我們------------------------------ -->
-
-          <div class="space">
-               <div class="row">
-                    <div class="col-6">
-                         <img class="about_img_a" src="/img/wall.jpg" alt="about">
-                         <img class="about_img_b" src="/img/sakura.jpg" alt="about">
-                    </div>
-                    <div class="col-6">
-                         <div>
-                              <div class="aboutText">
-                                   <h2 class="titleStyle">關 於 我 們</h2>
-                                   <div class="mt-5">
-                                        <p>專門為小型團體特別製作行程，</p>
-                                        <p>注重於品質而不是價格，</p>
-                                        <p>讓每位參與的旅客能有與眾不同的美好經驗，</p>
-                                        <p>徜徉和旅在此為您服務！</p>
-                                   </div>
-
-                                   <button class="BtnStyle mt-3">
-                                        <span class="btnHover">go</span>
-                                        <span class="btnstop">了解更多</span>
-                                   </button>
-                              </div>
+               <!-- <div class="space">
+               <div class="place_center">
+                    <h2>旅客回顧</h2>
+                    <div>
+                         <div class="feedback_space">
+                              <img class="feedback_img" src="" alt="">
+                              <div class="feedback_w">大阪</div>
+                              <p>內文</p>
+                         </div>
+                         <div class="feedback_space">
+                              <img class="feedback_img" src="" alt="">
+                              <div class="feedback_w">大阪</div>
+                              <p>內文</p>
+                         </div>
+                         <div class="feedback_space">
+                              <img class="feedback_img" src="" alt="">
+                              <div class="feedback_w">大阪</div>
+                              <p>內文</p>
                          </div>
                     </div>
+                    <div>
+                         <div class="feedback_space">
+                              <img class="feedback_img" src="" alt="">
+                              <div class="feedback_w">大阪</div>
+                              <p>內文</p>
+                         </div>
+                         <div class="feedback_space">
+                              <img class="feedback_img" src="" alt="">
+                              <div class="feedback_w">大阪</div>
+                              <p>內文</p>
+                         </div>
+                         <div class="feedback_space">
+                              <img class="feedback_img" src="" alt="">
+                              <div class="feedback_w">大阪</div>
+                              <p>內文</p>
+                         </div>
                     </div>
-                    </div>
-                    <div class="space">
-                         <div class="place_center">
-                              <h2>旅客回顧</h2>
-                              <div>
-                                   <div class="feedback_space">
-                                        <img class="feedback_img" src="" alt="">
-                                        <div class="feedback_w">大阪</div>
-                                        <p>內文</p>
-                                   </div>
-                                   <div class="feedback_space">
-                                        <img class="feedback_img" src="" alt="">
-                                        <div class="feedback_w">大阪</div>
-                                        <p>內文</p>
-                                   </div>
-                                   <div class="feedback_space">
-                                        <img class="feedback_img" src="" alt="">
-                                        <div class="feedback_w">大阪</div>
-                                        <p>內文</p>
-                                   </div>
-                              </div>
-                              <div>
-                                   <div class="feedback_space">
-                                        <img class="feedback_img" src="" alt="">
-                                        <div class="feedback_w">大阪</div>
-                                        <p>內文</p>
-                                   </div>
-                                   <div class="feedback_space">
-                                        <img class="feedback_img" src="" alt="">
-                                        <div class="feedback_w">大阪</div>
-                                        <p>內文</p>
-                                   </div>
-                                   <div class="feedback_space">
-                                        <img class="feedback_img" src="" alt="">
-                                        <div class="feedback_w">大阪</div>
-                                        <p>內文</p>
-                                   </div>
-                              </div>
 
                </div>
-          </div>
-          <footer>
-               <ul>
-                    <li>行程方案</li>
-                    <li>最新消息</li>
-                    <li>聯絡我們</li>
-                    <li>旅遊資訊</li>
-                    <li>會員專區</li>
-               </ul>
-               <ul>
-                    <li>行程方案</li>
-                    <li>最新消息</li>
-                    <li>聯絡我們</li>
-                    <li>旅遊資訊</li>
-                    <li>會員專區</li>
-               </ul>
-               <div>logo</div>
-               <p>文字</p>
-               <p>電話</p>
-               <p>地址</p>
-          </footer>
+          </div> -->
+
+
+               <%- include('share/home_footer.ejs')%>
+
 
 
 </body>

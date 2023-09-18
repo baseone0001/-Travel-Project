@@ -21,23 +21,23 @@
 
           <div>
                <div style="height: 50px; width: 100%;"></div>
-               <h2>會員管理</h2>
+               <h2>黑名單</h2>
                <form action="/memberSelect" method="post">
                     <label for="memberSelectID">會員編號：</label>
                     <input id="memberSelectID" type="number" placeholder="搜尋" min="1">
                     <label for="memberSelectName">姓名：</label>
                     <input id="memberSelectName" type="text" placeholder="搜尋">
-                    <a href="/background/memberBlack" class="btn btn-danger float-end">黑名單</a>
+                    <a href="/background/members" class="btn btn-info float-end">回會員管理</a>
 
                </form>
                <table class="backtable mt-2">
-                    <tr class="bg-info">
+                    <tr class="btn-danger">
                          <th class="backCol-s">會員編號</th>
                          <th class="backCol">帳號</th>
                          <th class="backCol-s">姓名</th>
                          <th class="backCol-s">性別</th>
                          <th class="backCol">Email</th>
-                         <th class="backCol">地址</th>
+                         <th class="backCol">黑名單原因</th>
                          <th></th>
                          <th></th>
                     </tr>
@@ -59,16 +59,16 @@
                                    <%= data[i].email %>
                               </td>
                               <td>
-                                   <%= data[i].address %>
+                                   <%= data[i].reason %>
                               </td>
                               <td><button class="btn btn-info m-1" id="member"
                                         onclick="member('<%= data[i].uid %>')">檢視</button></td>
-                              <td><button class="btn btn-danger m-1"
-                                        onclick="memberBlack('<%= data[i].uid %>')">加入黑名單</button></td>
+                              <td><button class="btn btn-warning m-1"
+                                        onclick="memberBlackout('<%= data[i].uid %>')">移除黑名單</button></td>
                          </tr>
                          <% } %>
                </table>
-               <button class="btn btn-info mt-2" onclick="fresh()">顯示全部會員</button>
+               <button class="btn btn-danger mt-2" onclick="fresh()">顯示全部會員</button>
           </div>
      </header>
 
@@ -88,30 +88,24 @@
                })
           }
 
-          function memberBlack(id) {
+          function memberBlackout(id) {
                console.log(id);
-               var reason = prompt('黑名單的原因是？')
-               if (reason) {
-                    memberData = {
-                         memberID: id,
-                         reason: reason
-                    }
-                    $.ajax({
-                         type: "post",
-                         url: "/background/memberBlack",
-                         data: memberData,
-                         success: function (e) {
-                              window.location.assign(window.location.href);
-                         }
-                    })
-               } else {
-                    alert('請填寫原因');
+               memberData = {
+                    memberID: id
                }
+               $.ajax({
+                    type: "post",
+                    url: "/background/memberBlackout",
+                    data: memberData,
+                    success: function (e) {
+                         window.location.assign(window.location.href);
+                    }
+               })
           }
 
 
           function clearData() {
-               $('tr:not(:first-child)').remove();
+               $('tr:not(:first-child)').empty();
           }
 
 
@@ -120,7 +114,7 @@
                // console.log($('#memberSelectID').val());
                var id = $('#memberSelectID').val();
                memberData = {
-                    memberID: id
+                    memberBLackID: id
                }
 
                $.ajax({
@@ -128,7 +122,7 @@
                     url: "/background/memberSelectId",
                     data: memberData,
                     success: function (data) {
-                         console.log(data);
+                         // console.log(data);
                          clearData();
                          if (data.length == 0) {
                               var memberRow =
@@ -137,7 +131,7 @@
                               $('tr:nth-child(1)').after(memberRow);
 
                          } else {
-                              var memberRow = '<tr>' +
+                              var memberRow =
                                    '<td class="backCol-s">' + data[0].uid + '</td>' +
                                    '<td class="backCol">' + data[0].username + '</td>' +
                                    '<td class="backCol-s">' + data[0].name + '</td>' +
@@ -145,9 +139,8 @@
                                    '<td class="backCol">' + data[0].email + '</td>' +
                                    '<td class="backCol">' + data[0].address + '</td>' +
                                    '<td><button class="btn btn-info m-1" onclick="member(\'' + data[0].uid + '\')">檢視</button></td>' +
-                                   '<td><button class="btn btn-danger m-1" onclick="memberBlack(\'' + data[0].uid + '\')">加入黑名單</button></td>' +
-                                   '</tr>';
-                              $('tr:nth-child(1)').after(memberRow);
+                                   '<td><button class="btn btn-warning m-1" onclick="memberBlackout(\'' + data[0].uid + '\')">移除黑名單</button></td>';
+                              $('tr:nth-child(2)').html(memberRow);
 
                          }
                     }
@@ -160,7 +153,7 @@
                // console.log($('#memberSelectName').val());
                var name = $('#memberSelectName').val();
                memberData = {
-                    memberName: name
+                    memberBLackName: name
                }
 
                $.ajax({
@@ -168,13 +161,11 @@
                     url: "/background/memberSelectName",
                     data: memberData,
                     success: function (rows) {
-                         // console.log(rows);
+                         // console.log(data);
                          clearData();
                          if (rows.length == 0) {
                               var memberRow =
-                                   '<tr>' +
-                                   '<td>' + '查無此資訊' + '</td>' +
-                                   '</tr>'
+                                   '<tr>' + '<td>' + '查無此資訊' + '</td>' +'</tr>'
 
                               $('tr:nth-child(1)').after(memberRow);
 
@@ -189,7 +180,7 @@
                                         '<td class="backCol">' + rows[i].email + '</td>' +
                                         '<td class="backCol">' + rows[i].address + '</td>' +
                                         '<td><button class="btn btn-info m-1" onclick="member(\'' + rows[i].uid + '\')">檢視</button></td>' +
-                                        '<td><button class="btn btn-danger m-1" onclick="memberBlack(\'' + rows[i].uid + '\')">加入黑名單</button></td>' +
+                                        '<td><button class="btn btn-warning m-1" onclick="memberBlackout(\'' + rows[0].uid + '\')">移除黑名單</button></td>' +
                                         '</tr>';
                                    $('tr:nth-child(1)').after(memberRow);
                               }

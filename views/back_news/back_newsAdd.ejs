@@ -16,8 +16,9 @@
           </div>
           <div class="backBlock"></div>
           <div>
-               <a href="/background/news">消息管理</a>
-               <h2>消息新增</h2>
+               <div style="height: 50px; width: 100%;"></div>
+               <h2  style="display:inline;">消息新增</h2>
+               <a href="/background/news" class="btn btn-info float-end">回消息管理</a>
                <form action="/newsuplowd" method="post" enctype="multipart/form-data">
                     <label for="newsTitle">題目</label>
                     <input id="newsTitle" type="text" value="">
@@ -26,6 +27,7 @@
                     <label for="newsContext">內容</label>
                     <textarea  id="newsContext" cols="30" rows="5"> </textarea>
                     <br>
+                    <label for="newsImg">圖片</label>
                     <input type="file" id="newsImg" name="newsImg" multiple>
                     <br>
                     <img id="img" src="" style="width: 300px; height: 200px; object-fit: cover;

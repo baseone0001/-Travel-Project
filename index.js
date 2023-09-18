@@ -34,7 +34,7 @@ app.use(session({
 
 
 app.get('/', function (req, res) {
-     res.send('這是首頁')
+     res.redirect('/home');
 })
 
 var homePage = require('./router/home');
@@ -46,8 +46,7 @@ app.use('/', backPage);
 var SchedulehPage = require('./router/Scheduleh');
 app.use('/', SchedulehPage);
 
-// var memberPage = require('./router/member');
-// app.use('/', memberPage);
+
 
 
 

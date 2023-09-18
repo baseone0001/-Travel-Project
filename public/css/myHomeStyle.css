@@ -2,7 +2,80 @@ body {
      overflow-x: hidden;
 }
 
+#loading{
+     background-color: #83C9D2;
+     width: 100%;
+     height: 100vh;
+     position: fixed;
+     z-index: 2000;
+     overflow: hidden;
+     transition: 1.5s;
+     
+}
+.icon {
+     display: inline-block;
+     position: relative;
+     top: 50%;
+     left: 50%;
+     /* border: 1px solid black; */
+     margin-left: -65px;
+     margin-top: -38.8px;
+     transform: scale(0.8);
 
+     
+}
+
+.paper{
+     width: 132px;
+     height: 41px;
+     background-image: url(/img/pepar.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     animation-name: paperMove;
+     animation-duration: 2s;
+     animation-iteration-count: infinite;
+}
+
+@keyframes paperMove {
+     0% {
+          transform: translateY(-20px);
+     }
+
+     50% {
+          transform: translateY(0px);
+     }
+     100%{
+          transform: translateY(-20px);
+     }
+}
+
+
+.stroke{
+     width: 150px;
+     height: 56px;
+     background-image: url(/img/stroke.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     transform: scale(0.9);
+     position: relative;
+     right: 10px;
+     animation-name: strokeMove;
+     animation-duration: 2s;
+     animation-iteration-count: infinite;
+}
+
+@keyframes strokeMove {
+     0% {
+          transform: scale(0.8);
+     }
+
+     50% {
+          transform: scale(0.9);
+     }
+     100%{
+          transform: scale(0.8);
+     }
+}
 
 nav {
      height: 60px;
@@ -30,10 +103,10 @@ nav>span {
      width: 180px;
      height: 40px;
      background-image: url(/img/logo_w.png);
-          background-repeat: no-repeat;
-          background-position: center;
-          margin-left: 15px;
-          margin-top: 7px;
+     background-repeat: no-repeat;
+     background-position: center;
+     margin-left: 15px;
+     margin-top: 7px;
 
 }
 
@@ -64,6 +137,12 @@ nav>span {
      /* border: 1px solid black; */
      /* overflow: hidden; */
      position: relative;
+}
+
+.space_a {
+     width: 100%;
+     background-color: #F5F5F5;
+     /* border: 1px solid black; */
 }
 
 .sky {
@@ -144,14 +223,29 @@ nav>span {
      justify-content: center;
      flex-shrink: 0;
      position: relative;
-     top: 145px;
-     left: 18%;
+     top: 110px;
+     left: 35%;
      text-shadow: -1px -1px 0 black,
           1px -1px 0 black,
           -1px 1px 0 black,
           1px 1px 0 black;
-
+     animation-name: homeMove;
+     animation-duration: 2s;
+     animation-delay: 1.4s;
 }
+
+@keyframes homeMove {
+     0% {
+          transform: translateY(-50px);
+          opacity: 0.5;
+     }
+
+     100% {
+          transform: translateY(0px);
+          opacity: 1;
+     }
+}
+
 
 .garyZone {
      width: 100%;
@@ -167,9 +261,13 @@ nav>span {
      height: 54px;
      border-radius: 10px;
      position: relative;
-     top: 470px;
-     left: 45%;
+     top: 460px;
+     left: 40%;
      /* padding: 10px; */
+     animation-name: homeMove;
+     animation-duration: 2s;
+     animation-delay: 1.4s;
+
 }
 
 #search {
@@ -333,14 +431,14 @@ nav>span {
      /* bottom: 10px; */
      margin-bottom: 80px;
      left: 48.7%;
-          color: #FFF;
-          text-shadow: -1px -1px 0 black,
-               1px -1px 0 black,
-               -1px 1px 0 black,
-               1px 1px 0 black;
-          animation-name: arrowsMove;
-          animation-duration: 1s;
-          animation-iteration-count: infinite;
+     color: #FFF;
+     text-shadow: -1px -1px 0 black,
+          1px -1px 0 black,
+          -1px 1px 0 black,
+          1px 1px 0 black;
+     animation-name: arrowsMove;
+     animation-duration: 1s;
+     animation-iteration-count: infinite;
 }
 
 .title {
@@ -375,19 +473,19 @@ nav>span {
      margin-right: 20px;
      margin-top: 50px;
      animation-name: newsMove;
-          animation-duration: 2s;
-     }
-     
-     @keyframes newsMove {
-          0% {
-               transform: translateY(-20px);
-               opacity: 0.5;
-          }
+     animation-duration: 2s;
+}
 
-          100% {
-               transform: translateY(0px);
-               opacity: 1;
-          }
+@keyframes newsMove {
+     0% {
+          transform: translateY(-20px);
+          opacity: 0.5;
+     }
+
+     100% {
+          transform: translateY(0px);
+          opacity: 1;
+     }
 }
 
 .newsText>h4 {
@@ -459,6 +557,7 @@ nav>span {
      }
 
 }
+
 .BtnStyle {
      position: relative;
      display: inline-block;
@@ -483,7 +582,7 @@ nav>span {
      line-height: 48px;
      text-align: center;
      transition: transform 0.3s;
-          transform-origin: 55% 55% -25px;
+     transform-origin: 55% 55% -25px;
 }
 
 .btnHover {
@@ -529,8 +628,64 @@ nav>span {
      width: 909px;
      height: 250px;
      overflow: hidden;
+     border-radius: 5px;
 
 }
+
+.tic {
+     border: 1px dashed black;
+
+
+}
+
+.ticA {
+     text-decoration: none;
+     color: black;
+}
+
+.ticFont {
+     position: relative;
+     top: 35px;
+}
+
+.fuji {
+     width: 100%;
+     height: 373px;
+     background-image: url(/img/fujiyama.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     text-align: center;
+     display: flex;
+     align-items: center;
+     /* margin-top: 15%; */
+     position: relative;
+     top: 25%;
+
+}
+
+.fujiFont {
+     color: white;
+     margin-left: 40%;
+}
+
+.fujiFont div {
+     margin-top: 40px;
+}
+
+.fujibtn {
+     width: 150px;
+     height: 50px;
+     border: 1px solid black;
+     background-color: white;
+     border-radius: 5px;
+     word-spacing: 10px;
+}
+
+.fujibtn:hover {
+     background-color: black;
+     color: white;
+}
+
 
 footer {
      background-color: #83C9D2;
@@ -615,4 +770,44 @@ footer {
      /* background-color: yellow; */
      position: relative;
      bottom: 50px;
+}
+
+footer {
+     width: 100%;
+     height: 512px;
+     text-align: center;
+}
+
+.footdiv {
+     position: relative;
+     top: 120px;
+}
+
+.footerfont {
+     list-style: none;
+     display: inline-block;
+     line-height: 40px;
+}
+
+.footerfont li a {
+     color: white;
+     text-decoration: none;
+
+
+}
+
+.footext {
+     display: inline-block;
+     color: white;
+     margin-left: 30px;
+
+     /* background-color: red; */
+}
+
+.footlogo {
+     width: 396px;
+     height: 96px;
+     background-image: url(/img/logo_foot.png);
+     background-repeat: no-repeat;
+     background-size: cover;
 }
