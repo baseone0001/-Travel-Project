@@ -16,8 +16,9 @@
           </div>
           <div class="backBlock"></div>
           <div>
-               <a href="/background/news">消息管理</a>
-               <h2>消息修改</h2>
+               <div style="height: 50px; width: 100%;"></div>
+               <h2 style="display:inline ;">消息修改</h2>
+               <a href="/background/news" class="btn btn-info float-end">回消息管理</a>
                <form action="/newsuplowd" method="post" enctype="multipart/form-data">
                     <label for="newsTitle">題目</label>
                     <input id="newsTitle" type="text" value="<%= row.title %>">

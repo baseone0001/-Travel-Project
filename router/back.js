@@ -55,12 +55,13 @@ var upload = multer({
 
 
 app.get('/background', function (req, res) {
-     // if (req.session.user) {
-     res.sendFile(__dirname + '/html/back.html');
-     // } else {
-     // res.redirect('/backform');
-     // console.log('沒有登入')
-     // }
+     if (req.session.user) {
+          res.sendFile(__dirname + '/html/back.html');
+     } else {
+          res.redirect('/backform');
+          console.log('沒有登入')
+     }
+     res.redirect('/background/members');
 })
 
 app.get('/background/order', function (req, res) {
@@ -126,8 +127,8 @@ app.post('/backlogin', up, function (req, res) {
           if (req.body.backAcct === '' || req.body.backPwd == undefined) {
                res.write('空值')
           } else {
-               var acct = 'abc';
-               var pwd = 123;
+               var acct = 'back123';
+               var pwd = 123123;
                if (req.body.backAcct == acct && req.body.backPwd == pwd) {
                     // res.write('登入成功');
                     req.session.user = {//紀錄session
@@ -274,9 +275,9 @@ app.post('/background/member', function (req, res) {
 
 })
 app.get('/background/memberview', function (req, res) {
-     var memberId = req.session.member;
-     // console.log(memberId);
-     var sql = "SELECT * FROM users WHERE uid = ?";
+     var memberId = [req.session.member,req.session.member];
+     console.log(memberId);
+     var sql = "SELECT uid, username, email, name, sex, identity, address, phone FROM users WHERE uid = ? UNION SELECT uid, username, email, name, sex, identity, address, phone FROM blacklist WHERE uid = ?";
      myDBconn.exec(sql, memberId, function (results, fields) {
           // console.log(results);
           res.render('back_memberview', {
@@ -286,23 +287,104 @@ app.get('/background/memberview', function (req, res) {
 })
 
 app.post('/background/memberSelectId', function (req, res) {
-     // console.log(req.body.memberID);//數字
-     var sql = "SELECT * FROM users WHERE uid = '%'+?+'%'"
-     var data = req.body.memberID;
-     myDBconn.exec(sql,data,function(results, fields){
-          // console.log(results);
-          res.send(results);
-     })
+     // console.log(req.body);//數字
+     if (req.body.memberID) {
+          var sql = "SELECT * FROM users WHERE uid = '%'+?+'%'"
+          var data = req.body.memberID;
+          myDBconn.exec(sql, data, function (results, fields) {
+               // console.log(results);
+               res.send(results);
+          })
+          
+     } else {
+          var sql = "SELECT * FROM blacklist WHERE uid = '%'+?+'%'"
+          var data = req.body.memberBLackID;
+          myDBconn.exec(sql, data, function (results, fields) {
+               // console.log(results);
+               res.send(results);
+          })
+     }
 
 })
 app.post('/background/memberSelectName', function (req, res) {
-     // console.log(req.body.memberName);//name
-     var sql = "SELECT * FROM users WHERE name LIKE CONCAT('%', ?, '%') "
-     var data = req.body.memberName;
-     myDBconn.exec(sql,data,function(results, fields){
+     console.log(req.body);//name
+     if (req.body.memberName) {
+          var sql = "SELECT * FROM users WHERE name LIKE CONCAT('%', ?, '%') "
+          var data = req.body.memberName;
+          myDBconn.exec(sql, data, function (results, fields) {
+               // console.log(results);
+               res.send(results);
+          })
+     } else {
+          var sql = "SELECT * FROM blacklist WHERE name LIKE CONCAT('%', ?, '%') "
+          var data = req.body.memberBLackName;
+          myDBconn.exec(sql, data, function (results, fields) {
+               // console.log(results);
+               res.send(results);
+          })
+     }
+})
+// back_memberBlack
+app.get('/background/memberBlack', function (req, res) {
+     var sql = "SELECT * FROM blacklist"
+     myDBconn.exec(sql, [], function (results, fields) {
           // console.log(results);
-          res.send(results);
+          res.render('back_memberBlack', {
+               data: results
+          });
+
      })
+})
+
+app.post('/background/memberBlack', function (req, res) {
+     console.log(req.body);
+     var data = req.body.memberID;
+     var reason = req.body.reason;
+     var sql = "SELECT * FROM users WHERE uid = ?";
+     myDBconn.exec(sql, data, function (results, fields) {
+          // console.log(results);
+          // console.log(results[0].uid);
+
+          var rows = [results[0].uid, results[0].username, results[0].password, results[0].email,
+          results[0].name, results[0].sex, results[0].identity, results[0].address,results[0].phone,reason];
+
+          var sql2 = "INSERT INTO blacklist(uid,username,password,email,name,sex,identity,address,phone,reason) VALUES(?,?,?,?,?,?,?,?,?,?) ";
+          myDBconn.exec(sql2, rows, function (results, fields) {
+               // console.log(results);
+
+          })
+
+     })
+     var sql3 = "DELETE FROM users WHERE uid = ?"
+     myDBconn.exec(sql3,data,function(results, fields){
+               console.log(results);
+     })
+     res.send();
+})
+
+app.post('/background/memberBlackout', function (req, res) {
+     console.log(req.body);
+     var data = req.body.memberID
+     var sql = "SELECT * FROM blacklist WHERE uid = ?";
+     myDBconn.exec(sql, data, function (results, fields) {
+          // console.log(results);
+          // console.log(results[0].uid);
+
+          var rows = [results[0].uid, results[0].username, results[0].password, results[0].email,
+          results[0].name, results[0].sex, results[0].identity, results[0].address,results[0].phone];
+
+          var sql2 = "INSERT INTO users(uid,username,password,email,name,sex,identity,address,phone) VALUES(?,?,?,?,?,?,?,?,?) ";
+          myDBconn.exec(sql2, rows, function (results, fields) {
+               // console.log(results);
+
+          })
+
+     })
+     var sql3 = "DELETE FROM blacklist WHERE uid = ?"
+     myDBconn.exec(sql3,data,function(results, fields){
+               console.log(results);
+     })
+     res.send();
 })
 
 

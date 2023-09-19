@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入頁面</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+   
+
+</head>
+
+<body>
+    <form class="form grid" id="form" action="/login" method="POST">
+        <div class="loginPage flex">
+            <div class="container flex">
+                <div class="textDiv">
+                    <h1>登入</h1>
+                </div>
+                <div class="footerDiv">
+                    <span class="text">沒有帳號？</span>
+                    <a href="http://localhost:2407/register">
+                        <button type="button" class="btnregister">點擊進入註冊畫面</button>
+                    </a>
+                </div>
+
+                <div class="formDiv flex">
+                    <div class="inputDiv">
+                        <label for="username" id="text">帳號</label>
+                        <div class="inputflex">
+                            <input type="text" id="username" name="username" placeholder="Enter account" required>
+                        </div>
+                    </div>
+                    <div class="inputDiv">
+                        <label for="password" id="text">密碼</label>
+                        <div class="inputflex">
+                            <input type="password" id="password" name="password" placeholder="Enter password" required>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btnlogin">
+                    登入
+                </button>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script src="/js/login.js"></script>
+
+</html>
