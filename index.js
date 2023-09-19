@@ -1,7 +1,7 @@
 var express = require('express'); //
 var app = express();
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded()) 
+app.use(bodyParser.urlencoded())
 
 var session = require('express-session');//
 var mysql = require('mysql'); //
@@ -46,17 +46,10 @@ app.use('/', backPage);
 var SchedulehPage = require('./router/Scheduleh');
 app.use('/', SchedulehPage);
 
+
+
 // var memberPage = require('./router/member');
 // app.use('/', memberPage);
-
-
-
-
-
-
-
-
-
 
 
 

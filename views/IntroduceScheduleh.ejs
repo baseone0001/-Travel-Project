@@ -8,24 +8,30 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/Mystyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 
 <body>
+
     <!-- 總頁導覽列 -->
 
     <!-- 行程總頁的圖片 -->
     <div class="MyImgDiv">
-        <img src="<%= orderinfo[0].img %>" class="MyImg">
+        <img src="<%= orderinfo.img %>" class="MyImg">
         <div class="text-white MyImgDivName">
-            <%= orderinfo[0].Area %>
+            <%= area.Area %>
         </div>
     </div>
 
     <div class="bg-white m-5" style="border-radius: 2rem;">
         <div class="MyTitle">
             <span class="text-center text-nowrap ms-4">
-                <%= orderinfo[0].Title %>
+                <%= orderinfo.Title %>
             </span>
         </div>
         <!-- 航班資訊 -->
@@ -38,7 +44,7 @@
                         <img src="/img/flyTo.PNG" width="100%" class="ps-5 pe-5">
                     </div>
                     <div class="FlyTitleStyle pe-5 text-nowrap">
-                        <%= orderinfo[0].GoTo %>
+                        <%= orderinfo.GoTo %>
                     </div>
                 </div>
                 <div class="flyInfo-div">
@@ -47,13 +53,13 @@
                             <td class="flyInfo-text">
                                 <div class="text-start fs-6">出發日期</div>
                                 <div class="flyInfo-textStyle">
-                                    <%= orderinfo[0].GoDate %>
+                                    <%= orderinfo.GoDate %>
                                 </div>
                             </td>
                             <td class="flyInfo-text">
                                 <div class="text-start fs-6">抵台日期</div>
                                 <div class="flyInfo-textStyle">
-                                    <%= orderinfo[0].ArrDate %>
+                                    <%= orderinfo.ArrDate %>
                                 </div>
                             </td>
                         </tr>
@@ -61,25 +67,25 @@
                             <td class="flyInfo-text">
                                 <div class="text-start fs-6">訂單狀態</div>
                                 <div class="flyInfo-textStyle">
-                                    <%= orderinfo[0].Form %>
+                                    <%= orderinfo.Form %>
                                 </div>
                             </td>
                             <td class="flyInfo-text">
                                 <div class="text-start fs-6">優惠</div>
                                 <div class="flyInfo-textStyle">
-                                    <%= orderinfo[0].FeedBack %>
+                                    <%= orderinfo.FeedBack %>
                                 </div>
                             </td>
                         </tr>
                         <tr style="text-align: center;">
                             <td class="flyInfo-text">
                                 <div class="text-start fs-6">價格</div>
-                                <div class="flyInfo-textStyle text-nowrap"> NT$ <%= orderinfo[0].Price %> /人</div>
+                                <div class="flyInfo-textStyle text-nowrap"> NT$ <%= orderinfo.Price %> /人 </div>
                             </td>
                             <td class="flyInfo-text">
                                 <div class="text-start fs-6">備註</div>
                                 <div class="flyInfo-textStyle">
-                                    <%= orderinfo[0].Remark %>
+                                    <%= orderinfo.Remark %>
                                 </div>
                             </td>
                         </tr>
@@ -98,10 +104,10 @@
                     <h5 class="fw-bolder mt-4 ms-5">去程</h5>
                     <div class="ms-5 mt-4">
                         <!-- 去程航空公司icon -->
-                        <img src="<%= flyinfo[0].GoImg %>" style="width: 1.5rem">
+                        <img src="<%= flyinfo.GoImg %>" style="width: 1.5rem">
                         <!-- 去程航空公司及飛機型號 -->
                         <span class="fw-bolder ms-2">
-                            <%= flyinfo[0].GoAir %>
+                            <%= flyinfo.GoAir %>
                         </span>
                     </div>
                     <div class="flyInfo-div">
@@ -109,11 +115,11 @@
                             <tr class="text-center">
                                 <!-- 去程出發城市 -->
                                 <td class="text-nowrap">
-                                    <%= flyinfo[0].GoCity %>
+                                    <%= flyinfo.GoCity %>
                                 </td>
                                 <!-- 去程飛行時間 -->
                                 <td class="flyInfo-time text-nowrap">
-                                    <%= flyinfo[0].GoFlyTime %>
+                                    <%= flyinfo.GoFlyTime %>
                                 </td>
                                 <td rowspan="2" style="width: 50px;">
                                     <div class="d-flex">
@@ -126,18 +132,18 @@
                                 </td>
                                 <!-- 去程抵達城市 -->
                                 <td class="text-nowrap">
-                                    <%= flyinfo[0].GoArrCity %>
+                                    <%= flyinfo.GoArrCity %>
                                 </td>
                             </tr>
                             <tr class="text-center">
                                 <!-- 去程出發時間 -->
                                 <td>
-                                    <%= flyinfo[0].GoTime %>
+                                    <%= flyinfo.GoTime %>
                                 </td>
                                 <td></td>
                                 <!-- 去程抵達時間 -->
                                 <td>
-                                    <%= flyinfo[0].GoArrTime %>
+                                    <%= flyinfo.GoArrTime %>
                                 </td>
                             </tr>
                         </table>
@@ -149,10 +155,10 @@
                     <h5 class="fw-bolder mt-4 ms-5">回程</h5>
                     <div class="ms-5 mt-4">
                         <!-- 回程航空公司icon -->
-                        <img src="<%= flyinfo[0].BackImg %>" style="width: 1.5rem">
+                        <img src="<%= flyinfo.ArrImg %>" style="width: 1.5rem">
                         <!-- 回程航空公司及飛機型號 -->
                         <span class="fw-bolder ms-2">
-                            <%= flyinfo[0].BackAir %>
+                            <%= flyinfo.BackAir %>
                         </span>
                     </div>
                     <div class="flyInfo-div">
@@ -160,11 +166,11 @@
                             <tr class="text-center">
                                 <!-- 回程出發城市 -->
                                 <td class="text-nowrap">
-                                    <%= flyinfo[0].BackCity %>
+                                    <%= flyinfo.BackCity %>
                                 </td>
                                 <!-- 回程飛行時間 -->
                                 <td class="flyInfo-time text-nowrap">
-                                    <%= flyinfo[0].BackFlyTime %>
+                                    <%= flyinfo.BackFlyTime %>
                                 </td>
                                 <td rowspan="2" style="width: 50px;">
                                     <div class="d-flex">
@@ -177,18 +183,18 @@
                                 </td>
                                 <!-- 回程抵達城市 -->
                                 <td class="text-nowrap">
-                                    <%= flyinfo[0].BackArrCity %>
+                                    <%= flyinfo.BackArrCity %>
                                 </td>
                             </tr>
                             <tr class="text-center">
                                 <!-- 回程出發時間 -->
                                 <td>
-                                    <%= flyinfo[0].BackTime %>
+                                    <%= flyinfo.BackTime %>
                                 </td>
                                 <td></td>
                                 <!-- 回程抵達時間 -->
                                 <td>
-                                    <%= flyinfo[0].BackArrTime %>
+                                    <%= flyinfo.BackArrTime %>
                                 </td>
                             </tr>
                         </table>
@@ -217,7 +223,7 @@
                     </div>
                     <!-- 飯店重點介紹 -->
                     <div class="MyListImgText">
-                        <%= live[i].Hotelinfo %>
+                        <%= live[i].HotelInfo %>
                     </div>
                 </div>
                 <% } %>
@@ -227,18 +233,39 @@
 
         <!-- 附餐 -->
         <div class="row">
-            <div class="col-md-2 MyListTitle">附餐</div>
+            <div class="col-md-2 MyListTitle">美食</div>
+            <div class="col-md-9 ">
+                <div class="row d-flex justify-content-evenly">
+                    <div class="FoodCard">
+                        <div class="FoodCardTitle">美食</div>
+                        <div class="fw-bolder m-2">飯店內用餐</div>
+                        <div class="small">2餐</div>
+                    </div>
+                    <div class="FoodCard">
+                        <div class="FoodCardTitle">美食</div>
+                        <div class="fw-bolder m-2">當地精選料理</div>
+                        <div class="small">4餐</div>
+                    </div>
+                    <div class="FoodCard">
+                        <div class="FoodCardTitle">美食</div>
+                        <div class="fw-bolder m-2">自理餐</div>
+                        <div class="small">2餐</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
         </div>
         <hr class="SeparateLine">
         </hr>
 
         <!-- 景點 -->
         <div class="row" style="justify-content: space-between;">
-            <div class="col-md-2 MyListTitle">重點景點</div>
+            <div class="col-lg-2 MyListTitle">景點</div>
 
             <!-- 迴圈顯示景點 -->
+            <!-- 要改成單一顯示  -->
             <% for(var i=0;i < 3; i++){ %>
-                <div class="col-md-3 MyListImgDiv">
+                <div class="col-lg-3 MyListImgDiv">
                     <!-- 景點圖片 -->
                     <img src="<%= view[i].ViewImg %>" class="MyListImg">
                     <!-- 景點名稱 -->
@@ -251,71 +278,237 @@
                     </div>
                 </div>
                 <% } %>
-                    <!-- <div class="col-md-3 MyListImgDiv">
-                <img src="/img/pexels-donald-tong-189296.jpg" class="MyListImg">
-                <h6 class="MyListImgTitle">主題</h6>
-                <div class="MyListImgText">主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容</div>
-            </div>
-            <div class="col-md-3 MyListImgDiv">
-                <img src="/img/pexels-amar-saleem-70441.jpg" class="MyListImg">
-                <h6 class="MyListImgTitle">主題</h6>
-                <div class="MyListImgText">主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容主題的內容</div>
-            </div> -->
-                    <div class="col-md-1"></div>
+
+                    <div class="col-lg-1"></div>
         </div>
         <hr class="SeparateLine">
 
         <!-- 詳細行程 -->
         <div class="row">
-            <div class="col-md-2 MyListTitle">詳細行程</div>
-        </div>
-        <hr class="SeparateLine">
+            <div class="col-lg-2 MyListTitle">詳細行程</div>
+            <div class="col-lg-9">
+                <!-- day 1 -->
+                <div>
+                    <div class="ms-5 mt-4 ps-4">
+                        <div class="h1" style="color: gray;">Day 1</div>
+                        <hr class="w-75">
+                        <div style="color: gray;">台北/東京*成田機場*－海螢*服務區*－橫濱</div>
+                    </div>
+                    <div class="row">
 
-        <!-- 參團說明 -->
-        <div class="row">
-            <div class="col-md-2 MyListTitle mb-4">參團說明</div>
-            <div class="col-md-9">
+                        <% for(i=0; i < 3; i++){ %>
+                            <div class="MyListImgDiv col-lg-4">
+                                <!-- 景點圖片 -->
+                                <img src="<%= view[i].ViewImg %>" class="MyDayListImg">
+                                <!-- 景點名稱 -->
+                                <h6 class="MyListImgTitle">
+                                    <%= view[i].ViewName %>
+                                </h6>
+                                <!-- 景點內容 -->
+                                <div class="MyListImgText">
+                                    <%= view[i].ViewInfo %>
+                                </div>
+                            </div>
+                            <% } %>
 
-                <p>團費與訂金說明 (團費金額與優惠方案，請洽詢您的旅遊專員)</p>
-                <span>1. 費用包含：全程機票、食(自理餐除外)、住宿、行程中安排之入內參觀景點門票、全程導遊司機領隊服務費、機場稅、燃油費。</span><br>
-                <span>2. 費用不包括：機場來回接送、護照或其他旅遊證件辦理費、旅行袋、私人費用等。</span><br>
-                <span>3. 訂金NT. 20,000 元。(若寒暑假和農曆春節期間出發，訂金為NT. 40,000 元)</span><br>
-                <span>4. 本公司提供高於法規的投保金額：4200萬履約責任保險，團體行程天數中 500萬旅遊契約責任險、20萬意外傷害醫療險。</span><br>
-                <span>5. 保留團位後請於三天內繳交訂金，如遇團體額滿或限期開票，請於隔日繳交訂金，始完成報名手續。尾款請於出發前10日或航空公司通知開票日前繳清。</span>
-                <span>6.
-                    提醒您：當您繳付訂金即表示旅遊契約產生效力，本公司將依各協力商之要求，為您預付此趟旅程的旅館餐廳或機票等費用。若您因故取消，本公司將依「國外旅遊定型化契約書」之相關條款或估算已實付的費用，向您收取超支費用或退回剩餘訂金。多數外籍航空公司一經開立機票，旅客需付全額票款，且不接受調整名單。
-                </span><br>
-                <span>7. 行程(交通、餐食、飯店、每日行程內容)皆為事先安排，若旅客臨時在國外通知無法參加，視同放棄行程，無法退費。</span><br>
+
+                    </div>
+                </div>
                 <br>
-                <p>行程、交通、餐食、文化說明</p>
-                <span>1.
-                    日本美食又稱「和食」：為了保持食材的新鮮，日本以生、冷、清淡的飲食文化為主；相當重視盛載食物的餐具，追求味覺和視覺的品質，成為台日飲食習慣的不同（例如主廚常將不吃生魚片的前菜換成蒟蒻，亦是視覺感官的搭配）。</span><br>
-                <span>2.
-                    素食提醒：日本素食者大多可食用蔥、薑、蒜、奶蛋，以及柴魚排骨等高湯熬煮的食物。為尊重台灣素食者的飲食習慣，在避免使用上述食材的前提下，主廚會另備各式蔬菜、豆腐等食材，搭配漬物料理，請諒解日本素食選擇性少，建議自備素食品，以備不時之需。</span><br>
-                <span>3.
-                    特殊餐食務必主動告知：本公司選用的餐廳，皆為精心挑選，為維護用餐品質，貴賓請於報名時主動告知業務專員您的特殊餐食需求（例如不吃生食、不吃牛羊、不吃甲殼類海鮮等），我們將盡力協助，但無法保證皆可調整。最晚務必在出發前14天，主動告知業務專員。若逾期通知，日本餐廳每一項修改，將收取修改服務費3,000日圓。<br>詳細說明：「日本和食」內容至少6到12品，有些甚至更多（各餐廳不同），和「西式料理」截然不同，日本餐廳通常無法為了特殊餐食，額外準備多道餐食變化，敬請知悉。</span><br>
-                <span>4. 飛機上特殊餐食提醒：請在起飛前14天，主動告知業務專員。若逾期告知，航空公司可能無法更改。</span><br>
-                <span>5. 日本交通：搭車時請全程繫上安全帶。日本國土交通省2012年頒布，司機每日行車時間不得超過10小時（從車庫發車時間開始計算），以防止疲勞駕駛所衍生的交通事件。</span><br>
-                <span>6. 日本泡湯文化：身上有刺青者，請準備可遮住刺青的「防水膚色貼布」，以避免受工作人員攔阻而無法進入浴場。</span><br>
-                <span>7.
-                    行程景點順序、航空公司、飯店和餐廳之確認，本公司盡量忠於原行程。若遇交通、氣候、住宿地點等因素影響，公司保有調整之權利。若有異動，將由旅遊專員提早通知，且依行前說明會資料為準。</span><br>
-                <span>8. 景點、飯店和餐食照片，皆為專業攝影師拍攝，實景會隨時節、拍照角度或官方調整而有所不同，敬請知悉。</span><br>
-                <span>9. 本公司將贈送每位貴賓出國期間之免費網路（規格為網卡或Wi-Fi機，恕不挑選）。歸國後請依領隊指示隨團歸還，機器或配件若遺失、損壞或逾期歸還，須照價賠償或繳交逾期費。</span><br>
+                <!-- Day 2 -->
+                <div>
+                    <div class="ms-5 mt-4 ps-4">
+                        <div class="h1" style="color: gray;">Day 2</div>
+                        <hr class="w-75">
+                        <div style="color: gray;">橫濱－鎌倉*鶴岡八幡宮、小町通*－箱根*神社*</div>
+                    </div>
+                    <div class="row">
+                        <div id="CarouselForm">
+                            <!-- 大於768 -->
+                            <div id="bigScreen" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                                <div class="carousel-inner" id="bigScreen">
+                                    <% for (i=0; i < 4; i++) { %>
+                                        <% if (i % 3===0) { %>
+                                            <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                                                <div class="row">
+                                                    <% } %>
+                                                        <div class="MyListImgDiv col-4">
+                                                            <!-- 景點圖片 -->
+                                                            <img src="<%= view[i].ViewImg %>" class="MyDayListImg">
+                                                            <!-- 景點名稱 -->
+                                                            <h6 class="MyListImgTitle">
+                                                                歌詠日本的細膩情懷
+                                                            </h6>
+                                                            <!-- 景點內容 -->
+                                                            <div class="MyListImgText">
+                                                                春櫻芬芳、夏綠清新、秋楓寫意、冬雪絢麗，四季情緒輕盈妝點日出之國，激起心中漣漪。靜心感受和式雅緻風尚，品吟日本獨有的侘寂美學，珍重旅途中的一期一會。
+                                                            </div>
+                                                        </div>
+                                                        <% if ((i + 1) % 3===0 || i===3) { %>
+                                                </div>
+                                            </div>
+                                            <% } %>
+                                                <% } %>
+                                </div>
+
+                                <button class="carousel-control-prev" type="button" data-bs-target="#bigScreen"
+                                    data-bs-slide="prev" style="left: -7rem;">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"
+                                        style="background-color: #83C9D2;"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#bigScreen"
+                                    data-bs-slide="next" style="right: -6rem;">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"
+                                        style="background-color: #83C9D2;"></span>
+                                </button>
+                            </div>
+
+                            <!-- 小於768 -->
+                            <div id="smallScreen" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                                <div class="carousel-inner" id="smallScreen">
+                                    <% for (i=0; i < 4; i++) { %>
+
+                                        <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                                            <div class="row">
+
+                                                <div class="MyListImgDiv col-12">
+                                                    <!-- 景點圖片 -->
+                                                    <img src="<%= view[i].ViewImg %>" class="MyDayListImg">
+                                                    <!-- 景點名稱 -->
+                                                    <h6 class="MyListImgTitle">
+                                                        歌詠日本的細膩情懷
+                                                    </h6>
+                                                    <!-- 景點內容 -->
+                                                    <div class="MyListImgText">
+                                                        春櫻芬芳、夏綠清新、秋楓寫意、冬雪絢麗，四季情緒輕盈妝點日出之國，激起心中漣漪。靜心感受和式雅緻風尚，品吟日本獨有的侘寂美學，珍重旅途中的一期一會。
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <% } %>
+                                </div>
+
+                                <button class="carousel-control-prev" type="button" data-bs-target="#smallScreen"
+                                    data-bs-slide="prev" style="left: -1rem;">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"
+                                        style="background-color: #83C9D2;"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#smallScreen"
+                                    data-bs-slide="next" style="right: -1rem;">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"
+                                        style="background-color: #83C9D2;"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
-                <p>飯店說明</p>
+                <!-- Day 3 -->
+                <div>
+                    <div class="ms-5 mt-4 ps-4">
+                        <div class="h1" style="color: gray;">Day 3</div>
+                        <hr class="w-75">
+                        <div style="color: gray;">台北/東京*成田機場*－海螢*服務區*－橫濱</div>
+                    </div>
+                    <div class="row">
+                        <% for (i=3; i < 6; i++){ %>
+                            <div class="MyListImgDiv col-lg-4">
+                                <!-- 景點圖片 -->
+                                <img src="<%= view[i].ViewImg %>" class="MyDayListImg">
+                                <!-- 景點名稱 -->
+                                <h6 class="MyListImgTitle">
+                                    歌詠日本的細膩情懷
+                                </h6>
+                                <!-- 景點內容 -->
+                                <div class="MyListImgText">
+                                    春櫻芬芳、夏綠清新、秋楓寫意、冬雪絢麗，四季情緒輕盈妝點日出之國，激起心中漣漪。靜心感受和式雅緻風尚，品吟日本獨有的侘寂美學，珍重旅途中的一期一會。
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+                <br>
 
-
-
+                <div class="col-lg-1"></div>
             </div>
-            <div class="col-md-1"></div>
+            <hr class="SeparateLine">
+
+            <!-- 參團說明 -->
+            <div class="row">
+                <div class="col-md-2 MyListTitle mb-4">參團說明</div>
+                <div class="col-md-9 p-5">
+                    <!-- 團費與訂金說明 -->
+                    <span class="fw-bolder fs-5">團費與訂金說明 (團費金額與優惠方案，請洽詢您的旅遊專員)</span><br>
+                    <span>1. 費用包含：全程機票、食(自理餐除外)、住宿、行程中安排之入內參觀景點門票、全程導遊司機領隊服務費、機場稅、燃油費。</span><br>
+                    <span>2. 費用不包括：機場來回接送、護照或其他旅遊證件辦理費、旅行袋、私人費用等。</span><br>
+                    <span>3. 訂金 <span class="text-decoration-underline"> NT. 20,000 元</span>。(若寒暑假和農曆春節期間出發，訂金為<span
+                            class="text-decoration-underline">NT. 40,000元</span> )</span><br>
+                    <span>4. 本公司提供高於法規的投保金額：4200萬履約責任保險，團體行程天數中 500萬旅遊契約責任險、20萬意外傷害醫療險。</span><br>
+                    <span>5. 保留團位後請於三天內繳交訂金，如遇團體額滿或限期開票，請於隔日繳交訂金，始完成報名手續。尾款請於出發前10日或航空公司通知開票日前繳清。</span>
+                    <span>6.
+                        提醒您：當您繳付訂金即表示旅遊契約產生效力，本公司將依各協力商之要求，為您預付此趟旅程的旅館餐廳或機票等費用。若您因故取消，本公司將依「國外旅遊定型化契約書」之相關條款或估算已實付的費用，向您收取超支費用或退回剩餘訂金。多數外籍航空公司一經開立機票，旅客需付全額票款，且不接受調整名單。
+                    </span><br>
+                    <span>7. 行程(交通、餐食、飯店、每日行程內容)皆為事先安排，若旅客臨時在國外通知無法參加，視同放棄行程，無法退費。</span><br>
+                    <br>
+
+                    <!-- 行程、交通、餐食、文化說明 -->
+                    <span class="fw-bolder fs-5">行程、交通、餐食、文化說明</span><br>
+                    <span>1.
+                        日本美食又稱「和食」：為了保持食材的新鮮，日本以生、冷、清淡的飲食文化為主；相當重視盛載食物的餐具，追求味覺和視覺的品質，成為台日飲食習慣的不同（例如主廚常將不吃生魚片的前菜換成蒟蒻，亦是視覺感官的搭配）。</span><br>
+                    <span>2.
+                        素食提醒：日本素食者大多可食用蔥、薑、蒜、奶蛋，以及柴魚排骨等高湯熬煮的食物。為尊重台灣素食者的飲食習慣，在避免使用上述食材的前提下，主廚會另備各式蔬菜、豆腐等食材，搭配漬物料理，請諒解日本素食選擇性少，建議自備素食品，以備不時之需。</span><br>
+                    <span>3.
+                        特殊餐食務必主動告知：本公司選用的餐廳，皆為精心挑選，為維護用餐品質，貴賓請於報名時主動告知業務專員您的特殊餐食需求（例如不吃生食、不吃牛羊、不吃甲殼類海鮮等），我們將盡力協助，但無法保證皆可調整。最晚務必在出發前14天，主動告知業務專員。若逾期通知，日本餐廳每一項修改，將收取修改服務費3,000日圓。<br>詳細說明：「日本和食」內容至少6到12品，有些甚至更多（各餐廳不同），和「西式料理」截然不同，日本餐廳通常無法為了特殊餐食，額外準備多道餐食變化，敬請知悉。</span><br>
+                    <span>4. 飛機上特殊餐食提醒：請在起飛前14天，主動告知業務專員。若逾期告知，航空公司可能無法更改。</span><br>
+                    <span>5. 日本交通：搭車時請全程繫上安全帶。日本國土交通省2012年頒布，司機每日行車時間不得超過10小時（從車庫發車時間開始計算），以防止疲勞駕駛所衍生的交通事件。</span><br>
+                    <span>6. 日本泡湯文化：身上有刺青者，請準備可遮住刺青的「防水膚色貼布」，以避免受工作人員攔阻而無法進入浴場。</span><br>
+                    <span>7.
+                        行程景點順序、航空公司、飯店和餐廳之確認，本公司盡量忠於原行程。若遇交通、氣候、住宿地點等因素影響，公司保有調整之權利。若有異動，將由旅遊專員提早通知，且依行前說明會資料為準。</span><br>
+                    <span>8. 景點、飯店和餐食照片，皆為專業攝影師拍攝，實景會隨時節、拍照角度或官方調整而有所不同，敬請知悉。</span><br>
+                    <span>9.
+                        本公司將贈送每位貴賓出國期間之免費網路（規格為網卡或Wi-Fi機，恕不挑選）。歸國後請依領隊指示隨團歸還，機器或配件若遺失、損壞或逾期歸還，須照價賠償或繳交逾期費。</span><br>
+                    <br>
+
+                    <!-- 飯店說明 -->
+                    <span class="fw-bolder fs-5">飯店說明</span><br>
+                    <span>1.
+                        貴賓若單人報名，但團體最後確認時，仍無法安排2人一室，則需補單人房差（房型以單人房為主），因為公司安排的飯店「質與價」皆高於市場許多，故無法將差價分攤在其他客人身上，在「使用者付費」的理念下需自付差價。</span><br>
+                    <span>2.
+                        飯店洋式房型皆為兩張床，少有一張大床（一大床Double房型，有時會比標準房Twin小。若不能接受，建議選用標準房）。如有需要可需求大床房型，但無法保證一定會有，需以當天入住情形及飯店調整狀況為主。</span><br>
+                    <span>3. 報名3人同房時，床型為加床模式且以沙發床或行軍床為主，房型與雙人標準房相同，恕無法指定房型。若不能接受，則建議再找一位朋友同行，兩人一室最理想。</span><br>
+                    <span>4. 飯店房型恕無法指定連通房，或是同一家人的房間都在隔壁或附近，敬請知悉（導遊進飯店拿到房號後，會盡力協助，但無法保證）</span><br>
+                    <br>
+
+                    <!-- 護照說明 -->
+                    <span class="fw-bolder fs-5">護照說明</span><br>
+                    <span>◎持中華民國護照貴賓務必確認（需有身份證號碼），進出日本免簽證，但請確認有效期，從出發日算起，需滿６個月以上。</span><br>
+                    <span>◎持第三國護照身份入出國需注意：</span><br>
+                    <span>1. 如持外國護照入境台灣，請於出境台灣時攜帶同一本護照與下一次離開台灣的機票。</span><br>
+                    <span>2. 且第三國護照內一定要附上「有效出境之黃單」。</span><br>
+                    <span>◎國軍人員需蓋有兩種章：</span><br>
+                    <span>1. 出國前需由國防部或其授權之單位核准。</span><br>
+                    <span>2. 在護照上加蓋「出國核准：( 年 月 日之前同意出國 字第 號核准) 之章戳」。</span><br>
+                    <span>提醒：若護照有任何特殊狀況，請務必告知旅遊專員，協助您洽詢相關單位。</span><br>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="BtnJoin">立即報名</button>
+            </div>
         </div>
-    </div>
+
+
 </body>
 
 
 
 <!-- JavaScript -->
 <script>
+    // 畫面 < 768px，標題靠左
     $(document).ready(function () {
         function MyTitle() {
             if (window.innerWidth < 768) {
@@ -333,6 +526,33 @@
             MyTitle();
         });
     })
+
+
+    // 輪播樣式的切換
+    $(document).ready(function () {
+        function checkScreenWidth() {
+            var screenWidth = window.innerWidth;
+            if (screenWidth >= 768) {
+                $('#bigScreen').show();
+                $('#smallScreen').hide();
+                $('.MyDayListImg').css('height', '12rem')
+            } else {
+                $('#bigScreen').hide();
+                $('#smallScreen').show();
+                $('.MyDayListImg').css('height', '26rem')
+            }
+        }
+
+        // 初始加載時檢查畫面寬度
+        checkScreenWidth();
+
+        // 在窗口大小改變時檢查螢幕寬度
+        $(window).resize(function () {
+            checkScreenWidth();
+        });
+    });
+
+
 </script>
 
 </html>
