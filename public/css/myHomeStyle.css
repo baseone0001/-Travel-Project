@@ -231,12 +231,12 @@ nav>span {
           1px 1px 0 black;
      animation-name: homeMove;
      animation-duration: 2s;
-     animation-delay: 1.4s;
+     animation-delay: 1.5s;
 }
 
 @keyframes homeMove {
      0% {
-          transform: translateY(-50px);
+          transform: translateY(-80px);
           opacity: 0.5;
      }
 
@@ -463,6 +463,25 @@ nav>span {
      align-items: center;
      /* border: 1px solid black; */
 }
+.place_centerN {
+     display: flex;
+     width: 80%;
+     height: 100%;
+     /* flex-direction: column; */
+     overflow: hidden;
+     flex-wrap: wrap;
+     text-align: center;
+     margin-left: 15%;
+     margin-top: 2%;
+     margin-bottom: 10%;
+     /* align-items: center; */
+     /* border: 1px solid black; */
+}
+
+.place_centerN a{
+     text-decoration: none;
+     color: black;
+}
 
 .newsText {
      /* border: 1px solid black; */
@@ -556,6 +575,36 @@ nav>span {
           transform: translateX(-1000px)
      }
 
+}
+
+.newsimg{
+     width: 260px;
+     height: 260px;
+     object-fit: cover;
+     overflow: hidden;
+     border-radius: 10px;
+
+}
+
+.new{
+     position: relative;
+     top: 85px;
+     right: 450px;
+     animation-name: warp;
+     animation-iteration-count:infinite ;
+     animation-duration: 2s;
+     transform: rotate(-5deg);
+}
+@keyframes warp {
+     0%{
+          top: 85px;
+     }
+     50%{
+          top: 105px;
+     }
+     100%{
+          top: 85px;
+     }
 }
 
 .BtnStyle {
