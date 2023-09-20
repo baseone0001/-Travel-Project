@@ -73,4 +73,8 @@ app.get('/newsview', function (req, res) {
      })
 })
 
+app.get('/contact',function(req,res){
+     res.render('contact');
+})
+
 module.exports = app;

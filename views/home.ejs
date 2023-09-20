@@ -19,7 +19,7 @@
           </div>
      </div>
      <%- include('share/home_nav.ejs')%>
-          <div class="space">
+          <div class="space" style="overflow:hidden;">
                <!-- <div class="garyZone"></div> -->
                <div class="search_space">
                     <div class="row">
@@ -118,7 +118,7 @@
                                    <p class="overText">
                                         <%= data[i].contents %>
                                    </p>
-                                   <button class="BtnStyle">
+                                   <button class="BtnStyle" onclick="news('<%= data[i].newsid %>')">
                                         <span class="btnHover">go</span>
                                         <span class="btnstop">了解更多</span>
                                    </button>
@@ -129,12 +129,22 @@
           </div>
 
           <script>
-               $('.newsText>button').each(function (index, elm) {
-                    $(elm).prop('id', 'newsBtn' + index);
-               })
-               $("#newsBtn0").on('click', function () {
-                    alert('ok');
-               })
+               function news(id) {
+                         console.log(id);
+                         newsData = {
+                              newsid: id
+                         }
+
+
+                         $.ajax({
+                              type: "post",
+                              url: "/news",
+                              data: newsData,
+                              success: function (e) {
+                                   $(location).attr('href', 'newsview');
+                              }
+                         })
+                    }
           </script>
 
           <!-- ---------------------------熱門景點------------------------------ -->
