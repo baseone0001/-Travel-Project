@@ -15,14 +15,16 @@
      <%- include('share/home_nav.ejs')%>
           <div style="width: 100%; height:70px"></div>
 
-          <div style="text-align: center;">
+          <div style="text-align: center; ">
                <div>
                     <h1 class="titleStyle mt-5">最新消息</h1>
                </div>
 
-               <div class="dash mt-5"></div>
-               <div class="newsMarquee ">
-                    <p>帶您走遍各大景點，一同體驗不同傳統文化、吃遍美食；以最優惠的價格，最優質的服務，帶您一同遨遊日本。</p>
+               <div style="display: flex;flex-direction: column;align-items: center;">
+                    <div class="dash mt-5"></div>
+                    <div class="newsMarquee ">
+                         <p>帶您走遍各大景點，一同體驗不同傳統文化、吃遍美食；以最優惠的價格，最優質的服務，帶您一同遨遊日本。</p>
+                    </div>
                </div>
                <div class="dash"></div>
 
@@ -47,24 +49,24 @@
 
           <%- include('share/home_footer.ejs')%>
 
-          <script>
-               function news(id){
-                    console.log(id);
-                    newsData = {
-                         newsid:id
-                    }
+               <script>
+                    function news(id) {
+                         console.log(id);
+                         newsData = {
+                              newsid: id
+                         }
 
-                    
-                    $.ajax({
-                    type: "post",
-                    url: "/news",
-                    data: newsData,
-                    success: function (e) {
-                         $(location).attr('href', 'newsview');
+
+                         $.ajax({
+                              type: "post",
+                              url: "/news",
+                              data: newsData,
+                              success: function (e) {
+                                   $(location).attr('href', 'newsview');
+                              }
+                         })
                     }
-               })
-               }
-          </script>
+               </script>
 </body>
 
 </html>

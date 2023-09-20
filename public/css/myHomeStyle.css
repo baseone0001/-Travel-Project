@@ -860,3 +860,28 @@ footer {
      background-repeat: no-repeat;
      background-size: cover;
 }
+
+.dragSpace{
+     width: 270px;
+     height: 300px;
+     /* border: 1px solid black; */
+     display: inline-block;
+}
+
+.dragSpace button{
+     border-style: none;
+     background-color: #83C9D2;
+     width: 200px;
+     height: 50px;
+     margin: 10px;
+     position: relative;
+     bottom: 35px;
+
+}
+
+.dropSpace{
+     width: 300px;
+     height: 500px;
+     border: 1px solid black;
+     display: inline-block;
+}

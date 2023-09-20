@@ -64,12 +64,8 @@ app.get('/background', function (req, res) {
      res.redirect('/background/members');
 })
 
-app.get('/background/order', function (req, res) {
-     res.render('back_order');
-})
-app.get('/background/itinerary', function (req, res) {
-     res.render('back_itinerary');
-})
+
+
 app.get('/background/itineraryAdd', function (req, res) {
      res.render('back_itineraryAdd');
 })
@@ -268,7 +264,7 @@ app.get('/background/members', function (req, res) {
      })
 })
 app.post('/background/member', function (req, res) {
-     // console.log(req.body);
+     console.log(req.body);
      var memberId = req.body.memberID;
      req.session.member = memberId;
      res.redirect('/background/memberview');
@@ -386,7 +382,28 @@ app.post('/background/memberBlackout', function (req, res) {
      })
      res.send();
 })
+//-------------------------------行程--------------------------------
 
 
+app.get('/background/itinerary', function (req, res) {
+     // var sql = "SELECT * FROM orderinfo ORDER BY id DESC "
+     // myDBconn.exec(sql,[],function(results, fields){
+     //      // console.log(results);
+     //      res.render('back_itinerary',{
+     //           data:results
+     //      });
+     // })
+})
+
+//-------------------------------訂單--------------------------------
+app.get('/background/order', function (req, res) {
+     var sql = "SELECT * FROM orderinfo ORDER BY id DESC "
+     myDBconn.exec(sql,[],function(results, fields){
+          console.log(results)
+          res.render('back_order',{
+               data:results
+          });
+     })
+})
 
 module.exports = app;

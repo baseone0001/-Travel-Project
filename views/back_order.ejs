@@ -21,16 +21,16 @@
                     <tr class="bg-info">
                          <th class="backCol">行程</th>
                          <th class="backCol">人數</th>
-                         <th class="backCol">日期</th>
+                         <th class="backCol">出發日期</th>
                          <th class="backCol">狀態</th>
                          <th></th>
                     </tr>
                     <tr>
+                         <td><%= data[0].Title %></td>
                          <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td><button>檢視</button></td>
+                         <td><%= data[0].GoDate %></td>
+                         <td><%= data[0].Form %></td>
+                         <td><button onclick="order('<%= data[0].id %>')">檢視</button></td>
                     </tr>
                </table>
           </div>
