@@ -1,22 +1,199 @@
-<%- include('account.ejs') %>
-    <%- include('../router/html/shoppingCart.html') %>
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th>商品名称</th>
-                    <th>数量</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% userOrderInfo.forEach(order=> { %>
-                    <tr>
-                        <td>
-                            <%= order.product_name %>
-                        </td>
-                        <td>
-                            <%= order.quantity %>
-                        </td>
-                    </tr>
-                    <% }); %>
-            </tbody> -->
-        </table>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單資訊</title>
+    <link rel="stylesheet" type="text/css" href="/css/shoppingCart.css">
+    <script src="https://kit.fontawesome.com/a0c576b9c8.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include('account.ejs') %>
+        <div class="shopping">
+            <div class="shopping2">
+                <h1 class="title1">訂單</h1>
+                <div class="shopping3">
+                    <table class="table1">
+                        <tr class="shoptitle">
+                            <!-- <th>number</th> -->
+                            <th>地點</th>
+                            <th>標題</th>
+                            <th>前往</th>
+                            <th>價格</th>
+                            <th>編輯</th>
+                        </tr>
+                        <div class="contentdiv">
+                            <% let allOrdersTotalPrice=0; %>
+                                <% if (orders && orders.length> 0) { %>
+                                    <% orders.forEach(function(order) { %>
+                                        <% allOrdersTotalPrice +=parseFloat(order.Price); %>
+                                            <tr class="content">
+                                                <!-- <td><%= order.order_id %></td> -->
+                                                <td>
+                                                    <%= order.Area %>
+                                                </td>
+                                                <td>
+                                                    <%= order.Title %>
+                                                </td>
+                                                <td>
+                                                    <%= order.GoTo %>
+                                                </td>
+                                                <td>
+                                                    <%= order.Price %>
+                                                </td>
+                                                <td>
+                                                    <form method="POST" action="/deleteCart">
+                                                        <input type="hidden" name="order_id"
+                                                            value="<%= order.order_id %>">
+                                                        <button type="submit" class="delbtn">刪除訂單</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                                <% } else if (message){ %>
+                                                    <tr class="content">
+                                                        <td colspan="5">
+                                                            <%= message %>
+                                                        </td>
+                                                    </tr>
+                                                    <% } else{%>
+                                                        <tr class="content">
+                                                            <td colspan="5">暫無訂單</td>
+                                                        </tr>
+                                                        <%}%>
+                        </div>
+                    </table>
+                    <table class="pagetable">
+                        <tr>
+                            <td>
+                                <div class="pagination">
+                                    <!-- <% if(currentPage>1){%> -->
+                                    <!-- <%}%> -->
+                                    <a href="/shoppingCart?page=<%=currentPage -1%>">
+                                        <button class="pagebtn">上一頁</button>
+                                    </a>
+                                    <span>當前頁:<%=currentPage%></span>
+                                    <% if(!nextPageDisabled){%>
+                                        <a href="/shoppingCart?page=<%=currentPage +1%>">
+                                            <button class="pagebtn">下一頁</button>
+                                        </a>
+                                        <%}else {%>
+                                            <button class="pagebtn" disabled>下一頁</button>
+                                            <%}%>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table2">
+                        <tr class="fullhigh">
+                            <td><br><br></td>
+                            <td>總價:</td>
+                            <td>
+                                $: <span id="allOrdersTotalPrice">
+                                    <%= allOrdersTotalPrice %>
+                                </span>
+                            </td>
+                            <td> <button class="gobtn" onclick="opencheck()">送出訂單</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="buy" class="buy">
+            <div class="model">
+                <br>
+                <h1>確定送出訂單？</h1>
+                <h2>請選擇信用卡或匯款</h2>
+                <span id="closebtn" class="closebtn">
+                    <i class="fa-solid fa-xmark" style="color: #000000;">
+                    </i></span>
+            </div>
+            <div class="carddiv" id="carddiv">
+                <span id="card" class="card">
+                    <button class="iconbtn"> <i class="fa-solid fa-credit-card" id="icon1"></i>
+                    </button> </span>
+                <span id="cash" class="cash"> <button class="iconbtn"><i class="fa-solid fa-dollar-sign"
+                            id="icon2"></i></button></span>
+            </div>
+            <div>
+                <button class="nobtn" id="no">取消結帳</button>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay"></div>
+
+        <div class="buythree" id="buythree">
+            <div class="pay">
+                <span id="closebtn2" class="closebtn2">
+                    <i class="fa-solid fa-xmark" style="color: #000000;">
+                    </i></span>
+                <label for="cardname">持卡人姓名</label>
+                <div><input type="text" name="cardname" id="cardname"></div>
+                <label for="cardnum">信用卡卡號</label>
+                <div><input type="text" name="cardnum" id="card">- <input type="text" name="cardnum">- <input
+                        type="text" name="cardnum"></div>
+                <label for="carddate">信用卡有效年月</label>
+                <div><input type="number" name="carddate">月<input type="text" name="carddate">年</div>
+                <label for="cardback">信用卡背面末三碼</label>
+                <div><input type="text" name="cardback"></div>
+            </div>
+            <div>
+                <button>確定</button>
+                <button>取消</button>
+            </div>
+        </div>
+
+        <div class="buyfour" id="buyfour">
+            <div class="paycash">
+                <span id="closebtn3" class="closebtn3">
+                    <i class="fa-solid fa-xmark" style="color: #000000;">
+                    </i></span>
+                <h1>匯款資訊</h1>
+            </div>
+        </div>
+</body>
+<script>
+
+    function opencheck() {
+        const buywindow = document.getElementById('buy');
+        const overlay = document.getElementById('overlay');
+        const closebtn = document.querySelector('.closebtn');
+
+        if (buywindow && overlay && closebtn) {
+            buywindow.style.display = 'block';
+            overlay.style.display = 'block';
+            closebtn.addEventListener('click', closebtnclick);
+            overlay.addEventListener('click', closebtnclick);
+        }
+        const iconbtn1 = document.getElementById('icon1');
+        icon1.addEventListener('click', function () {
+            buywindow.style.display = 'none';
+            overlay.style.display = 'none';
+
+            const buypopup = document.getElementById('buytwo');
+            buypopup.style.display = 'block';
+        })
+
+        const no = document.getElementById('no')
+        no.addEventListener('click', function () {
+            buywindow.style.display = 'none';
+            overlay.style.display = 'none';
+        })
+    }
+
+    function closebtnclick() {
+        const buywindow = document.getElementById('buy');
+        const overlay = document.getElementById('overlay');
+        buywindow.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    // function 
+</script>
+<script src="/js/shoppingCart.js"></script>
+
+</html>
