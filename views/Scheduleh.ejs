@@ -15,243 +15,191 @@
 <body>
     <!-- 總頁導覽列 -->
     <%- include('share/home_nav.ejs')%>
-    <!-- 行程總頁的圖片 -->
-    <div class="MyImgDiv">
-        <img src="/img/MyScheduleh.jpg" class="MyImg">
-        <div class="text-white MyImgDivName">日本 Japan</div>
-    </div>
-
-    <div>
-        <!-- 地區列表 -->
-        <div class="btn-MyArea">
-            <% for(var cc=0;cc < 7; cc++){ %>
-                <!-- <button class="btn-form btn-active-style" data-target="form1" style="border-radius: 30px 0 0;"><%= area[cc].Area %></button> -->
-                <button class="btn-form" data-target="form<%= area[cc].FormId %>">
-                    <%= area[cc].Area %>
-                </button>
-                <!-- <button class="btn-form" data-target="form3">中部地區</button> -->
-                <!-- <button class="btn-form" data-target="form4">四國地區</button> -->
-                <!-- <button class="btn-form" data-target="form5">中國地區</button> -->
-                <!-- <button class="btn-form" data-target="form6">九州地區</button> -->
-                <!-- <button class="btn-form" data-target="form7" style="border-radius: 0 30px 0 0">東北地區</button> -->
-                <% } %>
+        <!-- 行程總頁的圖片 -->
+        <div class="MyImgDiv">
+            <img src="/img/MyScheduleh.jpg" class="MyImg">
+            <div class="text-white MyImgDivName">日本 Japan</div>
         </div>
 
-        <!-- 關東地區 -->
-        <% for(var c=0;c < 2; c++){ %>
-            <form id="form<%= area[c].FormId %>">
+        <div>
+            <!-- 地區列表 -->
+            <div class="btn-MyArea">
+                <% for(var cc=0;cc < 7; cc++){ %>
+                    <!-- <button class="btn-form btn-active-style" data-target="form1" style="border-radius: 30px 0 0;"><%= area[cc].Area %></button> -->
+                    <button class="btn-form" data-target="form<%= area[cc].FormId %>">
+                        <%= area[cc].Area %>
+                    </button>
+                    <!-- <button class="btn-form" data-target="form3">中部地區</button> -->
+                    <!-- <button class="btn-form" data-target="form4">四國地區</button> -->
+                    <!-- <button class="btn-form" data-target="form5">中國地區</button> -->
+                    <!-- <button class="btn-form" data-target="form6">九州地區</button> -->
+                    <!-- <button class="btn-form" data-target="form7" style="border-radius: 0 30px 0 0">東北地區</button> -->
+                    <% } %>
+            </div>
 
-                <div class="bg-white form-card" style="margin: 0 5%;">
-                    <!-- 行程 -->
-                    <% var start_i=c * 2; %>
-                        <% var end_i=start_i + 2; %>
-                            <% for(var i=start_i; i < end_i; i++){ %>
-                                <div class="mb-3 p-5">
-                                    <div class="row">
-                                        <!-- 空白 1/12 -->
-                                        <div class="col-md-1"></div>
-                                        <!-- IMG 5/12 -->
-                                        <div class="col-md-5 pb-3 d-flex">
-                                            <img src="<%= orderinfo[i].img %>" class="rounded-5 w-100"
-                                                style="object-fit: cover;">
-                                        </div>
-                                        <!-- 空白 1/12 -->
-                                        <div class="col-md-1"></div>
-                                        <!-- 資訊 5/12 -->
-                                        <div class="col-md-5 p-3">
-                                            <div>
+            <!-- 關東地區 -->
+            <% for(var c=0;c < 2; c++){ %>
+                <form id="form<%= area[c].FormId %>">
+
+                    <div class="bg-white form-card" style="margin: 0 5%;">
+                        <!-- 行程 -->
+                        <% var start_i=c * 2; %>
+                            <% var end_i=start_i + 2; %>
+                                <% for(var i=start_i; i < end_i; i++){ %>
+                                    <div class="mb-3 p-5">
+                                        <div class="row">
+                                            <!-- 空白 1/12 -->
+                                            <div class="col-md-1"></div>
+                                            <!-- IMG 5/12 -->
+                                            <div class="col-md-5 pb-3 d-flex">
+                                                <img src="<%= orderinfo[i].img %>" class="rounded-5 w-100"
+                                                    style="object-fit: cover;">
+                                            </div>
+                                            <!-- 空白 1/12 -->
+                                            <div class="col-md-1"></div>
+                                            <!-- 資訊 5/12 -->
+                                            <div class="col-md-5 p-3">
                                                 <div>
-                                                    <!-- 行程標題 -->
-                                                    <h5 class="card-title-style position-relative d-flex"
-                                                        style="justify-content: space-between;">
-                                                        <div>
-                                                            <%= orderinfo[i].Title %>
-                                                        </div>
-                                                        <!-- 加到收藏 -->
-                                                        <div class="fa fa-heart-o subscribe-heart"></div>
-                                                    </h5>
-                                                </div>
-                                                <hr>
-                                                <!-- 行程內容 -->
-                                                <p class="card-detail-text-style">
-                                                    <%= view[i].ViewInfo %>
-                                                </p>
-                                                <!-- 出發日期 -->
-                                                <div class="card-text-style d-flex">
-                                                    <div class="d-flex align-items-center text-nowrap">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi-airplane-fill"
-                                                            viewBox="0 0 17 17">
-                                                            <path
-                                                                d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
-                                                        </svg>
-                                                        出發日
-                                                    </div>
-                                                    <div class="fly-days rounded-3 text-center">
-                                                        <%= orderinfo[i].GoDate %>
-                                                    </div>
-                                                </div>
-                                                <!-- 行程價格 -->
-                                                <p class="card-text-style">價格NT$ <span style="color: #FFBF5F; font-weight: bolder;">
-                                                        <%= orderinfo[i].Price %>
-                                                    </span>起/人</p>
-                                                <!-- 點擊可觀看詳細內容 -->
-                                                <button class="btn-detail-Scheduleh rounded-3 mt-4"
-                                                    id='BtnSchedulehInfo'>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="bi-arrow-up-short"
-                                                        viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
-                                                    </svg>
                                                     <div>
-                                                        <span>MORE</span><br>
-                                                        <span class="btn-detail-text">詳細行程</span>
+                                                        <!-- 行程標題 -->
+                                                        <h5 class="card-title-style position-relative d-flex"
+                                                            style="justify-content: space-between;">
+                                                            <div>
+                                                                <%= orderinfo[i].Title %>
+                                                            </div>
+                                                            <!-- 加到收藏 -->
+                                                            <div class="fa fa-heart-o subscribe-heart"></div>
+                                                        </h5>
                                                     </div>
-                                                </button>
+                                                    <hr>
+                                                    <!-- 行程內容 -->
+                                                    <p class="card-detail-text-style">
+                                                        <%= view[i].ViewInfo %>
+                                                    </p>
+                                                    <!-- 出發日期 -->
+                                                    <div class="card-text-style d-flex">
+                                                        <div class="d-flex align-items-center text-nowrap">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="bi-airplane-fill" viewBox="0 0 17 17">
+                                                                <path
+                                                                    d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
+                                                            </svg>
+                                                            出發日
+                                                        </div>
+                                                        <div class="fly-days rounded-3 text-center">
+                                                            <%= orderinfo[i].GoDate %>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 行程價格 -->
+                                                    <p class="card-text-style">價格NT$ <span
+                                                            style="color: #FFBF5F; font-weight: bolder;">
+                                                            <%= orderinfo[i].Price %>
+                                                        </span>起/人</p>
+                                                    <!-- 點擊可觀看詳細內容 -->
+                                                    <button class="btn-detail-Scheduleh rounded-3 mt-4"
+                                                        id='BtnSchedulehInfo'>
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="bi-arrow-up-short" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
+                                                        </svg>
+                                                        <div>
+                                                            <span>MORE</span><br>
+                                                            <span class="btn-detail-text">詳細行程</span>
+                                                        </div>
+                                                    </button>
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <% } %>
-
-                                    <!-- 行程二 -->
-                                    <!-- <div class="mb-3 p-5">
-                    <div class="row">
-                        <div class="col-md-1" id="changeArea-A"></div>
-                        <div class="col-md-5 pb-3 d-flex" id="changeArea-B">
-                            <img src="/img/MyScheduleh.jpg" class="rounded-5 w-100" style="object-fit: cover;">
-                        </div>
-                        <div class="col-md-1" id="changeArea-C"></div>
-                        <div class="col-md-5 p-3" id="changeArea-D">
-                            <div> -->
-                                    <!-- 行程標題 -->
-                                    <!-- <h5 class="card-title-style position-relative d-flex"
-                                    style="justify-content: space-between;">
-                                    <div>東京五日行</div> -->
-                                    <!-- 加到收藏 -->
-                                    <!-- <div class="fa fa-heart-o subscribe-heart"></div>
-                                </h5>
-                                <hr> -->
-                                    <!-- 行程內容 -->
-                                    <!-- <p class="card-detail-text-style">
-                                    行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容行程的內容
-                                </p> -->
-                                    <!-- 出發日期 -->
-                                    <!-- <div class="card-text-style d-flex">
-                                    <div class="d-flex align-items-center text-nowrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi-airplane-fill"
-                                            viewBox="0 0 17 17">
-                                            <path
-                                                d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
-                                        </svg>
-                                        出發日
-                                    </div>
-                                    <div class="fly-days rounded-3 text-center">09/30</div>
-                                </div> -->
-                                    <!-- 行程價格 -->
-                                    <!-- <p class="card-text-style">價格 <span>NT$ 69900</span> 起/人</p> -->
-                                    <!-- 點擊可觀看詳細內容 -->
-                                    <!-- <button class="btn-detail-Scheduleh rounded-3 mt-4" id="BtnSchedulehInfo1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="bi-arrow-up-short"
-                                        viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
-                                    </svg>
-                                    <div>
-                                        <span>MORE</span><br>
-                                        <span class="btn-detail-text">詳細行程</span>
-                                    </div>
-                                </button> -->
-
-                                    <!-- </div>
-                        </div>
+                                    <% } %>
                     </div>
-                </div> -->
+                </form>
+                <% } %>
 
-                </div>
-            </form>
-            <% } %>
+                    <div>
+                        <%- include('share/home_footer.ejs')%>
+                    </div>
+        </div>
 
+        <!-- footer -->
 
-    </div>
-
-    <!-- footer -->
-
-    <script>
-        // 當點選到地區時對應的動作
-        $(document).ready(function () {
-            $(".btn-form:first-child").css('background-color', '#83C9D2');
-            $("form").addClass("hidden");
-            $("#form1").removeClass("hidden");
-            $(".btn-form").click(function () {
-                var targetFormId = $(this).data("target");
+        <script>
+            // 當點選到地區時對應的動作
+            $(document).ready(function () {
+                $(".btn-form:first-child").css('background-color', '#83C9D2');
                 $("form").addClass("hidden");
-                $(".btn-form").css('background-color', '');
-                $(this).css('background-color', '#83C9D2');
-                $("#" + targetFormId).removeClass("hidden");
+                $("#form1").removeClass("hidden");
+                $(".btn-form").click(function () {
+                    var targetFormId = $(this).data("target");
+                    $("form").addClass("hidden");
+                    $(".btn-form").css('background-color', '');
+                    $(this).css('background-color', '#83C9D2');
+                    $("#" + targetFormId).removeClass("hidden");
+                });
             });
-        });
 
-        // 當畫面小於768px時，div位置互換
-        $(document).ready(function () {
-            function moveElement() {
-                if (window.innerWidth < 768) {
-                    $('#changeAreaA').after($('#changeAreaB')); // 在小於768px的視窗寬度下，順序 A,B,C,D
-                    $('#changeAreaC').after($('#changeAreaD'));
-                } else {
-                    $('#changeAreaA').after($('#changeAreaD')); // 在大於或等於768px的視窗寬度下，順序 A,D,C,B
-                    $('#changeAreaC').after($('#changeAreaB'));
+            // 當畫面小於768px時，div位置互換
+            $(document).ready(function () {
+                function moveElement() {
+                    if (window.innerWidth < 768) {
+                        $('#changeAreaA').after($('#changeAreaB')); // 在小於768px的視窗寬度下，順序 A,B,C,D
+                        $('#changeAreaC').after($('#changeAreaD'));
+                    } else {
+                        $('#changeAreaA').after($('#changeAreaD')); // 在大於或等於768px的視窗寬度下，順序 A,D,C,B
+                        $('#changeAreaC').after($('#changeAreaB'));
+                    }
                 }
-            }
-            // 首次加載頁面時執行一次
-            moveElement();
-            // 視窗大小改變時再執行
-            $(window).resize(function () {
+                // 首次加載頁面時執行一次
                 moveElement();
+                // 視窗大小改變時再執行
+                $(window).resize(function () {
+                    moveElement();
+                });
             });
-        });
 
 
-        // 收藏JS
-        document.querySelectorAll('.subscribe-heart').forEach(function (heart) {
-            heart.addEventListener('click', function () {
-                if (heart.classList.contains('fa-heart-o')) {
-                    heart.classList.remove('fa-heart-o');
-                    heart.classList.add('fa-heart');
-                } else {
-                    heart.classList.remove('fa-heart');
-                    heart.classList.add('fa-heart-o');
-                }
-            });
-        });
-
-        // 點擊後連結到 introduceScheduleh 頁面
-        const buttons = document.querySelectorAll('button[id^="BtnSchedulehInfo"]');
-        buttons.forEach((button, index) => {
-            // buttons.forEach((button) => {
-            // 提取按鈕的 ID 中的數字部分
-            const idNumber = button.id.replace('BtnSchedulehInfo', `${index}`);
-            // const idNumber = button.id.replace('BtnSchedulehInfo', '');
-
-            // 添加按鈕點擊事件
-            button.addEventListener('click', () => {
-                // 程式碼二: 處理按鈕點擊事件
-                $.ajax({
-                    url: '/Scheduleh',
-                    success: function (data) {
-                        // AJAX 请求成功後執行跳轉
-                    },
-                    complete: function () {
-                        // 使用提取的數字部分進行跳轉到對應的 IntroduceScheduleh
-                        window.location.href = `/IntroduceScheduleh/${idNumber}`;
+            // 收藏JS
+            document.querySelectorAll('.subscribe-heart').forEach(function (heart) {
+                heart.addEventListener('click', function () {
+                    if (heart.classList.contains('fa-heart-o')) {
+                        heart.classList.remove('fa-heart-o');
+                        heart.classList.add('fa-heart');
+                    } else {
+                        heart.classList.remove('fa-heart');
+                        heart.classList.add('fa-heart-o');
                     }
                 });
             });
-        });
+
+            // 點擊後連結到 introduceScheduleh 頁面
+            const buttons = document.querySelectorAll('button[id^="BtnSchedulehInfo"]');
+            buttons.forEach((button, index) => {
+                // buttons.forEach((button) => {
+                // 提取按鈕的 ID 中的數字部分
+                const idNumber = button.id.replace('BtnSchedulehInfo', `${index}`);
+                // const idNumber = button.id.replace('BtnSchedulehInfo', '');
+
+                // 添加按鈕點擊事件
+                button.addEventListener('click', () => {
+                    // 程式碼二: 處理按鈕點擊事件
+                    $.ajax({
+                        url: '/Scheduleh',
+                        success: function (data) {
+                            // AJAX 请求成功後執行跳轉
+                        },
+                        complete: function () {
+                            // 使用提取的數字部分進行跳轉到對應的 IntroduceScheduleh
+                            window.location.href = `/IntroduceScheduleh/${idNumber}`;
+                        }
+                    });
+                });
+            });
 
 
 
-    </script>
+        </script>
 
 </body>
 

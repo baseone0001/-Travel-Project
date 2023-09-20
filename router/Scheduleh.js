@@ -48,25 +48,29 @@ app.get('/IntroduceScheduleh/:id', function (req, res) {
     var sqlflyinfo = "SELECT * FROM `flyinfo` ";
     var sqllive = "SELECT orderinfo.*, live.* FROM live JOIN orderinfo ON orderinfo.Area = live.Area WHERE orderinfo.id =" + (parseInt(id) + 1);
     var sqlview = "SELECT orderinfo.*, view.* FROM view JOIN orderinfo ON orderinfo.Area = view.Area WHERE orderinfo.id = " + (parseInt(id) + 1);
-    var sqlarea = "SELECT orderinfo.id, area.Area FROM area JOIN orderinfo ON area.FormId = orderinfo.Area; ";
+    var sqlarea = "SELECT orderinfo.id, area.Area FROM area JOIN orderinfo ON area.Area = orderinfo.Area; ";
+    var sqlday1 = "SELECT * FROM `view` WHERE view.orderinfo =" + (parseInt(id) + 1) + "&& view.day = 1 ";
 
     myDBconn.exec(sqlorderinfo, [], function (orderinfo, fields) {
         myDBconn.exec(sqlflyinfo, [], function (flyinfo, fields) {
             myDBconn.exec(sqllive, [], function (live, fields) {
                 myDBconn.exec(sqlview, [], function (view, fields) {
                     myDBconn.exec(sqlarea, [], function (area, fields) {
-                        // res.redirect('/page/1'); ==============================>可以直接轉到第一頁
-                        //   console.log(data);
-                        //   console.log(data[0].GoAir);
-                        res.render('IntroduceScheduleh', { //渲染檔案IntroduceScheduleh.ejs  ->一定要在views資料夾底下 
-                            orderinfo: orderinfo[id],
-                            flyinfo: flyinfo[id],
-                            live: live,
-                            view: view,
-                            area: area[id],
-                            // rows是資料庫回傳
-                        })
+                        myDBconn.exec(sqlday1, [], function (day1, fields) {
+                            // res.redirect('/page/1'); ==============================>可以直接轉到第一頁
+                            //   console.log(data);
+                            //   console.log(data[0].GoAir);
+                            res.render('IntroduceScheduleh', { //渲染檔案IntroduceScheduleh.ejs  ->一定要在views資料夾底下 
+                                orderinfo: orderinfo[id],
+                                flyinfo: flyinfo[id],
+                                live: live,
+                                view: view,
+                                area: area[id],
+                                day1: day1,
+                                // rows是資料庫回傳
+                            })
 
+                        })
                     })
                 })
             })
