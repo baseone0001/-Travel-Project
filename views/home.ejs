@@ -153,7 +153,7 @@
                <div class="place_center">
                     <h2 class="titleStyle">熱 門 景 點</h2>
                     <hr>
-                    <a href="" class="ticA">
+                    <a href="/IntroduceScheduleh/0" class="ticA">
                          <div class="ticket">
                               <div class="row ">
                                    <div class="col-1">
@@ -176,7 +176,7 @@
                     </a>
 
                     <hr>
-                    <a href="" class="ticA">
+                    <a href="/IntroduceScheduleh/2" class="ticA">
                          <div class="ticket">
                               <div class="row ">
                                    <div class="col-1">
@@ -223,6 +223,13 @@
 
 
                </div>
+               <script>
+                    $('#kansai').on('click',function(){
+                         console.log("ok");
+
+                    })
+               </script>
+
                <!-- ---------------------------------------------------------- -->
 
                <div class="space">
@@ -234,7 +241,7 @@
                                    <p>如果沒時間規劃，那就讓我們為您量身規劃。</p>
 
                               </div>
-                              <button class="fujibtn">去 訂 製</button>
+                              <button class="fujibtn" onclick="location.href='/contact'">去 訂 製</button>
                          </div>
                     </div>
                     <!-- <img src="/img/fujiyama.png" alt=""> -->
@@ -243,76 +250,38 @@
 
                <!-- ----------------------------關於我們------------------------------ -->
 
-               <div class="space">
-                    <div class="row">
-                         <div class="col-6">
-                              <img class="about_img_a" src="/img/wall.jpg" alt="about">
-                              <img class="about_img_b" src="/img/sakura.jpg" alt="about">
-                         </div>
-                         <div class="col-6">
-                              <div>
-                                   <div class="aboutText">
-                                        <h2 class="titleStyle">關 於 我 們</h2>
-                                        <div class="mt-5">
-                                             <p>專門為小型團體特別製作行程，</p>
-                                             <p>注重於品質而不是價格，</p>
-                                             <p>讓每位參與的旅客能有與眾不同的美好經驗，</p>
-                                             <p>徜徉和旅在此為您服務！</p>
+               <div class="space-a">
+                    
+                    <div class="book">
+                         <div class="row">
+                              <div class="col-6">
+                                   <img class="about_img_a" src="/img/wall.jpg" alt="about">
+                                   <img class="about_img_b" src="/img/sakura.jpg" alt="about">
+                              </div>
+                              <div class="col-6">
+                                   <div>
+                                        <div class="paper"></div>
+                                        <div class="aboutText">
+                                             <h2 class="titleStyle">關 於 我 們</h2>
+                                             <div class="mt-5">
+                                                  <p>專門為小型團體特別製作行程，</p>
+                                                  <p>注重於品質而不是價格，讓每位</p>
+                                                  <p>參與的旅客能有與眾不同的經驗，</p>
+                                                  <p>徜徉和旅在此為您服務！</p>
+                                             </div>
+                                             
+                                             <button class="BtnStyle mt-1">
+                                                  <span class="btnHover">go</span>
+                                                  <span class="btnstop">了解更多</span>
+                                             </button>
                                         </div>
-
-                                        <button class="BtnStyle mt-3">
-                                             <span class="btnHover">go</span>
-                                             <span class="btnstop">了解更多</span>
-                                        </button>
                                    </div>
+                                   <div class="paper-l" style="position: relative;left: -20%;"></div>
                               </div>
                          </div>
                     </div>
                </div>
 
-
-               <!-- ------------------------------旅客回顧---------------------------- -->
-
-               <!-- <div class="space">
-               <div class="place_center">
-                    <h2>旅客回顧</h2>
-                    <div>
-                         <div class="feedback_space">
-                              <img class="feedback_img" src="" alt="">
-                              <div class="feedback_w">大阪</div>
-                              <p>內文</p>
-                         </div>
-                         <div class="feedback_space">
-                              <img class="feedback_img" src="" alt="">
-                              <div class="feedback_w">大阪</div>
-                              <p>內文</p>
-                         </div>
-                         <div class="feedback_space">
-                              <img class="feedback_img" src="" alt="">
-                              <div class="feedback_w">大阪</div>
-                              <p>內文</p>
-                         </div>
-                    </div>
-                    <div>
-                         <div class="feedback_space">
-                              <img class="feedback_img" src="" alt="">
-                              <div class="feedback_w">大阪</div>
-                              <p>內文</p>
-                         </div>
-                         <div class="feedback_space">
-                              <img class="feedback_img" src="" alt="">
-                              <div class="feedback_w">大阪</div>
-                              <p>內文</p>
-                         </div>
-                         <div class="feedback_space">
-                              <img class="feedback_img" src="" alt="">
-                              <div class="feedback_w">大阪</div>
-                              <p>內文</p>
-                         </div>
-                    </div>
-
-               </div>
-          </div> -->
 
 
                <%- include('share/home_footer.ejs')%>

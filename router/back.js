@@ -56,12 +56,12 @@ var upload = multer({
 
 app.get('/background', function (req, res) {
      if (req.session.user) {
-          res.sendFile(__dirname + '/html/back.html');
+          res.redirect('/background/members');
      } else {
           res.redirect('/backform');
           console.log('沒有登入')
      }
-     res.redirect('/background/members');
+     
 })
 
 
@@ -83,7 +83,7 @@ app.get('/backform', function (req, res) {
      if (req.session.user) {
           res.write(`<p>${req.session.user.isAccount}你已經登入了</p>`);
           res.write(`<p>登入時間：${req.session.user.logined_at}</p>`);
-          res.write(`<a href="http://localhost:1111/background">到後台首頁</a>`);
+          res.write(`<a href="/background">到後台首頁</a>`);
 
           res.end();
      } else {
@@ -98,7 +98,7 @@ app.get('/backlogin', function (req, res) {
      if (req.session.user) {//確認req.session.user有無資料
           res.write(`<p>${req.session.user.isAccount}你已經登入了</p>`);
           res.write(`<p>登入時間：${req.session.user.logined_at}</p>`);
-          res.write(`<a href="http://localhost:1111/background">到後台首頁</a>`);
+          res.write(`<a href="/background">到後台首頁</a>`);
 
 
           res.end();
@@ -118,7 +118,7 @@ app.post('/backlogin', up, function (req, res) {
      if (req.session.user) {
           res.write(`<p>${req.session.user.isAccount}你已經登入</p>`);
           res.write(`<p>登入時間：${req.session.user.logined_at}</p>`);
-          res.write(`<a href="http://localhost:1111/background">到後台首頁</a>`);
+          res.write(`<a href="/background">到後台首頁</a>`);
      } else {
           if (req.body.backAcct === '' || req.body.backPwd == undefined) {
                res.write('空值')
@@ -271,7 +271,7 @@ app.post('/background/member', function (req, res) {
 
 })
 app.get('/background/memberview', function (req, res) {
-     var memberId = [req.session.member,req.session.member];
+     var memberId = [req.session.member, req.session.member];
      console.log(memberId);
      var sql = "SELECT uid, username, email, name, sex, identity, address, phone FROM users WHERE uid = ? UNION SELECT uid, username, email, name, sex, identity, address, phone FROM blacklist WHERE uid = ?";
      myDBconn.exec(sql, memberId, function (results, fields) {
@@ -291,7 +291,7 @@ app.post('/background/memberSelectId', function (req, res) {
                // console.log(results);
                res.send(results);
           })
-          
+
      } else {
           var sql = "SELECT * FROM blacklist WHERE uid = '%'+?+'%'"
           var data = req.body.memberBLackID;
@@ -342,7 +342,7 @@ app.post('/background/memberBlack', function (req, res) {
           // console.log(results[0].uid);
 
           var rows = [results[0].uid, results[0].username, results[0].password, results[0].email,
-          results[0].name, results[0].sex, results[0].identity, results[0].address,results[0].phone,reason];
+          results[0].name, results[0].sex, results[0].identity, results[0].address, results[0].phone, reason];
 
           var sql2 = "INSERT INTO blacklist(uid,username,password,email,name,sex,identity,address,phone,reason) VALUES(?,?,?,?,?,?,?,?,?,?) ";
           myDBconn.exec(sql2, rows, function (results, fields) {
@@ -352,8 +352,8 @@ app.post('/background/memberBlack', function (req, res) {
 
      })
      var sql3 = "DELETE FROM users WHERE uid = ?"
-     myDBconn.exec(sql3,data,function(results, fields){
-               console.log(results);
+     myDBconn.exec(sql3, data, function (results, fields) {
+          console.log(results);
      })
      res.send();
 })
@@ -367,7 +367,7 @@ app.post('/background/memberBlackout', function (req, res) {
           // console.log(results[0].uid);
 
           var rows = [results[0].uid, results[0].username, results[0].password, results[0].email,
-          results[0].name, results[0].sex, results[0].identity, results[0].address,results[0].phone];
+          results[0].name, results[0].sex, results[0].identity, results[0].address, results[0].phone];
 
           var sql2 = "INSERT INTO users(uid,username,password,email,name,sex,identity,address,phone) VALUES(?,?,?,?,?,?,?,?,?) ";
           myDBconn.exec(sql2, rows, function (results, fields) {
@@ -377,8 +377,8 @@ app.post('/background/memberBlackout', function (req, res) {
 
      })
      var sql3 = "DELETE FROM blacklist WHERE uid = ?"
-     myDBconn.exec(sql3,data,function(results, fields){
-               console.log(results);
+     myDBconn.exec(sql3, data, function (results, fields) {
+          console.log(results);
      })
      res.send();
 })
@@ -386,24 +386,52 @@ app.post('/background/memberBlackout', function (req, res) {
 
 
 app.get('/background/itinerary', function (req, res) {
-     // var sql = "SELECT * FROM orderinfo ORDER BY id DESC "
-     // myDBconn.exec(sql,[],function(results, fields){
-     //      // console.log(results);
-     //      res.render('back_itinerary',{
-     //           data:results
-     //      });
-     // })
+     var sql = "SELECT * FROM orderinfo INNER JOIN flyinfo ON orderinfo.id = flyinfo.id ORDER BY GoDate "
+     myDBconn.exec(sql, [], function (results, fields) {
+          res.render('back_itinerary', {
+               order: results,
+          });
+     })
+     // res.render('back_itinerary')
 })
 
 //-------------------------------訂單--------------------------------
 app.get('/background/order', function (req, res) {
      var sql = "SELECT * FROM orderinfo ORDER BY id DESC "
-     myDBconn.exec(sql,[],function(results, fields){
-          console.log(results)
-          res.render('back_order',{
-               data:results
+     myDBconn.exec(sql, [], function (results, fields) {
+          // console.log(results)
+          res.render('back_order', {
+               data: results
           });
      })
 })
+
+
+
+//-------------------------------訊息--------------------------------
+app.get('/background/newsContact',function(req,res){
+     var sql = "SELECT * FROM contact ORDER BY dd DESC"
+     myDBconn.exec(sql,[],function(results,fields){
+          console.log(results);
+          res.render('back_contact',{
+               data:results
+          })
+     })
+})
+
+app.post('/background/contactInsert', function (req, res) {
+     // console.log(req.body);
+     var data = [req.body.name, req.body.sex, req.body.email, req.body.phone, req.body.time, req.body.area, req.body.people, req.body.date, req.body.days, req.body.budget,req.body.subject, req.body.demand,];
+     var sql = "INSERT INTO contact(name,sex,email,phone,time,area,people,date,days,budget,subject,demand) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+     myDBconn.exec(sql,data,function(results,fields){
+          if(results){
+               res.send("成功送出");
+          }else{
+               res.send('送出失敗，請再試一次')
+          }
+     })
+})
+
+
 
 module.exports = app;

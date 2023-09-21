@@ -3,21 +3,49 @@ body {
      margin: 0;
 
 }
+.navBtn{
+     margin-top: 20px;
+     margin-left: 30px;
+     background-color: #F5F5F5;
+}
+.navBtn-b{
+     /* margin-top: 20px;
+     margin-left: 30px; */
+     position:absolute;
+     bottom: 100px;
+     left: 30px;
+
+}
 
 .navBack {
      height: 100vh;
      width: 222px;
      position: fixed;
-     background-color: azure;
+     background-color: #83C9D2;
      /* border: 1px solid black; */
 }
 .navBack div ul {
      list-style-type:none;
+     padding: 15px;
+     margin-top: 20px;
+     
 
 }
 .navBack div ul li a{
      text-decoration: none;
-     color: cadetblue;
+     color: white;
+     padding-left: 15px;
+     
+     
+}
+.navBack div ul li a:hover{
+     color: black;
+     
+}
+.navBack div ul:hover{
+     background-color: #F5F5F5;
+     color: black;
+     
 }
 
 .login {
@@ -33,7 +61,7 @@ body {
 }
 .backBlock{
      height: 100vh;
-     width: 250px;
+     width: 300px;
      /* display: inline-block;    */
           /* background-color: aqua; */
 }
@@ -44,13 +72,25 @@ body {
 }
 
 .backCol {
-     width: 200px;
+     width: 180px;
      height: 50px;
      overflow: hidden;
      padding: 5px;
 }
 .backCol-s {
      width: 100px;
+     height: 50px;
+     overflow: hidden;
+     padding: 5px;
+}
+.backCol-l {
+     width: 400px;
+     height: 50px;
+     overflow: hidden;
+     padding: 5px;
+}
+.backCol-xl {
+     width: 400px;
      height: 50px;
      overflow: hidden;
      padding: 5px;

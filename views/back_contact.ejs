@@ -6,6 +6,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="/css/bootstrap.css">
      <link rel="stylesheet" href="/css/myBackStyle.css">
+     <script src="/js/jquery-3.6.0.js"></script>
      <title>Document</title>
 </head>
 <body>
@@ -16,30 +17,28 @@
           <div class="backBlock"></div>
           <div>
                <div style="height: 50px; width: 100%;"></div>
-               <h2>訂單管理</h2>
-               <table class="backtable">
+               <h2>訊息</h2>
+               <a href="/background/itineraryAdd" class="btn btn-info">新增行程</a>
+               <hr>
+               <table class="backtable mt-2">
                     <tr class="bg-info">
-                         <th class="backCol">行程名稱</th>
-                         <th class="backCol-s">地區</th>
-                         <th class="backCol-s">人數</th>
-                         <th class="backCol">出發日期</th>
-                         <th class="backCol-s">狀態</th>
+                         <th class="backCol">姓名</th>
+                         <th class="backCol-xl">內容主旨</th>
+                         <th class="backCol">日期</th>
                          <th></th>
                     </tr>
                     <% for(var i=0;i < data.length; i++){ %>
+
                     <tr>
-                         <td><%= data[i].Title %></td>
-                         <td><%= data[i].GoTo %></td>
-                         <td><%= data[i].sign %> / <%= data[0].people %></td>
-                         <td><%= data[i].GoDate %></td>
-                         <td><%= data[i].Form %></td>
-                         <td><button class="btn btn-info m-1" onclick="order('<%= data[i].id %>')">檢視</button></td>
+                         <td><%= data[i].name %></td>
+                         <td><%= data[i].subject %></td>
+                         <td><%= data[i].dd %></td>
+                         <td><button class="btn btn-info m-1">檢視</button></td>
                     </tr>
                     <% } %>
                </table>
           </div>
      </header>
-
      
 </body>
 </html>

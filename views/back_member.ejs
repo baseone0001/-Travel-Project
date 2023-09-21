@@ -30,6 +30,7 @@
                     <a href="/background/memberBlack" class="btn btn-danger float-end">黑名單</a>
 
                </form>
+               <hr>
                <table class="backtable mt-2">
                     <tr class="bg-info">
                          <th class="backCol-s">會員編號</th>
@@ -61,7 +62,7 @@
                               <td>
                                    <%= data[i].address %>
                               </td>
-                              <td><button class="btn btn-info m-1" id="member"
+                              <td><button class="btn btn-info m-1"
                                         onclick="member('<%= data[i].uid %>')">檢視</button></td>
                               <td><button class="btn btn-danger m-1"
                                         onclick="memberBlack('<%= data[i].uid %>')">加入黑名單</button></td>

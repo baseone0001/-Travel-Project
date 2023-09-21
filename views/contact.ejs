@@ -9,67 +9,119 @@
      <link rel="stylesheet" href="/css/bootstrap.css">
      <script src="/js/jquery-3.6.0.js"></script>
      <title>Document</title>
+     <style>
+          input[type="text"]{
+               width: 300px;
+          }
+          form>label{
+               margin-top: 20px;
+          }
+          form>label::after{
+               content: "*";
+               color: red;
+          }
+     </style>
 </head>
 
 <body>
      <%- include('share/home_nav.ejs')%>
           <div style="width: 100%; height:70px"></div>
-          <div class="container">
+          <div>
                <div style="text-align: center;">
-                    <h1 class="titleStyle mt-5">聯絡我們</h1>
+                    <h1 class="titleStyle mt-5">聯絡表單</h1>
                </div>
-               <div style="width:80%;">
+               <div style="width:70%; margin-left: 20%;">
 
                     <form action="">
                          <label for="name">您的姓名</label><br>
-                         <input id="name" type="text"><br>
-                         <label for="">您的信箱</label><br>
-                         <input id="" type="text"><br>
-                         <label for="">您的電話</label><br>
-                         <input id="" type="text"><br>
-                         <label for="">方便聯繫的時段</label><br>
-                         <select name="" id="">
-                              <option value="">9:00~12:00</option>
-                              <option value="">12:00~15:00</option>
-                              <option value="">15:00~18:00</option>
-                              <option value="">不方便接電話，請以mail聯繫</option>
-                         </select><br>
-                         <hr>
-                         <label for="">行程規劃</label><br>
-                         <div class="dragSpace">
-                              <button>關東地區</button>
-                              <button>關西地區</button>
-                              <button>中部地區</button>
-                              <button>四國地區</button>
-                              <button>中國地區</button>
-                              <button>九州地區</button>
-                              <button>東北地區</button>
+                         <input id="name" type="text" required><br>
+                         <div style="margin-top: 20px;">
+                              <input name="sex" type="radio" value="男" id="male" required>
+                              <label for="male">先生</label>
+
+                              <input name="sex" type="radio" value="女" id="female" required>
+                              <label for="female">小姐</label><br>
                          </div>
-                         <div class="dropSpace"></div><br>
-                         <hr>
-                         <label for="">人數</label><br>
-                         <select name="" id="">
-                              <option value="">1~2位</option>
-                              <option value="">3~5位</option>
-                              <option value="">6~10位</option>
-                              <option value="">10~20位</option>
+
+                         <label for="email">您的信箱</label><br>
+                         <input id="email" type="text" required><br>
+                         <label for="phone">您的電話</label><br>
+                         <input id="phone" type="text" required><br>
+                         <label for="time">方便聯繫的時段</label><br>
+                         <select name="time" id="time" required>
+                              <option value="">請選擇時段</option>
+                              <option value="9:00~12:00">9:00~12:00</option>
+                              <option value="12:00~15:00">12:00~15:00</option>
+                              <option value="15:00~18:00">15:00~18:00</option>
+                              <option value="不方便接電話，請以mail聯繫">不方便接電話，請以mail聯繫</option>
                          </select><br>
-                         <label for="">預計出發日期</label><br>
-                         <input id="" type="text"><br>
-                         <label for="">旅行天數</label><br>
-                         <input id="" type="text"><br>
-                         <label for="">行程預算</label><br>
-                         <input id="" type="text"><br>
-                         <label for="">需求</label><br>
-                         <input id="" type="text"><br>
-                         <input type="submit">
-                         
-                         
-                         
+                         <hr>
+                         <label for="area">行程規劃</label><br>
+                         <select name="area" id="area" required>
+                              <option value="">請選擇地區</option>
+                              <option value="關東地區">關東地區</option>
+                              <option value="關西地區">關西地區</option>
+                              <option value="中部地區">中部地區</option>
+                              <option value="四國地區">四國地區</option>
+                              <option value="中國地區">中國地區</option>
+                              <option value="九州地區">九州地區</option>
+                              <option value="東北地區">東北地區</option>
+                         </select>
+                         <hr>
+                         <label for="people">人數</label><br>
+                         <select name="people" id="people" required>
+                              <option value="">請選擇人數</option>
+                              <option value="1~2位">1~2位</option>
+                              <option value="3~5位">3~5位</option>
+                              <option value="6~10位">6~10位</option>
+                              <option value="10~20位">10~20位</option>
+                         </select><br>
+                         <label for="date">預計出發日期</label><br>
+                         <input id="date" type="text" required><br>
+                         <label for="days">旅行天數</label><br>
+                         <input id="days" type="text" required><br>
+                         <label for="budget">行程預算</label><br>
+                         <input id="budget" type="text" required><br>
+                         <label for="subject">主旨</label><br>
+                         <input id="subject" type="text" required><br>
+                         <label for="demand">需求</label><br>
+                         <textarea name="demand" id="demand" cols="30" rows="10" required></textarea>
+                         <br>
 
 
 
                     </form>
+                    <button class="btn" id="contact" style="background-color: #83C9D2; margin-top: 20px;">提交</button>
+                    <script>
+                         $('#contact').on('click', function () {
+                              var contact = {
+                                   name: $('#name').val(),
+                                   sex:$('input[name="sex"]:checked').val(),
+                                   email: $('#email').val(),
+                                   phone: $('#phone').val(),
+                                   time: $('#time').val(),
+                                   area: $('#area').val(),
+                                   people: $('#people').val(),
+                                   date: $('#date').val(),
+                                   days: $('#days').val(),
+                                   budget: $('#budget').val(),
+                                   subject: $('#subject').val(),
+                                   demand: $('#demand').val()
+                              }
+
+                              console.log(`${name};${email};${phone};${time}`)
+                              $.ajax({
+                                   type: "post",
+                                   url: "/background/contactInsert",
+                                   data: contact,
+                                   success: function (e) {
+                                        alert(e);
+                                        window.location.assign(window.location.href);
+                                   }
+                              })
+
+                         })
+                    </script>
 
                </div>
 
