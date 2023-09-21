@@ -8,24 +8,31 @@
 
 .infoPage {
     position: relative;
-    background-color: #f5f5f5;
     width: 82%;
     margin-left: auto;
-    padding-left: 5%;
     box-sizing: border-box;
+    padding-left: 5%;
     background-clip: content-box;
+    background-color: #F5F5F5;
+    height: 70vh;
+    bottom: 530px;
 }
 
 .container {
     line-height: 2;
     padding: 5%;
-    height: 75%;
+    height: 100%;
+    overflow: auto;
 }
 
 .formDiv {
     display: grid;
     justify-content: center;
     align-items: center;
+}
+
+h1 {
+    text-align: center;
 }
 
 #name,
@@ -40,8 +47,8 @@
     padding-left: 10px;
 }
 
-#mr,
-#miss {
+#male,
+#female {
     border: 1px solid lightblue;
     justify-content: center;
     padding-left: 10px;
@@ -56,6 +63,16 @@
     line-height: 2;
     width: 60px;
     margin-left: 60%;
+    width: 70px;
+    height: 45px;
+    font-size: 15px;
+    background-color: #ace5ed;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+.btnaccountinfo:hover {
+    background-color: #83C9D2;
 }
 
 @media screen and (max-width:768px) {
