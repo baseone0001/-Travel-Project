@@ -48,7 +48,7 @@ body {
 .paper-l{
      width: 132px;
      height: 41px;
-     background-image: url(/img/pepar_l.png);
+     background-image: url(/img/pepar.png);
      background-repeat: no-repeat;
      background-size: cover;
      animation-name: paperMove;

@@ -411,8 +411,12 @@ app.get('/background/order', function (req, res) {
 //-------------------------------訊息--------------------------------
 app.get('/background/newsContact',function(req,res){
      var sql = "SELECT * FROM contact ORDER BY dd DESC"
-     myDBconn.exec()
-     res.render('back_contact')
+     myDBconn.exec(sql,[],function(results,fields){
+          console.log(results);
+          res.render('back_contact',{
+               data:results
+          })
+     })
 })
 
 app.post('/background/contactInsert', function (req, res) {
