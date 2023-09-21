@@ -28,27 +28,28 @@
           <div style="width: 100%; height:70px"></div>
           <div>
                <div style="text-align: center;">
-                    <h1 class="titleStyle mt-5">聯絡我們</h1>
+                    <h1 class="titleStyle mt-5">聯絡表單</h1>
                </div>
-               <div style="width:80%; margin-left: 10%;">
+               <div style="width:70%; margin-left: 20%;">
 
                     <form action="">
                          <label for="name">您的姓名</label><br>
-                         <input id="name" type="text"><br>
+                         <input id="name" type="text" required><br>
                          <div style="margin-top: 20px;">
-                              <input name="sex" type="radio" value="男" id="male">
+                              <input name="sex" type="radio" value="男" id="male" required>
                               <label for="male">先生</label>
 
-                              <input name="sex" type="radio" value="女" id="female">
+                              <input name="sex" type="radio" value="女" id="female" required>
                               <label for="female">小姐</label><br>
                          </div>
 
                          <label for="email">您的信箱</label><br>
-                         <input id="email" type="text"><br>
+                         <input id="email" type="text" required><br>
                          <label for="phone">您的電話</label><br>
-                         <input id="phone" type="text"><br>
+                         <input id="phone" type="text" required><br>
                          <label for="time">方便聯繫的時段</label><br>
-                         <select name="time" id="time">
+                         <select name="time" id="time" required>
+                              <option value="">請選擇時段</option>
                               <option value="9:00~12:00">9:00~12:00</option>
                               <option value="12:00~15:00">12:00~15:00</option>
                               <option value="15:00~18:00">15:00~18:00</option>
@@ -56,7 +57,8 @@
                          </select><br>
                          <hr>
                          <label for="area">行程規劃</label><br>
-                         <select name="area" id="area">
+                         <select name="area" id="area" required>
+                              <option value="">請選擇地區</option>
                               <option value="關東地區">關東地區</option>
                               <option value="關西地區">關西地區</option>
                               <option value="中部地區">中部地區</option>
@@ -67,22 +69,24 @@
                          </select>
                          <hr>
                          <label for="people">人數</label><br>
-                         <select name="people" id="people">
+                         <select name="people" id="people" required>
+                              <option value="">請選擇人數</option>
                               <option value="1~2位">1~2位</option>
                               <option value="3~5位">3~5位</option>
                               <option value="6~10位">6~10位</option>
                               <option value="10~20位">10~20位</option>
                          </select><br>
                          <label for="date">預計出發日期</label><br>
-                         <input id="date" type="text"><br>
+                         <input id="date" type="text" required><br>
                          <label for="days">旅行天數</label><br>
-                         <input id="days" type="text"><br>
+                         <input id="days" type="text" required><br>
                          <label for="budget">行程預算</label><br>
-                         <input id="budget" type="text"><br>
+                         <input id="budget" type="text" required><br>
                          <label for="subject">主旨</label><br>
-                         <input id="subject" type="text"><br>
+                         <input id="subject" type="text" required><br>
                          <label for="demand">需求</label><br>
-                         <input id="demand" type="text" style="height: 200px;"><br>
+                         <textarea name="demand" id="demand" cols="30" rows="10" required></textarea>
+                         <br>
 
 
 
@@ -111,7 +115,8 @@
                                    url: "/background/contactInsert",
                                    data: contact,
                                    success: function (e) {
-                                        alert('已送出');
+                                        alert(e);
+                                        window.location.assign(window.location.href);
                                    }
                               })
 

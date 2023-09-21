@@ -408,8 +408,10 @@ app.get('/background/order', function (req, res) {
 
 
 
-//-------------------------------訂單--------------------------------
+//-------------------------------訊息--------------------------------
 app.get('/background/newsContact',function(req,res){
+     var sql = "SELECT * FROM contact ORDER BY dd DESC"
+     myDBconn.exec()
      res.render('back_contact')
 })
 
@@ -418,7 +420,11 @@ app.post('/background/contactInsert', function (req, res) {
      var data = [req.body.name, req.body.sex, req.body.email, req.body.phone, req.body.time, req.body.area, req.body.people, req.body.date, req.body.days, req.body.budget,req.body.subject, req.body.demand,];
      var sql = "INSERT INTO contact(name,sex,email,phone,time,area,people,date,days,budget,subject,demand) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
      myDBconn.exec(sql,data,function(results,fields){
-          
+          if(results){
+               res.send("成功送出");
+          }else{
+               res.send('送出失敗，請再試一次')
+          }
      })
 })
 

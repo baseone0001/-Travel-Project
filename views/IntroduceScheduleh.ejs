@@ -7,6 +7,8 @@
     <title>徜徉和旅</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/Mystyle.css">
+    <link rel="stylesheet" href="/css/myHomeStyle.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
@@ -19,7 +21,7 @@
 <body>
 
     <!-- 總頁導覽列 -->
-
+    <%- include('share/home_nav.ejs')%>
     <!-- 行程總頁的圖片 -->
     <div class="MyImgDiv">
         <img src="<%= orderinfo.img %>" class="MyImg">

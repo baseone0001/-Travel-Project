@@ -45,6 +45,16 @@ body {
      animation-duration: 2s;
      animation-iteration-count: infinite;
 }
+.paper-l{
+     width: 132px;
+     height: 41px;
+     background-image: url(/img/pepar_l.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     animation-name: paperMove;
+     animation-duration: 2s;
+     animation-iteration-count: infinite;
+}
 
 @keyframes paperMove {
      0% {
@@ -800,7 +810,7 @@ footer {
      width: 100%;
      flex-direction: column;
      /* align-items: center; */
-     margin-top: 50%;
+     margin-top: 44%;
      /* margin-left: 15%; */
      position: relative;
      bottom: 150px;
