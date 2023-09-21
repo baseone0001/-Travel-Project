@@ -35,7 +35,7 @@ body {
 }
 
 #intitle ul li a:hover {
-color: #0eb4b4;
+    color: #0eb4b4;
 }
 
 
@@ -57,11 +57,13 @@ a {
 
 #footerdown1 {
     margin-left: 50px;
+    color: white;
 }
 
 #footerdown1 ul li {
     list-style: none;
 }
+
 #footerdown1 ul li a:hover {
     color: #0eb4b4;
 }
@@ -69,9 +71,9 @@ a {
 
 /* 縮放設定 */
 @media screen and (max-width:768px) {
-    #footerdown{
-    margin-left: 10px;
-    bottom: -450px;
+    #footerdown {
+        margin-left: 10px;
+        bottom: -450px;
 
     }
 }

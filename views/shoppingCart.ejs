@@ -13,14 +13,15 @@
     <%- include('account.ejs') %>
         <div class="shopping">
             <div class="shopping2">
-                <h1 class="title1">訂單</h1>
+                <h1 class="title1">訂單資訊</h1>
                 <div class="shopping3">
                     <table class="table1">
                         <tr class="shoptitle">
                             <!-- <th>number</th> -->
+                            <th>行程</th>
                             <th>地點</th>
-                            <th>標題</th>
-                            <th>前往</th>
+                            <th>去程</th>
+                            <th>回程</th>
                             <th>價格</th>
                             <th>編輯</th>
                         </tr>
@@ -32,13 +33,19 @@
                                             <tr class="content">
                                                 <!-- <td><%= order.order_id %></td> -->
                                                 <td>
-                                                    <%= order.Area %>
-                                                </td>
-                                                <td>
-                                                    <%= order.Title %>
+                                                    <a href="http://localhost:2407/IntroduceScheduleh/<%=order.id-1%>"
+                                                        class="ahrefschedukeh">
+                                                        <%= order.Title %>
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <%= order.GoTo %>
+                                                </td>
+                                                <td>
+                                                    <%= order.GoDate %>
+                                                </td>
+                                                <td>
+                                                    <%=order.ArrDate%>
                                                 </td>
                                                 <td>
                                                     <%= order.Price %>
@@ -60,44 +67,36 @@
                                                     </tr>
                                                     <% } else{%>
                                                         <tr class="content">
-                                                            <td colspan="5">暫無訂單</td>
+                                                            <td colspan="6">暫無訂單</td>
                                                         </tr>
                                                         <%}%>
                         </div>
                     </table>
-                    <table class="pagetable">
-                        <tr>
-                            <td>
-                                <div class="pagination">
-                                    <!-- <% if(currentPage>1){%> -->
-                                    <!-- <%}%> -->
-                                    <a href="/shoppingCart?page=<%=currentPage -1%>">
-                                        <button class="pagebtn">上一頁</button>
-                                    </a>
-                                    <span>當前頁:<%=currentPage%></span>
-                                    <% if(!nextPageDisabled){%>
-                                        <a href="/shoppingCart?page=<%=currentPage +1%>">
-                                            <button class="pagebtn">下一頁</button>
-                                        </a>
-                                        <%}else {%>
-                                            <button class="pagebtn" disabled>下一頁</button>
-                                            <%}%>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="table2">
-                        <tr class="fullhigh">
-                            <td><br><br></td>
-                            <td>總價:</td>
-                            <td>
-                                $: <span id="allOrdersTotalPrice">
-                                    <%= allOrdersTotalPrice %>
-                                </span>
-                            </td>
-                            <td> <button class="gobtn" onclick="opencheck()">送出訂單</button></td>
-                        </tr>
-                    </table>
+                    <div class="pagetable">
+                        <div class="pagination">
+                            <!-- <% if(currentPage>1){%> -->
+                            <!-- <%}%> -->
+                            <a href="/shoppingCart?page=<%=currentPage -1%>">
+                                <button class="pagebtn">上一頁</button>
+                            </a>
+                            <span>當前頁:<%=currentPage%></span>
+                            <% if(!nextPageDisabled){%>
+                                <a href="/shoppingCart?page=<%=currentPage +1%>">
+                                    <button class="pagebtn">下一頁</button>
+                                </a>
+                                <%}else {%>
+                                    <button class="pagebtn" disabled>下一頁</button>
+                                    <%}%>
+                        </div>
+                    </div>
+                    <div class="table2">
+                        總價:
+                        $: <span id="allOrdersTotalPrice">
+                            <%= allOrdersTotalPrice %>
+                        </span>
+                        <button class="gobtn" onclick="opencheck()">送出訂單</button>
+                        <br><br>
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,36 +113,51 @@
             </div>
             <div class="carddiv" id="carddiv">
                 <span id="card" class="card">
-                    <button class="iconbtn"> <i class="fa-solid fa-credit-card" id="icon1"></i>
+                    <button class="iconbtn" id="iconbtn1"> <i class="fa-solid fa-credit-card" id="icon1"></i>
                     </button> </span>
-                <span id="cash" class="cash"> <button class="iconbtn"><i class="fa-solid fa-dollar-sign"
+                <span id="cash" class="cash"> <button class="iconbtn" id="iconbtn2"><i class="fa-solid fa-dollar-sign"
                             id="icon2"></i></button></span>
             </div>
+            <br>
             <div>
                 <button class="nobtn" id="no">取消結帳</button>
             </div>
+            <br>
         </div>
 
         <div id="overlay" class="overlay"></div>
 
         <div class="buythree" id="buythree">
+
+            <span id="closebtn2" class="closebtn2">
+                <i class="fa-solid fa-xmark" style="color: #000000;">
+                </i>
+            </span>
+            <h1>請輸入卡片資訊</h1>
             <div class="pay">
-                <span id="closebtn2" class="closebtn2">
-                    <i class="fa-solid fa-xmark" style="color: #000000;">
-                    </i></span>
-                <label for="cardname">持卡人姓名</label>
-                <div><input type="text" name="cardname" id="cardname"></div>
-                <label for="cardnum">信用卡卡號</label>
-                <div><input type="text" name="cardnum" id="card">- <input type="text" name="cardnum">- <input
-                        type="text" name="cardnum"></div>
-                <label for="carddate">信用卡有效年月</label>
-                <div><input type="number" name="carddate">月<input type="text" name="carddate">年</div>
-                <label for="cardback">信用卡背面末三碼</label>
-                <div><input type="text" name="cardback"></div>
+                <div>
+                    <label for="cardname">持卡人姓名</label>
+                    <input type="text" name="cardname" id="cardname" class="cardname" required>
+                </div>
+                <div><label for="cardnum">信用卡卡號</label>
+                    <input type="text" name="cardnum" id="cardnum1" class="cardnum">- <input type="text" name="cardnum"
+                        id="cardnum2" class="cardnum" required>- <input type="text" name="cardnum" id="cardnum3"
+                        class="cardnum" required>
+                </div>
+                <div>
+                    <label for="carddate">信用卡有效年月</label>
+                    <input type="month" name="carddate" class="carddate" required>
+                </div>
+                <div class="inputflex">
+                    <label for="backnum" id="text">信用卡後三碼</label>
+                    <input type="text" id="backnum" name="backnum" class="backnum" placeholder="" required>
+                </div>
             </div>
+            <br>
             <div>
-                <button>確定</button>
-                <button>取消</button>
+                <form action="/bought" method="post">
+                    <button class="enterbtn" id="enterbtn">確定</button>
+                </form>
             </div>
         </div>
 
@@ -153,47 +167,24 @@
                     <i class="fa-solid fa-xmark" style="color: #000000;">
                     </i></span>
                 <h1>匯款資訊</h1>
+                <h3>請輸入以下資訊，我們將會人工審核是否已付款，需3-5工作天</h3>
+                <div>
+                    <label for="cashname">姓名：</label>
+                    <input type="text" id="cashname">
+                </div>
+                <div>
+                    <label for="cashfive">匯款後五碼：</label>
+                    <input type="text" id="cashfive">
+                </div>
+                <br>
+                <form action="/nobought" method="post">
+                    <button class="enterbtn2" id="enterbtn2">確定</button>
+                </form>
             </div>
         </div>
 </body>
-<script>
 
-    function opencheck() {
-        const buywindow = document.getElementById('buy');
-        const overlay = document.getElementById('overlay');
-        const closebtn = document.querySelector('.closebtn');
 
-        if (buywindow && overlay && closebtn) {
-            buywindow.style.display = 'block';
-            overlay.style.display = 'block';
-            closebtn.addEventListener('click', closebtnclick);
-            overlay.addEventListener('click', closebtnclick);
-        }
-        const iconbtn1 = document.getElementById('icon1');
-        icon1.addEventListener('click', function () {
-            buywindow.style.display = 'none';
-            overlay.style.display = 'none';
-
-            const buypopup = document.getElementById('buytwo');
-            buypopup.style.display = 'block';
-        })
-
-        const no = document.getElementById('no')
-        no.addEventListener('click', function () {
-            buywindow.style.display = 'none';
-            overlay.style.display = 'none';
-        })
-    }
-
-    function closebtnclick() {
-        const buywindow = document.getElementById('buy');
-        const overlay = document.getElementById('overlay');
-        buywindow.style.display = 'none';
-        overlay.style.display = 'none';
-    }
-
-    // function 
-</script>
 <script src="/js/shoppingCart.js"></script>
 
 </html>

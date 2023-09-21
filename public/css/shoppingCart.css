@@ -7,17 +7,20 @@
     box-sizing: border-box;
     background-clip: content-box;
     height: 70vh;
+    bottom: 510px;
+    overflow-x: auto;
 }
 
 .shopping2 {
     position: relative;
     text-align: center;
     height: 100%;
+    display: grid;
+
 }
 
 .shopping3 {
     font-size: 22px;
-
 }
 
 .title1 {
@@ -31,6 +34,15 @@
     height: inherit;
 }
 
+.ahrefschedukeh {
+    color: #6a44ff;
+
+}
+
+.ahrefschedukeh:hover {
+    text-decoration: underline;
+}
+
 .table1 {
     position: absolute;
     width: 85%;
@@ -38,10 +50,26 @@
     left: 50%;
     transform: translateX(-50%);
     margin-top: 50px;
-    border: 1px solid #ddd;
+    border: none;
+    border-collapse: collapse;
     line-height: 2;
+}
+
+.shoptitle {
+
+    background-color: #83C9D2;
 
 }
+
+tr:nth-child(odd) td {
+    background-color: rgb(228, 228, 228);
+}
+
+tr:nth-child(even) td {
+    background-color: rgb(208, 246, 253);
+}
+
+
 
 .pagetable {
     position: absolute;
@@ -54,7 +82,7 @@
 .pagebtn {
     width: 80px;
     height: 30px;
-    background-color: rgb(72, 184, 173);
+    background-color: rgb(153, 237, 229);
     color: white;
     font-size: 20px;
     border-radius: 15px;
@@ -63,7 +91,7 @@
 }
 
 .pagebtn:hover {
-    background-color: aqua;
+    background-color: rgb(89, 182, 173);
 }
 
 .table2 {
@@ -118,47 +146,37 @@ th {
 .buyfour {
     display: none;
     position: fixed;
-    background-color: rgb(231, 231, 251);
+    background-color: #bed4f4;
     top: 25%;
     right: 25%;
     border-radius: 15px;
     text-align: center;
     width: 40%;
+    line-height: 2;
 }
 
-.closebtn,
+.card,
+.cash {
+    letter-spacing: 60px;
+}
+
+#closebtn,
 .closebtn2,
 .closebtn3 {
     position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 30px;
-}
-
-.closebtn:hover {
-    background-color: blue;
-}
-
-.okbtn {
-    width: 80px;
-    height: 40px;
-    background-color: rgb(89, 102, 224);
-    border-radius: 15px;
-    color: white;
-    font-size: 25px;
-}
-
-.okbtn:hover {
-    background-color: rgb(60, 50, 196);
+    font-size: 50px;
+    top: -35px;
+    right: -5px;
 }
 
 .nobtn {
-    width: 80px;
+    width: 160px;
     height: 40px;
     background-color: rgb(244, 76, 34);
     border-radius: 15px;
     color: white;
     font-size: 25px;
+
 }
 
 .nobtn:hover {
@@ -175,5 +193,66 @@ th {
 }
 
 .iconbtn i {
-    color: blue;
+    color: black;
+    border-radius: 15px;
+    background-color: white;
+    width: 100px;
+    height: 80px;
+}
+
+.pay {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.iconbtn i:hover {
+    background-color: rgb(169, 169, 169);
+}
+
+div input {
+    border: 1px solid lightblue;
+    height: 30px;
+}
+
+.cardnum,
+.backnum {
+    width: 50px;
+}
+
+.enterbtn,
+.enterbtn2 {
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    background-color: #ace5ed;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+.enterbtn:hover,
+.enterbtn:hover {
+    background-color: #79bfc8;
+}
+
+.cancelbtn {
+    width: 40px;
+    height: 30px;
+    font-size: 15px;
+    background-color: #f15879;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+
+@media screen and (max-width: 768px) {
+    .shopping {
+        height: 70vh;
+    }
+
+    .table1 {
+        width: 100%;
+        /* 表格寬度100%，以適應小螢幕 */
+        overflow-y: auto;
+        /* 在表格寬度大於螢幕時添加水平滾動 */
+    }
 }

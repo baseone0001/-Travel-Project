@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>參團紀錄</title>
+    <link rel="stylesheet" type="text/css" href="/css/logging.css">
+    <script src="https://kit.fontawesome.com/a0c576b9c8.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include('account.ejs') %>
+        <div class="logging">
+            <div class="logging2">
+                <h1 class="title1">參團紀錄</h1>
+                <div class="logging3">
+                    <table class="table1">
+                        <tr class="logtitle">
+                            <th>行程</th>
+                            <th>地點</th>
+                            <th>去程</th>
+                            <th>回程</th>
+                            <th>價格</th>
+                            <th>付款狀態</th>
+                        </tr>
+                        <div class="contentdiv">
+                            <% if (log && log.length>0){ %>
+                                <% log.forEach(function(log){%>
+                                    <tr class="content">
+                                        <td>
+                                            <%= log.logtitle %>
+                                        </td>
+                                        <td>
+                                            <%= log.loggoto%>
+                                        </td>
+                                        <td>
+                                            <%= log.loggodate%>
+                                        </td>
+                                        <td>
+                                            <%= log.logarrdate%>
+                                        </td>
+                                        <td>
+                                            <%= log.logprice%>
+                                        </td>
+                                        <td class="<%= log.pay === '未付款' ? 'red-text' : 'black-text' %>">
+                                            <%= log.pay %>
+                                        </td>
+                                        <%});%>
+                                            <% }else{%>
+                                    <tr class="content">
+                                        <td colspan="6">暫無紀錄</td>
+                                    </tr>
+                                    <%}%>
+                        </div>
+                    </table>
+                    <div class="pagetable">
+                        <a href="/logging?page=<%= currentPage - 1 %>">
+                            <button class="pagebtn">上一頁</button>
+                        </a>
+                        <span>第 <%= currentPage %> 頁</span>
+                        <% if(!nextPageDisabled){%>
+                            <a href="/logging?page=<%= currentPage + 1 %>">
+                                <button class="pagebtn">下一頁</button>
+                            </a>
+                            <%}else {%>
+                                <button class="pagebtn" disabled>下一頁</button>
+                                <%}%>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
