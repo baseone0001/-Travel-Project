@@ -17,6 +17,7 @@ body {
 
 /* 註冊 */
 .registerPage {
+    bottom: 530px;
     position: relative;
     width: 82%;
     margin-left: auto;
@@ -98,6 +99,7 @@ div>label,
 /* 縮放設定 */
 @media screen and (max-width:768px) {
     .registerPage {
+        bottom: 500px;
         padding-left: 5px;
         width: 60%;
     }

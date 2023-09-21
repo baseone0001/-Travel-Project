@@ -40,6 +40,7 @@ btnaccountinfo.addEventListener('click', async () => {
             const data = await response.json();
             if (data.success) {
                 console.log('User information updated successfully.');
+                alert('修改成功!')
             } else {
                 alert('Update failed: ' + data.message);
             }

@@ -17,7 +17,8 @@ btnLogin.addEventListener("click", async () => {
             if (data.success) {
                 // 登入成功，可能在這裡處理重定向或其他操作
                 console.log("登入成功");
-                window.location.href = '/accountinfo';
+                window.history.back();
+
             } else {
                 // 登入失敗，處理錯誤訊息
                 console.error("登入失敗", data.message);
