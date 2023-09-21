@@ -35,6 +35,16 @@ body {
      animation-duration: 2s;
      animation-iteration-count: infinite;
 }
+.paper{
+     width: 132px;
+     height: 41px;
+     background-image: url(/img/pepar.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     animation-name: paperMove;
+     animation-duration: 2s;
+     animation-iteration-count: infinite;
+}
 
 @keyframes paperMove {
      0% {
@@ -740,31 +750,47 @@ footer {
      background-color: #83C9D2;
 }
 
+
+.book {
+     width: 1679px;
+     height: 860px;
+     background-image: url(/img/book.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-x: -360px;
+     
+
+}
+
+
 .about_img_a {
-     width: 500px;
-     height: 500px;
-     border-radius: 20px;
+     width: 350px;
+     height: 350px;
+     border-radius: 5px;
      background-color: gray;
      position: relative;
-     top: 15%;
-     left: 10%;
+     top: 130px;
+     left: 280px;
      object-fit: cover;
      overflow: hidden;
-     box-shadow: 2px 2px 5px 2px gray;
+     /* border: 6px solid rgb(210, 220, 234); */
+
+     box-shadow: 1px 1px 5px 2px gray;
 
 }
 
 .about_img_b {
      width: 253px;
      height: 255px;
-     border-radius: 15px;
-     background-color: rgb(183, 183, 183);
+     border-radius: 5px;
+     background-color: rgb(210, 229, 247);
      position: relative;
-     left: 65%;
-     bottom: 15%;
+     top: 230px;
+     left: 200px;
      object-fit: cover;
      overflow: hidden;
-     box-shadow: 2px 2px 5px 2px gray;
+     /* border: 6px solid rgb(210, 229, 247); */
+     box-shadow: 1px 1px 5px 2px gray;
 
 }
 
@@ -775,7 +801,7 @@ footer {
      flex-direction: column;
      /* align-items: center; */
      margin-top: 50%;
-     margin-left: 15%;
+     /* margin-left: 15%; */
      position: relative;
      bottom: 150px;
 

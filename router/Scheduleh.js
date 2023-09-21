@@ -48,7 +48,7 @@ app.get('/IntroduceScheduleh/:id', function (req, res) {
     var sqlflyinfo = "SELECT * FROM `flyinfo` ";
     var sqllive = "SELECT orderinfo.*, live.* FROM live JOIN orderinfo ON orderinfo.Area = live.Area WHERE orderinfo.id =" + (parseInt(id) + 1);
     var sqlview = "SELECT orderinfo.*, view.* FROM view JOIN orderinfo ON orderinfo.Area = view.Area WHERE orderinfo.id = " + (parseInt(id) + 1);
-    var sqlarea = "SELECT orderinfo.id, area.Area FROM area JOIN orderinfo ON area.FormId = orderinfo.Area; ";
+    var sqlarea = "SELECT orderinfo.id, area.Area FROM area JOIN orderinfo ON area.Area = orderinfo.Area; ";
 
     myDBconn.exec(sqlorderinfo, [], function (orderinfo, fields) {
         myDBconn.exec(sqlflyinfo, [], function (flyinfo, fields) {

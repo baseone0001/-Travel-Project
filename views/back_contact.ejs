@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/bootstrap.css">
+     <link rel="stylesheet" href="/css/myBackStyle.css">
+     <script src="/js/jquery-3.6.0.js"></script>
+     <title>Document</title>
+</head>
+<body>
+     <header class="d-flex justify-content-start">
+          <div>
+               <%- include('share/back_nav.ejs')%> 
+          </div>
+          <div class="backBlock"></div>
+          <div>
+               <div style="height: 50px; width: 100%;"></div>
+               <h2>訊息</h2>
+               <a href="/background/itineraryAdd" class="btn btn-info">新增行程</a>
+               <hr>
+               <table class="backtable mt-2">
+                    <tr class="bg-info">
+                         <th class="backCol">姓名</th>
+                         <th class="backCol-xl">內容主旨</th>
+                         <th class="backCol">日期</th>
+                         <th></th>
+                    </tr>
+                    
+                    </tr>
+               </table>
+          </div>
+     </header>
+     
+</body>
+</html>

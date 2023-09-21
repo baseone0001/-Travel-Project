@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,11 @@
 
      <title>Document</title>
 </head>
+
 <body>
      <header class="d-flex justify-content-start">
           <div>
-               <%- include('../share/back_nav.ejs')%> 
+               <%- include('../share/back_nav.ejs')%>
           </div>
           <div class="backBlock"></div>
           <div>
@@ -29,59 +31,89 @@
                          <th></th>
                          <th></th>
                     </tr>
-                    <% for(var i = 0;i < data.length; i++){ %>
-                    <tr>
-                         <!-- <td><p class="backCol"><%= data[i].newsid   %></p></td> -->
-                         <td><p class="backCol"><%= data[i].dd   %></p></td>
-                         <td><p class="backCol"><%= data[i].title   %></p></td>
-                         <td><p class="backCol"><%= data[i].contents   %></p></td>
-                         <td>
-                              <button id="edit" class="btn btn-warning m-2" onclick="edit( '<%= data[i].newsid  %>')">修改</button>
-                         </td>
-                         <td>
-                              <button id="delete" class="btn btn-danger m-2" onclick="newsDelete('<%= data[i].newsid  %>')">刪除</button>
-                         </td>
-                    </tr>
-                    <% } %>
+                    <% for(var i=0;i < data.length; i++){ %>
+                         <tr>
+                              <!-- <td><p class="backCol"><%= data[i].newsid   %></p></td> -->
+                              <td>
+                                   <p class="backCol dd">
+                                        <%= data[i].dd %>
+                                   </p>
+                              </td>
+                              <td>
+                                   <p class="backCol">
+                                        <%= data[i].title %>
+                                   </p>
+                              </td>
+                              <td>
+                                   <p class="backCol-l">
+                                        <%= data[i].contents %>
+                                   </p>
+                              </td>
+                              <td>
+                                   <button id="edit" class="btn btn-warning m-2"
+                                        onclick="edit( '<%= data[i].newsid  %>')">修改</button>
+                              </td>
+                              <td>
+                                   <button id="delete" class="btn btn-danger m-2"
+                                        onclick="newsDelete('<%= data[i].newsid  %>')">刪除</button>
+                              </td>
+                         </tr>
+                         <% } %>
                </table>
 
           </div>
      </header>
 
      <script>
-          
-          function edit(id){
-               newsData = {id:id};
+
+          function edit(id) {
+               newsData = { id: id };
                console.log(newsData);
                $.ajax({
-                    type:"post",
-                    url:"/newsEdit",
+                    type: "post",
+                    url: "/newsEdit",
                     data: newsData,
-                    success:function(e){
+                    success: function (e) {
                          console.log(e);
                     }
                })
-               
-               $(location).attr('href','/background/newsEdit');
+
+               $(location).attr('href', '/background/newsEdit');
           }
 
-          function newsDelete(id){
-               newsData = {id:id};
+          function newsDelete(id) {
+               newsData = { id: id };
                console.log(newsData);
                $.ajax({
-                    type:"post",
-                    url:"/newsDelete",
+                    type: "post",
+                    url: "/newsDelete",
                     data: newsData,
-                    success:function(e){
+                    success: function (e) {
                          window.location.assign(window.location.href);
                     }
                })
           }
 
+          $(document).ready(function () {
+
+               $('.dd').each(function (index, elem) {
+                    var dateStr = $(elem).html();
+                    var dd = new Date(dateStr);
+                    var year = dd.getFullYear();
+                    var month = dd.getMonth() + 1;
+                    var day = dd.getDate();
+                    var date = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+                    $(elem).html(date);
+
+               })
+
+          })
+
 
 
      </script>
 
-     
+
 </body>
+
 </html>

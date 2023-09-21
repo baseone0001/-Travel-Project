@@ -17,22 +17,31 @@
           <div>
                <div style="height: 50px; width: 100%;"></div>
                <h2>行程管理</h2>
-               <a href="/background/itineraryAdd">新增行程</a>
-               <table class="backtable">
+               <a href="/background/itineraryAdd" class="btn btn-info">新增行程</a>
+               <hr>
+               <table class="backtable mt-2">
                     <tr class="bg-info">
                          <th class="backCol">行程標題</th>
-                         <th class="backCol">日期</th>
-                         <th class="backCol">價格</th>
+                         <th class="backCol-s">地區</th>
+                         <th class="backCol">出發日期</th>
+                         <th class="backCol">回程日期</th>
+                         <th class="backCol-s">價格</th>
+                         <th class="backCol">航空</th>
                          <th></th>
                          <th></th>
                     </tr>
+                    <% for(var i=0;i < order.length; i++){ %>
                     <tr>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td><button>修改</button></td>
-                         <td><button>刪除</button></td>
+                         <td><%= order[i].Title %></td>
+                         <td><%= order[i].GoTo %></td>
+                         <td><%= order[i].GoDate %></td>
+                         <td><%= order[i].ArrDate %></td>
+                         <td><%= order[i].Price %></td>
+                         <td><%= order[i].GoAir %></td>
+                         <td><button class="btn btn-warning m-1">修改</button></td>
+                         <td><button class="btn btn-danger m-1">刪除</button></td>
                     </tr>
+                    <% } %>
                </table>
           </div>
      </header>
