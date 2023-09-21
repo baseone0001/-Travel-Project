@@ -22,22 +22,12 @@
                <hr>
                <table class="backtable mt-2">
                     <tr class="bg-info">
-                         <th class="backCol-s">姓名</th>
-                         <th class="backCol">需求</th>
+                         <th class="backCol">姓名</th>
                          <th class="backCol-xl">內容主旨</th>
                          <th class="backCol">日期</th>
                          <th></th>
                     </tr>
-                    <% for(var i=0;i < data.length; i++){ %>
-
-                    <tr>
-                         <td><%= data[i].name %></td>
-                         <td><%= data[i].purpose %></td>
-                         <td><%= data[i].subject %></td>
-                         <td><%= data[i].dd %></td>
-                         <td><button class="btn btn-info m-1">檢視</button></td>
-                    </tr>
-                    <% } %>
+                    
                </table>
           </div>
      </header>
