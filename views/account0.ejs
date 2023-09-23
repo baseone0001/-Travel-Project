@@ -1,7 +1,9 @@
-<%- include('home_nav.ejs') %>
+<%- include('share/home_nav.ejs') %>
 
     <link rel="stylesheet" type="text/css" href="/css/account.css">
-
+    <link rel="stylesheet" href="/css/myHomeStyle.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/jquery-3.6.0.js"></script>
     <form class="form grid">
         <!-- 左邊標  -->
         <div id="allthing">
@@ -12,66 +14,27 @@
                     </li>
                     <br />
                     <li class="memberfile">
-                        <h3><a href="/accountinfo">修改個人資料</a></h3>
+                        <h4><a href="/accountinfo" id="a1">修改個人資料</a></h4>
                     </li>
                     <br />
                     <li class="boughtfile">
-                        <h3><a href="/shoppingCart">訂單資訊</a></h3>
+                        <h4><a href="/shoppingCart" id="a2">訂單資訊</a></h4>
                     </li>
                     <br />
                     <li class="record">
-                        <h3><a href="/login">參團紀錄</a></h3>
+                        <h4><a href="/logging" id="a3">參團紀錄</a></h4>
                     </li>
                     <br />
                     <li class="collect">
-                        <h3><a href="/login">收藏</a></h3>
+                        <h4><a href="/logging" id="a4">收藏</a></h4>
                     </li>
                     <br />
                     <li class="logout">
-                        <h3><a href="/login">登入</a></h3>
+                        <h4><a href="/login" id="a5">登入</a></h4>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <footer>
-            <div id="footerdown">
-                <div id="footerdown1">
-                    <ul>
-                        <li><a href="">行程方案</a></li>
-                        <br>
-                        <li><a href="">最新消息</a></li>
-                        <br>
-                        <li><a href="">聯絡我們</a></li>
-                        <br>
-                        <li><a href="">旅遊注意</a></li>
-                        <br>
-                        <li><a href="">會員專區</a></li>
-                    </ul>
-                </div>
-                <div id="footerdown1">
-                    <ul>
-                        <br><br>
-                        <li><a href="#">行程比較</a></li>
-                        <br>
-                        <li><a href="#">法規</a></li>
-                        <!-- <li><a href="#"></a></li> -->
-                        <br>
-                        <li><a href="#">旅遊資訊</a></li>
-                        <br>
-                        <li><a href="#">會員專區</a></li>
-                        <br><br>
-                    </ul>
-                </div>
-                <div id="footerdown1">
-                    <img src="/img/logo_foot.png" alt="">
-                    <ul>
-                        <li>電話：04-2355678</li>
-                        <br>
-                        <li>地址：404台中市北區英才路126號1樓</li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-
     </form>
+    <%- include('share/home_footer.ejs') %>

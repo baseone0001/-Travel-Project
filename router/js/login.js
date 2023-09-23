@@ -17,7 +17,8 @@ btnLogin.addEventListener("click", async () => {
             if (data.success) {
                 // 登入成功，可能在這裡處理重定向或其他操作
                 console.log("登入成功");
-                window.history.back();
+                // window.history.back();
+                window.location.href = "http://localhost:2407/home"
 
             } else {
                 // 登入失敗，處理錯誤訊息

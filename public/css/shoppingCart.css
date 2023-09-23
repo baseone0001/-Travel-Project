@@ -1,14 +1,16 @@
-.shopping {
-    position: relative;
-    background-color: #f5f5f5;
-    width: 82%;
-    margin-left: auto;
-    padding-left: 5%;
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    background-clip: content-box;
+
+}
+
+.shopping {
+    position: absolute;
+    width: 82%;
     height: 70vh;
-    bottom: 510px;
-    overflow-x: auto;
+    top: 100px;
+    left: 300px;
 }
 
 .shopping2 {
@@ -151,7 +153,8 @@ th {
     right: 25%;
     border-radius: 15px;
     text-align: center;
-    width: 40%;
+    width: 500px;
+    height: 400px;
     line-height: 2;
 }
 
@@ -171,7 +174,7 @@ th {
 
 .nobtn {
     width: 160px;
-    height: 40px;
+    height: 60px;
     background-color: rgb(244, 76, 34);
     border-radius: 15px;
     color: white;
@@ -207,6 +210,11 @@ th {
 
 .iconbtn i:hover {
     background-color: rgb(169, 169, 169);
+}
+
+/* 信用卡 */
+.cardinfo {
+padding-top: 40px;
 }
 
 div input {
