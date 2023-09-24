@@ -3,10 +3,30 @@
           <div class="logo"></div>
      </a>
      <span>
-          <a href="/Scheduleh" class="nav_a">地區</a>
-          <a href="/news" class="nav_a">最新消息</a>
-          <a href="/contact" class="nav_a">聯絡我們</a>
-          <a href="#" class="nav_a">旅遊資訊</a>
-          <a href="/login" class="nav_a">會員</a>
+          <button class="han"><img src="/img/han.svg" alt=""></button>
+          <span class="navitem">
+               <a href="/Scheduleh" class="nav_a">地區</a>
+               <a href="/news" class="nav_a">最新消息</a>
+               <a href="/contact" class="nav_a">聯絡我們</a>
+               <a href="#" class="nav_a">旅遊資訊</a>
+               <a href="/login" class="nav_a">會員專區</a>
+          </span>
      </span>
 </nav>
+<div class="navitem_rwd">
+     <div>
+          <a href="/Scheduleh" class="nav_b">地區</a>
+          <a href="/news" class="nav_b">最新消息</a>
+          <a href="/contact" class="nav_b">聯絡我們</a>
+          <a href="#" class="nav_b">旅遊資訊</a>
+          <a href="/login" class="nav_b">會員專區</a>
+     </div>
+</div>
+
+<script>
+     $('.han').on('click',function(){
+          console.log('ok')
+          $('.navitem_rwd').toggleClass('show');
+     })
+
+</script>
