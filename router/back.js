@@ -421,8 +421,8 @@ app.get('/background/newsContact',function(req,res){
 
 app.post('/background/contactInsert', function (req, res) {
      // console.log(req.body);
-     var data = [req.body.name, req.body.sex, req.body.email, req.body.phone, req.body.time, req.body.area, req.body.people, req.body.date, req.body.days, req.body.budget,req.body.subject, req.body.demand,];
-     var sql = "INSERT INTO contact(name,sex,email,phone,time,area,people,date,days,budget,subject,demand) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+     var data = [req.body.name, req.body.sex, req.body.email, req.body.phone, req.body.time, req.body.purpose, req.body.subject, req.body.demand,];
+     var sql = "INSERT INTO contact(name,sex,email,phone,time,purpose,demand) VALUES(?,?,?,?,?,?,?,?)";
      myDBconn.exec(sql,data,function(results,fields){
           if(results){
                res.send("成功送出");
