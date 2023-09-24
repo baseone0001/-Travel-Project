@@ -29,7 +29,7 @@ app.use(session({
 }))
 //---------------------multer---------------------------
 var d = new Date();
-console.log(d);
+// console.log(d);
 var myStorage = multer.diskStorage({
      destination: function (req, file, cb) {
           cb(null, 'public/uploud');
@@ -113,7 +113,7 @@ app.get('/backlogin', function (req, res) {
 
 app.post('/backlogin', up, function (req, res) {
      res.setHeader('Content-type', 'text/html ; charset=utf-8');  //中文編碼
-     console.log(req.body);
+     // console.log(req.body);
 
      if (req.session.user) {
           res.write(`<p>${req.session.user.isAccount}你已經登入</p>`);
@@ -242,7 +242,7 @@ app.post('/newsUpdate', function (req, res) {
 })
 
 app.post('/newsDelete', function (req, res) {
-     console.log(req.body.id);
+     // console.log(req.body.id);
      var newsID = req.body.id;
      var sql = "DELETE FROM news WHERE newsid = ?";
      myDBconn.exec(sql, newsID, function (results, fields) {
@@ -264,7 +264,7 @@ app.get('/background/members', function (req, res) {
      })
 })
 app.post('/background/member', function (req, res) {
-     console.log(req.body);
+     // console.log(req.body);
      var memberId = req.body.memberID;
      req.session.member = memberId;
      res.redirect('/background/memberview');
@@ -272,7 +272,7 @@ app.post('/background/member', function (req, res) {
 })
 app.get('/background/memberview', function (req, res) {
      var memberId = [req.session.member, req.session.member];
-     console.log(memberId);
+     // console.log(memberId);
      var sql = "SELECT uid, username, email, name, sex, identity, address, phone FROM users WHERE uid = ? UNION SELECT uid, username, email, name, sex, identity, address, phone FROM blacklist WHERE uid = ?";
      myDBconn.exec(sql, memberId, function (results, fields) {
           // console.log(results);
@@ -303,7 +303,7 @@ app.post('/background/memberSelectId', function (req, res) {
 
 })
 app.post('/background/memberSelectName', function (req, res) {
-     console.log(req.body);//name
+     // console.log(req.body);//name
      if (req.body.memberName) {
           var sql = "SELECT * FROM users WHERE name LIKE CONCAT('%', ?, '%') "
           var data = req.body.memberName;
@@ -333,7 +333,7 @@ app.get('/background/memberBlack', function (req, res) {
 })
 
 app.post('/background/memberBlack', function (req, res) {
-     console.log(req.body);
+     // console.log(req.body);
      var data = req.body.memberID;
      var reason = req.body.reason;
      var sql = "SELECT * FROM users WHERE uid = ?";
@@ -353,13 +353,13 @@ app.post('/background/memberBlack', function (req, res) {
      })
      var sql3 = "DELETE FROM users WHERE uid = ?"
      myDBconn.exec(sql3, data, function (results, fields) {
-          console.log(results);
+          // console.log(results);
      })
      res.send();
 })
 
 app.post('/background/memberBlackout', function (req, res) {
-     console.log(req.body);
+     // console.log(req.body);
      var data = req.body.memberID
      var sql = "SELECT * FROM blacklist WHERE uid = ?";
      myDBconn.exec(sql, data, function (results, fields) {
@@ -378,7 +378,7 @@ app.post('/background/memberBlackout', function (req, res) {
      })
      var sql3 = "DELETE FROM blacklist WHERE uid = ?"
      myDBconn.exec(sql3, data, function (results, fields) {
-          console.log(results);
+          // console.log(results);
      })
      res.send();
 })
