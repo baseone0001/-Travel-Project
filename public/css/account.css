@@ -47,9 +47,6 @@ ul {
     color: rgb(68, 68, 237);
 }
 
-
-#accounttitle {}
-
 /* 縮放設定 */
 @media screen and (max-width:768px) {
     #footerdown {
