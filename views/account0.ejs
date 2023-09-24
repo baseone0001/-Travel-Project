@@ -1,6 +1,17 @@
-<%- include('home_nav.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="/css/account.css">
+     <link rel="stylesheet" href="/css/myHomeStyle.css">
+     <title>Document</title>
+</head>
+<body>
+     <%- include('share/home_nav.ejs') %>
 
-    <link rel="stylesheet" type="text/css" href="/css/account.css">
+    
 
     <form class="form grid">
         <!-- 左邊標  -->
@@ -34,44 +45,9 @@
             </div>
         </div>
 
-        <footer>
-            <div id="footerdown">
-                <div id="footerdown1">
-                    <ul>
-                        <li><a href="">行程方案</a></li>
-                        <br>
-                        <li><a href="">最新消息</a></li>
-                        <br>
-                        <li><a href="">聯絡我們</a></li>
-                        <br>
-                        <li><a href="">旅遊注意</a></li>
-                        <br>
-                        <li><a href="">會員專區</a></li>
-                    </ul>
-                </div>
-                <div id="footerdown1">
-                    <ul>
-                        <br><br>
-                        <li><a href="#">行程比較</a></li>
-                        <br>
-                        <li><a href="#">法規</a></li>
-                        <!-- <li><a href="#"></a></li> -->
-                        <br>
-                        <li><a href="#">旅遊資訊</a></li>
-                        <br>
-                        <li><a href="#">會員專區</a></li>
-                        <br><br>
-                    </ul>
-                </div>
-                <div id="footerdown1">
-                    <img src="/img/logo_foot.png" alt="">
-                    <ul>
-                        <li>電話：04-2355678</li>
-                        <br>
-                        <li>地址：404台中市北區英才路126號1樓</li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-
-    </form>
+          
+     </form>
+     <%- include('share/home_footer.ejs') %>
+     
+</body>
+</html>
