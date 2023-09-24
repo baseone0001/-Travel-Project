@@ -213,6 +213,15 @@ td {
     letter-spacing: 0.5rem;
 }
 
+.btn-carousel {
+    margin: -5rem;
+    display: block;
+}
+
+.btn-carousel>span {
+    background-color: #83C9D2;
+}
+
 .hidden {
     display: none;
 }

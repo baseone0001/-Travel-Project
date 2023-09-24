@@ -35,20 +35,11 @@ body {
      animation-duration: 2s;
      animation-iteration-count: infinite;
 }
-.paper{
-     width: 132px;
-     height: 41px;
-     background-image: url(/img/pepar.png);
-     background-repeat: no-repeat;
-     background-size: cover;
-     animation-name: paperMove;
-     animation-duration: 2s;
-     animation-iteration-count: infinite;
-}
+
 .paper-l{
      width: 132px;
      height: 41px;
-     background-image: url(/img/pepar.png);
+     background-image: url(/img/pepar_l.png);
      background-repeat: no-repeat;
      background-size: cover;
      animation-name: paperMove;

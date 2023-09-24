@@ -56,32 +56,15 @@
                               <option value="不方便接電話，請以mail聯繫">不方便接電話，請以mail聯繫</option>
                          </select><br>
                          <hr>
-                         <label for="area">行程規劃</label><br>
-                         <select name="area" id="area" required>
-                              <option value="">請選擇地區</option>
-                              <option value="關東地區">關東地區</option>
-                              <option value="關西地區">關西地區</option>
-                              <option value="中部地區">中部地區</option>
-                              <option value="四國地區">四國地區</option>
-                              <option value="中國地區">中國地區</option>
-                              <option value="九州地區">九州地區</option>
-                              <option value="東北地區">東北地區</option>
-                         </select>
-                         <hr>
-                         <label for="people">人數</label><br>
-                         <select name="people" id="people" required>
-                              <option value="">請選擇人數</option>
-                              <option value="1~2位">1~2位</option>
-                              <option value="3~5位">3~5位</option>
-                              <option value="6~10位">6~10位</option>
-                              <option value="10~20位">10~20位</option>
-                         </select><br>
-                         <label for="date">預計出發日期</label><br>
-                         <input id="date" type="text" required><br>
-                         <label for="days">旅行天數</label><br>
-                         <input id="days" type="text" required><br>
-                         <label for="budget">行程預算</label><br>
-                         <input id="budget" type="text" required><br>
+                         <label for="area">聯絡需求</label><br>
+                         <select name="purpose" id="purpose" required>
+                              <option value="">請選擇</option>
+                              <option value="詢問行程">詢問行程</option>
+                              <option value="客製行程">客製行程</option>
+                              <option value="工商合作">工商合作</option>
+                              <option value="其他">其他</option>
+                         </select><hr>
+                         
                          <label for="subject">主旨</label><br>
                          <input id="subject" type="text" required><br>
                          <label for="demand">需求</label><br>
@@ -100,11 +83,7 @@
                                    email: $('#email').val(),
                                    phone: $('#phone').val(),
                                    time: $('#time').val(),
-                                   area: $('#area').val(),
-                                   people: $('#people').val(),
-                                   date: $('#date').val(),
-                                   days: $('#days').val(),
-                                   budget: $('#budget').val(),
+                                   purpose: $('#purpose').val(),
                                    subject: $('#subject').val(),
                                    demand: $('#demand').val()
                               }
