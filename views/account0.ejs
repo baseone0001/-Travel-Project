@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="/css/account.css">
-     <link rel="stylesheet" href="/css/myHomeStyle.css">
-     <title>Document</title>
-</head>
-<body>
-     <%- include('share/home_nav.ejs') %>
+<%- include('share/home_nav.ejs') %>
 
-    
-
+    <link rel="stylesheet" type="text/css" href="/css/account.css">
+    <link rel="stylesheet" href="/css/myHomeStyle.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/jquery-3.6.0.js"></script>
     <form class="form grid">
         <!-- 左邊標  -->
         <div id="allthing">
@@ -23,31 +14,27 @@
                     </li>
                     <br />
                     <li class="memberfile">
-                        <h3><a href="/accountinfo">修改個人資料</a></h3>
+                        <h4><a href="/accountinfo" id="a1">修改個人資料</a></h4>
                     </li>
                     <br />
                     <li class="boughtfile">
-                        <h3><a href="/shoppingCart">訂單資訊</a></h3>
+                        <h4><a href="/shoppingCart" id="a2">訂單資訊</a></h4>
                     </li>
                     <br />
                     <li class="record">
-                        <h3><a href="/login">參團紀錄</a></h3>
+                        <h4><a href="/logging" id="a3">參團紀錄</a></h4>
                     </li>
                     <br />
                     <li class="collect">
-                        <h3><a href="/login">收藏</a></h3>
+                        <h4><a href="/logging" id="a4">收藏</a></h4>
                     </li>
                     <br />
                     <li class="logout">
-                        <h3><a href="/login">登入</a></h3>
+                        <h4><a href="/login" id="a5">登入</a></h4>
                     </li>
                 </ul>
             </div>
         </div>
 
-          
-     </form>
-     <%- include('share/home_footer.ejs') %>
-     
-</body>
-</html>
+    </form>
+    <%- include('share/home_footer.ejs') %>

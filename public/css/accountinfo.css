@@ -7,22 +7,18 @@
 
 
 .infoPage {
-    position: relative;
-    width: 82%;
-    margin-left: auto;
-    box-sizing: border-box;
-    padding-left: 5%;
-    background-clip: content-box;
-    background-color: #F5F5F5;
-    height: 70vh;
-    bottom: 530px;
+    width: 400px; 
+    position: absolute;
+    right: 380px;
+    top: 150px;
 }
 
 .container {
-    line-height: 2;
-    padding: 5%;
-    height: 100%;
-    overflow: auto;
+    float: right;
+    right: 23%; 
+    width: 500px; 
+    height: 430px;
+    overflow-y: auto;
 }
 
 .formDiv {
@@ -31,7 +27,7 @@
     align-items: center;
 }
 
-h1 {
+.titleh1 {
     text-align: center;
 }
 
@@ -88,4 +84,18 @@ h1 {
     #address {
         width: 250px;
     }
+}
+
+@media screen and (max-width:1000px) {
+    .infoPage {
+        right: 0;
+        top: 100px;
+    }
+
+}
+@media screen and (max-height:600px) {
+    .container{
+        height: 300px;
+    }
+
 }
