@@ -6,7 +6,7 @@ function db(sql,data,callback) {
           host: 'localhost',
           port: '3306',
           user: 'root',
-          password: '',
+          password: 'root',
           database: 'travel',
 
           //是否允許使用者一口氣傳入很多sql指令
@@ -16,7 +16,7 @@ function db(sql,data,callback) {
      connection.connect(function (err) {
           if (err) {
                console.log('資料庫有問題----------------檢查有沒有開mamp');
-               console.log(err);//這邊必須看到null才等於有連上DB
+               // console.log(err);//這邊必須看到null才等於有連上DB
           } else {
                // console.log('資料庫OK----------------------');    
                //若覺得consle很煩可以關掉
