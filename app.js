@@ -334,15 +334,13 @@ app.post('/nobought', isAuthenticated, (req, res) => {
             console.error('購物車內容為空', err);
             res.redirect('/shoppingCart');
         } else {
-            // 删除购物车的内容，可以根据具体情况来实现
-            // 假设你有一个名为 order 的表用于存储购物车项，你可以执行删除操作
+           
             req.session.shoppingCartContents = null;
             const deleteSQL = 'DELETE FROM `order` WHERE user_id = ?';
             db.query(deleteSQL, [userId], (err, deleteResult) => {
                 if (err) {
                     console.error('刪除購物車失敗', err);
                 } else {
-                    // 删除成功后重定向到 /shoppingCart 或其他适当的页面
                     res.redirect('/shoppingCart');
                 }
             });
