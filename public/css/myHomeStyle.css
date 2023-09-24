@@ -148,6 +148,7 @@ nav>span {
 }
 
 @media screen and (max-width: 768px) {
+
      .navitem{
           display: none;
      }
@@ -246,8 +247,12 @@ nav>span {
      background-position: center center;
      background-size: auto;
      overflow: hidden;
+     transform: 2s;
+
 
 }
+
+
 
 /* 要記得做rwd時的圖片大小 */
 
@@ -278,6 +283,7 @@ nav>span {
      position: relative;
      top: 110px;
      left: 35%;
+     transform: 2s;
      text-shadow: -1px -1px 0 black,
           1px -1px 0 black,
           -1px 1px 0 black,
@@ -296,6 +302,17 @@ nav>span {
      100% {
           transform: translateY(0px);
           opacity: 1;
+     }
+}
+
+@media screen and (max-width:768px) {
+     .airWindow {
+     background-image: url(/img/airwindow_2.png);
+
+     }
+     .title_top {
+          font-size: 55px;
+          left: 23%;
      }
 }
 
