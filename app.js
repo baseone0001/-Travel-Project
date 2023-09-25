@@ -222,7 +222,7 @@ app.post('/add-to-order', isAuthenticated, (req, res) => {
 app.get('/shoppingCart', isAuthenticated, (req, res) => {
     const userId = req.user.uid;
     const page = parseInt(req.query.page) || 1;
-    const itemsPerPage = 5;
+    const itemsPerPage = 3;
     const startIndex = (page - 1) * itemsPerPage;
     const SQL =
         `SELECT id,Area,Title,GoTo,Price,order_id,GoDate,ArrDate From orderinfo
