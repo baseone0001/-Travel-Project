@@ -184,8 +184,8 @@ app.post('/accountinfo', isAuthenticated, async (req, res) => {
 
         db.query(SQL, values, (error, results) => {
             if (error) {
-                console.error('更新失败', error);
-                res.status(500).json({ success: false, message: '更新失败' });
+                console.error('更新失敗', error);
+                res.status(500).json({ success: false, message: '更新失敗' });
             } else {
                 console.log('更新成功', results.affectedRows);
                 res.json({ success: true, message: '更新成功' });
@@ -193,7 +193,7 @@ app.post('/accountinfo', isAuthenticated, async (req, res) => {
         });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ success: false, message: '更新失败' });
+        res.status(500).json({ success: false, message: '更新失敗' });
     }
 });
 
@@ -210,7 +210,8 @@ app.post('/add-to-order', isAuthenticated, (req, res) => {
         } else {
             const orderId = results.insertId;
             console.log("成功插入訂單" + orderId);
-            res.redirect('/Scheduleh')
+            const message = '成功加入訂單！';
+            res.status(200).send(`<script>alert("${message}"); window.location.href = '/Scheduleh';</script>`);
         }
     })
 })
@@ -334,7 +335,7 @@ app.post('/nobought', isAuthenticated, (req, res) => {
             console.error('購物車內容為空', err);
             res.redirect('/shoppingCart');
         } else {
-           
+
             req.session.shoppingCartContents = null;
             const deleteSQL = 'DELETE FROM `order` WHERE user_id = ?';
             db.query(deleteSQL, [userId], (err, deleteResult) => {
@@ -391,9 +392,6 @@ app.get('/logging', isAuthenticated, (req, res) => {
 
 })
 
-app.post('/logging', (req, res) => {
-
-})
 
 
 // ------------------------------------------------------------------
@@ -401,7 +399,8 @@ function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect('/login');
+    const alertMessage = "請先登入帳號！";
+    res.send(`<script>alert("${alertMessage}"); setTimeout(function() { window.location.href = '/login'; }, 500)</script>`);
 }
 
 // 請在此處添加其他路由，如果有的話

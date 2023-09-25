@@ -287,63 +287,70 @@
                 <div class="row">
                     <div class="col-lg-2 MyListTitle">詳細行程</div>
                     <div class="col-lg-9">
-                        <% const day = [day1, day2, day3, day4, day5]; %>
-                        <% for (let p = 0; p < 5; p++) { %>
-                            <% const currentDay = day[p]; %>
-                            <div>
-                                <div class="ms-5 mt-4 ps-4">
-                                    <div class="h1" style="color: gray;">Day <%= `${p + 1}` %></div>
-                                    <hr class="w-75">
-                                    <div style="color: gray;">
-                                        <%= currentDay[0].DayTitle %>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div id="CarouselForm">
-                                        <!-- 大於768 -->
-                                        <div id="bigScreen<%= p %>" class="carousel slide"
-                                            data-bs-ride="<%= currentDay.length >= 4 ? 'carousel' : '' %>"
-                                            data-bs-interval="false">
-                                            <div class="carousel-inner">
-                                                <% for (let i = 0; i < currentDay.length; i += 3) { %>
-                                                    <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                                                        <div class="row">
-                                                            <% for (let j = i; j < i + 3 && j < currentDay.length; j++) { %>
-                                                                <div class="MyListImgDiv col-lg-4">
-                                                                    <!-- 景點圖片 -->
-                                                                    <img src="<%= currentDay[j].ViewImg %>" class="MyDayListImg">
-                                                                    <!-- 景點名稱 -->
-                                                                    <h6 class="MyListImgTitle">
-                                                                        <%= currentDay[j].ViewName %>
-                                                                    </h6>
-                                                                    <!-- 景點內容 -->
-                                                                    <div class="MyListImgText">
-                                                                        <%= currentDay[j].ViewInfo %>
-                                                                    </div>
-                                                                </div>
-                                                            <% } %>
-                                                        </div>
-                                                    </div>
-                                                <% } %>
+                        <% const day=[day1, day2, day3, day4, day5]; %>
+                            <% for (let p=0; p < 5; p++) { %>
+                                <% const currentDay=day[p]; %>
+                                    <div>
+                                        <div class="ms-5 mt-4 ps-4">
+                                            <div class="h1" style="color: gray;">Day <%= `${p + 1}` %>
                                             </div>
-                                            <!-- 輪播按鈕，當資料大於4時，才會執行渲染按鈕 -->
-                                            <% if (currentDay.length >= 4) { %>
-                                                <button id="carouselPrev<%= p %>" class="carousel-control-prev btn-carousel" type="button"
-                                                    data-bs-target="#bigScreen<%= p %>" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                </button>
-                                                <button id="carouselNext<%= p %>" class="carousel-control-next btn-carousel" type="button"
-                                                    data-bs-target="#bigScreen<%= p %>" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                </button>
-                                            <% } %>
+                                            <hr class="w-75">
+                                            <div style="color: gray;">
+                                                <%= currentDay[0].DayTitle %>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div id="CarouselForm">
+                                                <!-- 大於768 -->
+                                                <div id="bigScreen<%= p %>" class="carousel slide"
+                                                    data-bs-ride="<%= currentDay.length >= 4 ? 'carousel' : '' %>"
+                                                    data-bs-interval="false">
+                                                    <div class="carousel-inner">
+                                                        <% for (let i=0; i < currentDay.length; i +=3) { %>
+                                                            <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                                                                <div class="row">
+                                                                    <% for (let j=i; j < i + 3 && j < currentDay.length;
+                                                                        j++) { %>
+                                                                        <div class="MyListImgDiv col-lg-4">
+                                                                            <!-- 景點圖片 -->
+                                                                            <img src="<%= currentDay[j].ViewImg %>"
+                                                                                class="MyDayListImg">
+                                                                            <!-- 景點名稱 -->
+                                                                            <h6 class="MyListImgTitle">
+                                                                                <%= currentDay[j].ViewName %>
+                                                                            </h6>
+                                                                            <!-- 景點內容 -->
+                                                                            <div class="MyListImgText">
+                                                                                <%= currentDay[j].ViewInfo %>
+                                                                            </div>
+                                                                        </div>
+                                                                        <% } %>
+                                                                </div>
+                                                            </div>
+                                                            <% } %>
+                                                    </div>
+                                                    <!-- 輪播按鈕，當資料大於4時，才會執行渲染按鈕 -->
+                                                    <% if (currentDay.length>= 4) { %>
+                                                        <button id="carouselPrev<%= p %>"
+                                                            class="carousel-control-prev btn-carousel" type="button"
+                                                            data-bs-target="#bigScreen<%= p %>" data-bs-slide="prev">
+                                                            <span class="carousel-control-prev-icon"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                        <button id="carouselNext<%= p %>"
+                                                            class="carousel-control-next btn-carousel" type="button"
+                                                            data-bs-target="#bigScreen<%= p %>" data-bs-slide="next">
+                                                            <span class="carousel-control-next-icon"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                        <% } %>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <br>
-                        <% } %>
-                        <div class="col-lg-1"></div>
+                                    <br>
+                                    <% } %>
+                                        <div class="col-lg-1"></div>
                     </div>
                     <hr class="SeparateLine">
                 </div>
@@ -432,24 +439,24 @@
 
 <!-- JavaScript -->
 <script>
-    // 畫面 < 768px，標題靠左
-    $(document).ready(function () {
-        function MyTitle() {
-            if (window.innerWidth < 768) {
-                $(".MyListTitle").css("text-align ", "");
-                $(".MyListTitle").css("padding-left", "");
-                $(".MyListTitle").css("text-align", "center");
-            } else {
-                $(".MyListTitle").css("text-align", " ");
-                $(".MyListTitle").css("padding-left", "5rem");
-                $(".MyListTitle").css("text-align", "left");
+        // 畫面 < 768px，標題靠左
+        $(document).ready(function () {
+            function MyTitle() {
+                if (window.innerWidth < 768) {
+                    $(".MyListTitle").css("text-align ", "");
+                    $(".MyListTitle").css("padding-left", "");
+                    $(".MyListTitle").css("text-align", "center");
+                } else {
+                    $(".MyListTitle").css("text-align", " ");
+                    $(".MyListTitle").css("padding-left", "5rem");
+                    $(".MyListTitle").css("text-align", "left");
+                }
             }
-        }
-        MyTitle();
-        $(window).resize(function () {
             MyTitle();
-        });
-    })
+            $(window).resize(function () {
+                MyTitle();
+            });
+        })
 
 
     // 輪播樣式的切換
