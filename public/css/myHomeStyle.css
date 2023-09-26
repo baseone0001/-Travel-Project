@@ -2,7 +2,7 @@ body {
      overflow-x: hidden;
 }
 
-#loading{
+#loading {
      background-color: #83C9D2;
      width: 100%;
      height: 100vh;
@@ -10,8 +10,24 @@ body {
      z-index: 2000;
      overflow: hidden;
      transition: 1.5s;
-     
+
 }
+.sroll{
+     animation-name: sroll;
+     animation-duration: 2s;
+}
+@keyframes sroll {
+     0% {
+          transform: translateY(-30px);
+          opacity: 0.8;
+     }
+
+     100% {
+          transform: translateY(0px);
+          opacity: 1;
+     }
+}
+
 .icon {
      display: inline-block;
      position: relative;
@@ -22,10 +38,10 @@ body {
      margin-top: -38.8px;
      transform: scale(0.8);
 
-     
+
 }
 
-.paper{
+.paper {
      width: 132px;
      height: 41px;
      background-image: url(/img/pepar.png);
@@ -36,7 +52,7 @@ body {
      animation-iteration-count: infinite;
 }
 
-.paper-l{
+.paper-l {
      width: 132px;
      height: 41px;
      background-image: url(/img/pepar_l.png);
@@ -55,13 +71,14 @@ body {
      50% {
           transform: translateY(0px);
      }
-     100%{
+
+     100% {
           transform: translateY(-20px);
      }
 }
 
 
-.stroke{
+.stroke {
      width: 150px;
      height: 56px;
      background-image: url(/img/stroke.png);
@@ -83,7 +100,8 @@ body {
      50% {
           transform: scale(0.9);
      }
-     100%{
+
+     100% {
           transform: scale(0.8);
      }
 }
@@ -117,6 +135,7 @@ nav>span {
      text-decoration-line: none;
 
 }
+
 .nav_b {
      padding: 25px;
      font-size: 20px;
@@ -125,12 +144,19 @@ nav>span {
      text-decoration-line: none;
 
 }
-.han{
+
+.han {
      border-style: none;
      background-color: #83C9D2;
      visibility: hidden;
+     position: absolute;
+     right: 0px;
+     margin-right: 9px;
+
+
 }
-.navitem_rwd{
+
+.navitem_rwd {
 
      width: 100%;
      height: 0;
@@ -139,25 +165,16 @@ nav>span {
      z-index: 999;
      display: flex;
      position: fixed;
-     justify-content: center; 
-     align-items: center;  
+     justify-content: center;
+     align-items: center;
      transition: 1s;
 }
-.show{
+
+.show {
      height: 100vh;
 }
 
-@media screen and (max-width: 768px) {
 
-     .navitem{
-          display: none;
-     }
-     .han{
-          visibility:visible;
-          margin-top: 15px;
-          margin-right: 10px;
-     }
-}
 
 .logo {
      display: inline-block;
@@ -307,9 +324,10 @@ nav>span {
 
 @media screen and (max-width:768px) {
      .airWindow {
-     background-image: url(/img/airwindow_2.png);
+          background-image: url(/img/airwindow_2.png);
 
      }
+
      .title_top {
           font-size: 55px;
           left: 23%;
@@ -327,12 +345,12 @@ nav>span {
 
 .search {
      /* border: 1px solid salmon; */
-     width: 300px;
+     width: 400px;
      height: 54px;
      border-radius: 10px;
      position: relative;
      top: 460px;
-     left: 40%;
+     left: 37.5%;
      /* padding: 10px; */
      animation-name: homeMove;
      animation-duration: 2s;
@@ -345,6 +363,7 @@ nav>span {
      height: 54px;
      background-color: white;
      border-radius: 10px;
+     display: inline-block;
 }
 
 .search_space {
@@ -533,6 +552,15 @@ nav>span {
      align-items: center;
      /* border: 1px solid black; */
 }
+.place_center_a {
+     display: flex;
+     width: 100%;
+     /* height: 100vh; */
+     flex-direction: column;
+     align-items: center;
+     /* border: 1px solid black; */
+}
+
 .place_centerN {
      display: flex;
      width: 80%;
@@ -548,7 +576,7 @@ nav>span {
      /* border: 1px solid black; */
 }
 
-.place_centerN a{
+.place_centerN a {
      text-decoration: none;
      color: black;
 }
@@ -561,11 +589,10 @@ nav>span {
      margin-left: 20px;
      margin-right: 20px;
      margin-top: 50px;
-     animation-name: newsMove;
-     animation-duration: 2s;
+     
 }
 
-@keyframes newsMove {
+/* @keyframes newsMove {
      0% {
           transform: translateY(-20px);
           opacity: 0.5;
@@ -575,7 +602,7 @@ nav>span {
           transform: translateY(0px);
           opacity: 1;
      }
-}
+} */
 
 .newsText>h4 {
      margin-top: 15px;
@@ -584,8 +611,8 @@ nav>span {
 .newsMarquee {
      font-size: 18px;
      width: 65%;
-     height: 40px;
-     line-height: 40px;
+     height: 45px;
+     line-height: 45px;
      text-align: center;
      color: white;
      overflow: hidden;
@@ -593,6 +620,19 @@ nav>span {
           1px -1px 0 #83C9D2,
           -1px 1px 0 #83C9D2,
           1px 1px 0 #83C9D2;
+}
+
+.newsMarquee>p::before {
+     content: "";
+     width: 30px;
+     height: 30px;
+     display: inline-block;
+     background-image: url(/img/airplane_left.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     position: relative;
+     top: 5px;
+     margin-right: 5px;
 }
 
 .dash {
@@ -647,7 +687,7 @@ nav>span {
 
 }
 
-.newsimg{
+.newsimg {
      width: 260px;
      height: 260px;
      object-fit: cover;
@@ -656,23 +696,26 @@ nav>span {
 
 }
 
-.new{
+.new {
      position: relative;
      top: 85px;
      right: 450px;
      animation-name: warp;
-     animation-iteration-count:infinite ;
+     animation-iteration-count: infinite;
      animation-duration: 2s;
      transform: rotate(-5deg);
 }
+
 @keyframes warp {
-     0%{
+     0% {
           top: 85px;
      }
-     50%{
+
+     50% {
           top: 105px;
      }
-     100%{
+
+     100% {
           top: 85px;
      }
 }
@@ -741,26 +784,46 @@ nav>span {
      object-fit: cover;
      overflow: hidden;
 }
+.ticket:hover{
+     transform: translate(-10px,-10px);
+     box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+     transition: 0.3s;
+}
 
-.ticket {
-     background-color: white;
-     width: 909px;
-     height: 250px;
-     overflow: hidden;
-     border-radius: 5px;
+
+.ticfont {
+     -webkit-writing-mode: vertical-lr;
+     writing-mode: vertical-lr;
+     color: white;
+     /* line-height: 20px; */
+     letter-spacing: 12px;
+     position: relative;
+     top: 70px;
+     right: 22px;
 
 }
+.ticinFont{
+     color: white;
+     position: relative;
+}
+
 
 .tic {
-     border: 1px dashed black;
-
-
+     
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%),
+}
+.tic_in>img {
+     object-fit: cover;
+     width: 263px;
+     height: 49px;
+     position: relative;
+     top: 50px;
+     left: 120px;
 }
 
-.ticA {
-     text-decoration: none;
-     color: black;
-}
+
 
 .ticFont {
      position: relative;
@@ -818,7 +881,7 @@ footer {
      background-repeat: no-repeat;
      background-size: cover;
      background-position-x: -360px;
-     
+
 
 }
 
@@ -947,14 +1010,14 @@ footer {
      background-size: cover;
 }
 
-.dragSpace{
+.dragSpace {
      width: 270px;
      height: 300px;
      /* border: 1px solid black; */
      display: inline-block;
 }
 
-.dragSpace button{
+.dragSpace button {
      border-style: none;
      background-color: #83C9D2;
      width: 200px;
@@ -965,9 +1028,73 @@ footer {
 
 }
 
-.dropSpace{
+.dropSpace {
      width: 300px;
      height: 500px;
      border: 1px solid black;
      display: inline-block;
+}
+
+.GoTop {
+     position: fixed;
+     display: flex;
+     width: 2.5rem;
+     height: 2.5rem;
+     align-items: center;
+     justify-content: center;
+     border-radius: 0.5rem;
+     right: 1rem;
+     bottom: 3rem;
+     color: gray;
+     background-color: #CEE1E3;
+     border: none;
+}
+
+.GoTop:hover {
+     color: #35475C;
+     box-shadow: 3px 3px lightgray;
+     right: 1.5rem;
+     bottom: 3.5rem;
+}
+
+.GoTop:active {
+     background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+
+     .navitem {
+          display: none;
+     }
+
+     .han {
+          visibility: visible;
+          margin-top: 15px;
+          margin-right: 10px;
+     }
+
+     .search {
+          left: 22%;
+     }
+
+     .arrows {
+          left: 43%;
+     }
+
+     .topContent>div:nth-child(3) {
+          left: 45%;
+     }
+
+     .footerfont {
+          display: none;
+     }
+
+     .footlogo {
+          width: 300px;
+          height: 73px;
+     }
+
+     .footext {
+          margin-top: 10%;
+     }
 }

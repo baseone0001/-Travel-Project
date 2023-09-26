@@ -198,7 +198,7 @@ app.post('/newsEdit', function (req, res) {
           // console.log('----=-=-=-=-=-=-=-req.session.news=-=-=-=-==-=-=-=-==---');
           // console.log(req.session.news);
           //   console.log(req.session.news[0].title);
-
+          // res.send();
           res.redirect('/background/newsEdit');
      });
 });
@@ -235,10 +235,9 @@ app.post('/newsUpdate', function (req, res) {
      var sql = "UPDATE news SET title = ? ,contents = ? ,img = ? WHERE newsid = ?";
      myDBconn.exec(sql, data, function (results, fields) {
           console.log('UPDATE success')
+          res.redirect('/background/news');
      })
      // res.status(200).send('Success');
-     res.send("更新成功");
-     res.redirect('/background/news');
 })
 
 app.post('/newsDelete', function (req, res) {
@@ -397,7 +396,7 @@ app.get('/background/itinerary', function (req, res) {
 
 //-------------------------------訂單--------------------------------
 app.get('/background/order', function (req, res) {
-     var sql = "SELECT * FROM orderinfo ORDER BY id DESC "
+     var sql = "SELECT * FROM orderinfo ORDER BY Godate  "
      myDBconn.exec(sql, [], function (results, fields) {
           // console.log(results)
           res.render('back_order', {
@@ -412,7 +411,7 @@ app.get('/background/order', function (req, res) {
 app.get('/background/newsContact',function(req,res){
      var sql = "SELECT * FROM contact ORDER BY dd DESC"
      myDBconn.exec(sql,[],function(results,fields){
-          console.log(results);
+          // console.log(results);
           res.render('back_contact',{
                data:results
           })
@@ -422,7 +421,7 @@ app.get('/background/newsContact',function(req,res){
 app.post('/background/contactInsert', function (req, res) {
      // console.log(req.body);
      var data = [req.body.name, req.body.sex, req.body.email, req.body.phone, req.body.time, req.body.purpose, req.body.subject, req.body.demand,];
-     var sql = "INSERT INTO contact(name,sex,email,phone,time,purpose,demand) VALUES(?,?,?,?,?,?,?,?)";
+     var sql = "INSERT INTO contact(name,sex,email,phone,time,purpose,subject,demand) VALUES(?,?,?,?,?,?,?,?)";
      myDBconn.exec(sql,data,function(results,fields){
           if(results){
                res.send("成功送出");
@@ -430,6 +429,25 @@ app.post('/background/contactInsert', function (req, res) {
                res.send('送出失敗，請再試一次')
           }
      })
+})
+app.post('/background/contacts',function(req,res){
+     // console.log(req.body.conid);
+     var conid = req.body.conid;
+     req.session.contact = conid;
+     res.send();
+})
+
+app.get('/background/contactview',function(req,res){
+     var conid = req.session.contact
+     console.log(conid);
+     var sql = "SELECT * FROM contact WHERE conid = ?" 
+     myDBconn.exec(sql,conid,function(results,fields){
+          // console.log(results);
+          res.render('back_contactview',{
+               data:results
+          })
+     })
+
 })
 
 

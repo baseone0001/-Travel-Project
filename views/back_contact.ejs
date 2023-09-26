@@ -35,12 +35,27 @@
                          <td><%= data[i].purpose %></td>
                          <td><%= data[i].subject %></td>
                          <td><%= data[i].dd %></td>
-                         <td><button class="btn btn-info m-1">檢視</button></td>
+                         <td><button class="btn btn-info m-1" onclick="contacts('<%= data[i].conid %>')">檢視</button></td>
                     </tr>
                     <% } %>
                </table>
           </div>
      </header>
+     <script>
+          function contacts(id){
+               conData = {
+                    conid:id
+               }
+               $.ajax({
+                    type: "post",
+                    url: "/background/contacts",
+                    data: conData,
+                    success: function (e) {
+                         $(location).attr('href', '/background/contactview');
+                    }
+               })
+          }
+     </script>
      
 </body>
 </html>

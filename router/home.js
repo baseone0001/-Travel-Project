@@ -51,7 +51,7 @@ app.get('/news', function (req, res) {
 app.post('/news', function (req, res) {
      // console.log(req.body);
      var data = req.body;
-     
+
      req.session.news = {
           viewid: data
      }
@@ -64,17 +64,45 @@ app.get('/newsview', function (req, res) {
      // console.log(req.session.news.viewid);
      var data = req.session.news.viewid.newsid;
      var sql = "SELECT * FROM news WHERE newsid = ?"
-     myDBconn.exec(sql,data,function(results,fields){
+     myDBconn.exec(sql, data, function (results, fields) {
           // console.log(results);
-          res.render('newsview',{
-               data:results
+          res.render('newsview', {
+               data: results
           })
+
 
      })
 })
 
-app.get('/contact',function(req,res){
+app.get('/contact', function (req, res) {
      res.render('contact');
+})
+
+app.get('/search', function (req, res) {
+     // console.log(req.query.t);
+     // const word = req.query.t;
+     const word = req.session.word;
+     const row = {
+          word:word
+     }
+     // console.log(row);
+     // console.log(word);
+     const sql = "SELECT * FROM orderInfo WHERE GoTo = ?";
+     myDBconn.exec(sql, word, function (results, fields) {
+          // console.log(results);
+          res.render('search', {
+               row: row,
+               data: results
+          })
+     })
+
+})
+
+app.post('/select', function (req, res) {
+     // console.log(JSON.parse(JSON.stringify(req.body.t)));
+     const word = JSON.parse(JSON.stringify(req.body.t));
+     req.session.word = word
+     res.send();
 })
 
 

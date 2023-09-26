@@ -10,7 +10,7 @@
      <script src="/js/jquery-3.6.0.js"></script>
      <title>Home page</title>
 </head>
-
+<!--  -->
 <body onload="loading()">
      <div id="loading">
           <div class="icon">
@@ -20,47 +20,16 @@
      </div>
      <%- include('share/home_nav.ejs')%>
           <div class="space" style="overflow:hidden;">
-               <!-- <div class="garyZone"></div> -->
-               <div class="search_space">
-                    <div class="row">
-                         <div class="col-9">
-                              <form class="searchForm" action="">
-                                   <span class="searchFont">搜尋</span>
-                                   <span class="searchFont">SERACH</span>
-                                   <div class="searchFormA">
-                                        <span class="searchFontA">台灣</span>
-                                        <select name="" id="" class="searchSelect">
-                                             <option value="">東京</option>
-                                             <option value="">大阪</option>
-                                             <option value="">名古屋</option>
-                                             <option value="">京都</option>
-                                             <option value="">北海道</option>
-                                        </select>
-                                   </div>
-                                   <span class="searchFontB">時間區間</span>
-                                   <input type="date" class="searchDate"><span class="searchFontc">~</span>
-                                   <input type="date" class="searchDate">
-                              </form>
-                         </div>
-                         <div class="col-3">
-                              <button class="searchBtn">
-                                   <span>SEARCH</span>
-                                   <p>搜尋</p>
-
-                              </button>
-                         </div>
-                    </div>
-
-
-
-               </div>
+               
                <div class="sky"></div>
                <div class="cloud"></div>
                <div class="airWindow"></div>
                <div class="topContent">
                     <div class="search">
-                         <button id="search">想去哪裡</button>
-                         <img class="icon_air" src="/img/airplane_1.svg" alt="">
+                         <input type="text" placeholder="想去哪裡" id="search" required>
+                         <button  id="select" class="btn" style="display: inline-block; background-color: #83C9D2; color: white; height: 50px; position: relative; top: -2px;">
+                              搜尋
+                         </button>
                     </div>
                     <div class="title_top">
                          <div>Enjoy</div>
@@ -77,30 +46,34 @@
                               document.getElementById("loading").style.height = "0%";
                          }, 2000)
                     }
-                    $('.search_space').hide();
-                    $('body').on('click', function (e) {
-                         console.log(e);
-                         var container = $('.search_space');
-                         var searchBtn = $('#search');
-                         if (!container.is(e.target) && !container.has(e.target).length &&
-                              !searchBtn.is(e.target) && !searchBtn.has(e.target).length) {
-                              container.hide();
-                         }
 
+                    $('#select').on('click', function () {
+                              console.log($('#search').val());
+                              const text = {
+                                   t:$('#search').val()
+                              }
+                              if(!$('#search').val() == ""){
+                                   $.ajax({
+                                        type: "post",
+                                        url: "/select",
+                                        data: text,
+                                        success: function (e) {
+                                             $(location).attr('href', 'search');
+                                        }
+                                   })
+                              }else{
+                                   alert('請輸入地區')
+                              }
 
-                    })
-                    $('#search').on('click', function () {
-                         // console.log('btnok');
-                         $('.search_space').toggle();
+                         })
 
-                    })
                </script>
 
 
 
           </div>
           <!-- ----------------------------最新消息------------------------------ -->
-          <div class="space">
+          <div class="space ">
                <div class="place_center">
                     <h2 class="titleStyle mt-5">最 新 消 息</h2>
                     <div class="dash mt-5"></div>
@@ -130,96 +103,125 @@
 
           <script>
                function news(id) {
-                         console.log(id);
-                         newsData = {
-                              newsid: id
-                         }
-
-
-                         $.ajax({
-                              type: "post",
-                              url: "/news",
-                              data: newsData,
-                              success: function (e) {
-                                   $(location).attr('href', 'newsview');
-                              }
-                         })
+                    console.log(id);
+                    newsData = {
+                         newsid: id
                     }
+
+
+                    $.ajax({
+                         type: "post",
+                         url: "/news",
+                         data: newsData,
+                         success: function (e) {
+                              $(location).attr('href', 'newsview');
+                              
+                              
+                         }
+                    })
+               }
           </script>
 
           <!-- ---------------------------熱門景點------------------------------ -->
 
           <div class="space_a">
-               <div class="place_center">
+               <div class="place_center_a">
                     <h2 class="titleStyle">熱 門 景 點</h2>
                     <hr>
-                    <a href="/IntroduceScheduleh/0" class="ticA">
-                         <div class="ticket">
-                              <div class="row ">
-                                   <div class="col-1">
-                                        <div style="width: 51px; height: 285px; background-color:#83C9D2;"></div>
+                    <a href="/IntroduceScheduleh/0" style="color: black; text-decoration: none;" class="ticket">
+                         <div class="row"
+                              style="width:810px;height: 250px; background-color: white;border-radius: 5px;overflow: hidden;">
+                              <div class="col-1" style="background-color: #83C9D2;">
+                                   <h5 class="ticfont">銀妝富士山</h5>
+                                   <img src="/img/airplane_w.png" alt=""
+                                        style="width: 30px;height:30px;object-fit: cover;position: relative;top: -150px;left: 10px;">
+                              </div>
+                              <div class="col-8 tic" style="background-image: url(/img/FUJI.jpg); border-radius:0 5px 5px 0;overflow: hidden;">
+                                   <div class="tic_in">
+                                        <img src="/img/airplane_2.png" alt="">
+                                        <h4 class="ticinFont" style="top: -40px; left:0px">銀妝富士山五日</h4>
+                                        <h4 class="ticinFont" style="top: 15px; left:95px">台灣</h4>
+                                        <h4 class="ticinFont" style="top: -22px; left:360px">東京</h4>
+                                        <p class="ticinFont" style="top: -70px; left:190px">2023/12/12(二)</p>
+                                        <h3 class="ticinFont" style="top: 10px; left:370px">NT$ 76800</h3>
                                    </div>
-                                   <div class="col-4">
-                                        <div class="ticFont">
-                                             <h3>銀妝富士山5日</h3>
-                                             <h3>TICKET</h3>
-                                             <h3>五天四夜</h3>
-                                             <h3>76800</h3>
-                                             <small>起</small>
-                                        </div>
+                              </div>
+                              <div class="col-3" style="border-left: 2px dashed black; border-radius: 5px;" >
+                                   <div style="margin-top: 35px; margin-left: 25px;">
+                                        <h4>銀妝富士山</h4>
+                                        <h4>五天四夜</h4>
+                                        <p>出發日期：<b>12/12</b> </p>
+                                        <p>價錢</p>
+                                        <h5>NT$ <span style="color: #FFBF5F; font-size: 28px;">76800</span> </h5>
+
                                    </div>
-                                   <div class="col-7">
-                                        <img src="/img/s_tokyo.png" alt="">
+                              </div>
+                         </div>
+                    </a>
+                    <a href="/IntroduceScheduleh/2" style="color: black; text-decoration: none;" class="mt-5 ticket" >
+                         <div class="row"
+                              style="width:810px;height: 250px; background-color: white;border-radius: 5px;overflow: hidden;">
+                              <div class="col-1" style="background-color: #83C9D2;">
+                                   <h5 class="ticfont">炫環球影城</h5>
+                                   <img src="/img/airplane_w.png" alt=""
+                                        style="width: 30px;height:30px;object-fit: cover;position: relative;top: -150px;left: 10px;">
+                              </div>
+                              <div class="col-8 tic" style="background-image: url(/img/Universal.jpg); border-radius:0 5px 5px 0;overflow: hidden;">
+                                   <div class="tic_in">
+                                        <img src="/img/airplane_2.png" alt="">
+                                        <h4 class="ticinFont" style="top: -40px; left:0px">炫動環球影城五日</h4>
+                                        <h4 class="ticinFont" style="top: 15px; left:95px">台灣</h4>
+                                        <h4 class="ticinFont" style="top: -22px; left:360px">大阪</h4>
+                                        <p class="ticinFont" style="top: -70px; left:190px">2024/01/21(日)</p>
+                                        <h3 class="ticinFont" style="top: 10px; left:370px">NT$ 65800</h3>
+                                   </div>
+                              </div>
+                              <div class="col-3" style="border-left: 2px dashed black; border-radius: 5px;">
+                                   <div style="margin-top: 35px; margin-left: 25px;">
+                                        <h4>炫動環球影城</h4>
+                                        <h4>五天四夜</h4>
+                                        <p>出發日期：<b>01/21</b> </p>
+                                        <p>價錢</p>
+                                        <h5>NT$ <span style="color: #FFBF5F; font-size: 28px;">65800</span> </h5>
+
+                                   </div>
+                              </div>
+                         </div>
+                    </a>
+                    <a href="/IntroduceScheduleh/1" style="color: black; text-decoration: none;" class="mt-5 ticket">
+                         <div class="row"
+                              style="width:810px;height: 250px; background-color: white;border-radius: 5px;overflow: hidden;">
+                              <div class="col-1" style="background-color: #83C9D2;">
+                                   <h5 class="ticfont">秋釀河口湖</h5>
+                                   <img src="/img/airplane_w.png" alt=""
+                                        style="width: 30px;height:30px;object-fit: cover;position: relative;top: -150px;left: 10px;">
+                              </div>
+                              <div class="col-8 tic" style="background-image: url(/img/Area-1.png); border-radius:0 5px 5px 0;overflow: hidden;">
+                                   <div class="tic_in">
+                                        <img src="/img/airplane_2.png" alt="">
+                                        <h4 class="ticinFont" style="top: -40px; left:0px">秋釀河口湖五日</h4>
+                                        <h4 class="ticinFont" style="top: 15px; left:95px">台灣</h4>
+                                        <h4 class="ticinFont" style="top: -22px; left:360px">東京</h4>
+                                        <p class="ticinFont" style="top: -70px; left:190px">2023/11/07(二)</p>
+                                        <h3 class="ticinFont" style="top: 10px; left:370px">NT$ 72800</h3>
+                                   </div>
+                              </div>
+                              <div class="col-3" style="border-left: 2px dashed black; border-radius: 5px;">
+                                   <div style="margin-top: 35px; margin-left: 25px;">
+                                        <h4>秋釀河口湖</h4>
+                                        <h4>五天四夜</h4>
+                                        <p>出發日期：<b>11/07</b> </p>
+                                        <p>價錢</p>
+                                        <h5>NT$ <span style="color: #FFBF5F; font-size: 28px;">72800</span> </h5>
+
                                    </div>
                               </div>
                          </div>
                     </a>
 
-                    <hr>
-                    <a href="/IntroduceScheduleh/2" class="ticA">
-                         <div class="ticket">
-                              <div class="row ">
-                                   <div class="col-1">
-                                        <div style="width: 51px; height: 250px; background-color:#83C9D2;"></div>
-                                   </div>
-                                   <div class="col-4 ">
-                                        <div class="ticFont">
-                                             <h3>炫動環球影城5日</h3>
-                                             <h3>TICKET</h3>
-                                             <h3>五天四夜</h3>
-                                             <h3>65800</h3>
-                                             <small>起</small>
-                                        </div>
-                                   </div>
-                                   <div class="col-7">
-                                        <img src="/img/s_osaka.png" alt="">
-                                   </div>
-                              </div>
-                         </div>
-                    </a>
 
-                    <hr>
 
-                    <!-- <a href="#">
-                         <div class="ticket">
-                              <div class="row ">
-                                   <div class="col-1">
-                                        <div style="width: 100%; height: 250px; background-color:#83C9D2;"></div>
-                                   </div>
-                                   <div class="col-4 tic">
-                                        <h3>京都</h3>
-                                        <h3>TICKET</h3>
-                                        <h3>五天四夜</h3>
-                                        <h3>56000</h3>
-                                        <small>起</small>
-                                   </div>
-                                   <div class="col-7">
-                                        <img src="/img/s_kyoto.png" alt="">
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-                    </a> -->
+
 
 
                </div>
@@ -245,7 +247,7 @@
                <!-- ----------------------------關於我們------------------------------ -->
 
                <div class="space-a">
-                    
+
                     <div class="book">
                          <div class="row">
                               <div class="col-6">
@@ -263,7 +265,7 @@
                                                   <p>參與的旅客能有與眾不同的經驗，</p>
                                                   <p>徜徉和旅在此為您服務！</p>
                                              </div>
-                                             
+
                                              <button class="BtnStyle mt-1">
                                                   <span class="btnHover">go</span>
                                                   <span class="btnstop">了解更多</span>
@@ -275,10 +277,17 @@
                          </div>
                     </div>
                </div>
+               <script>
+                    $('.place_center').on('swipe',function(){
+                         $('.place_center').addClass('sroll')
+                    })
+          
+               </script>
 
 
 
                <%- include('share/home_footer.ejs')%>
+               
 
 
 
