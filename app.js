@@ -36,7 +36,7 @@ app.use(passport.session());
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    password: '',
+    password: 'root',
     database: 'travel',
     port: 3306,
     multipleStatements: true,
@@ -199,7 +199,6 @@ app.post('/accountinfo', isAuthenticated, async (req, res) => {
 
 
 // 傳送到訂單----------------------------------------------
-
 app.post('/add-to-order', isAuthenticated, (req, res) => {
     const userId = req.user.uid;
     const orderid = req.body.orderid;
@@ -210,7 +209,8 @@ app.post('/add-to-order', isAuthenticated, (req, res) => {
         } else {
             const orderId = results.insertId;
             console.log("成功插入訂單" + orderId);
-            res.redirect('/Scheduleh')
+            const message = '成功加入訂單';
+            res.status(200).send(`<script>alert("${message}"); window.location.href = '/Scheduleh';</script>`);
         }
     })
 })

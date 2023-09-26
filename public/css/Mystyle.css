@@ -87,7 +87,7 @@ td {
 }
 
 .MyListImgDiv {
-    text-align: center; 
+    text-align: center;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -105,6 +105,11 @@ td {
     border-radius: 2rem 2rem 0 2rem;
     width: 80%;
     object-fit: cover;
+}
+
+.MyDayTitle {
+    font-size: 1.5rem;
+
 }
 
 .MyListImgTitle {
@@ -125,7 +130,7 @@ td {
     /* overflow: hidden; */
     margin-left: 2.5rem;
     margin-right: 2.5rem;
-    text-align: left;
+    text-align: justify;
 }
 
 .MyHotelTel {
@@ -149,7 +154,7 @@ td {
     justify-content: center;
     background-color: #83C9D2;
     color: white;
-    border-radius:2rem 2rem 0 0;
+    border-radius: 2rem 2rem 0 0;
     font-weight: bolder;
     font-size: 2rem;
     letter-spacing: 1.5rem;
@@ -209,6 +214,14 @@ td {
     text-align: left;
 }
 
+.btn-detail-Scheduleh:hover {
+    background-color: #CEE1E3;
+}
+
+.btn-detail-Scheduleh:active {
+    background-color: #F5F5F5;
+}
+
 .btn-detail-text {
     letter-spacing: 0.5rem;
 }
@@ -239,10 +252,11 @@ td {
     font-size: 1rem;
     padding-top: 0.5rem;
     letter-spacing: 0.5rem;
+    text-align: justify;
     /* display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3; */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .card-text-style {
@@ -267,7 +281,7 @@ td {
     border-radius: 1rem 1rem 0 1rem;
 }
 
-.FoodCardTitle{
+.FoodCardTitle {
     position: absolute;
     top: -1.5rem;
     background-color: white;
@@ -277,7 +291,7 @@ td {
 }
 
 .subscribe-heart {
-    color: #83C9D2;    
+    color: #83C9D2;
 }
 
 .BtnJoin {
@@ -308,4 +322,51 @@ td {
     height: 3rem;
     fill: currentColor;
     transform: rotate(45deg);
+}
+
+.ShortURL {
+    position: fixed;
+    display: flex;
+    right: 1.5rem;
+    bottom: 4rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.ShortURLDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.BtnShortURL{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #CEE1E3;
+    color: gray;
+    border: none;
+    margin: 0.25rem;
+}
+
+.BtnShortURL:hover{
+    color: #35475C;
+    box-shadow: 0 0 5px 3px lightgray;
+    display: block;
+}
+
+.spanToShow {
+    display: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #CEE1E3;
+    font-weight: bolder;
+    color: #35475C;
+    margin: 0.25rem;
+}
+
+.BtnShortURL:active {
+    background-color: white;
 }
