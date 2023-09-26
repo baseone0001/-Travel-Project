@@ -349,7 +349,7 @@ nav>span {
      height: 54px;
      border-radius: 10px;
      position: relative;
-     top: 460px;
+     top: 470px;
      left: 37.5%;
      /* padding: 10px; */
      animation-name: homeMove;
@@ -783,6 +783,9 @@ nav>span {
      background-color: lightgray;
      object-fit: cover;
      overflow: hidden;
+}
+.ticket {
+     transition: 0.3s;
 }
 .ticket:hover{
      transform: translate(-10px,-10px);
