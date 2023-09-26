@@ -199,7 +199,7 @@ app.post('/accountinfo', isAuthenticated, async (req, res) => {
 
 
 // 傳送到訂單----------------------------------------------
-app.post('/add-to-order', isAuthenticated, (req, res) => {
+app.post('/add-to-order', isAuthenticatedlogin, (req, res) => {
     const userId = req.user.uid;
     const orderid = req.body.orderid;
     const insertQuery = 'INSERT INTO `order`(orderinfo_id,user_id)VALUES(?,?)';
@@ -394,12 +394,18 @@ app.get('/logging', isAuthenticated, (req, res) => {
 
 
 // ------------------------------------------------------------------
-function isAuthenticated(req, res, next) {
+function isAuthenticatedlogin(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
     const alertMessage = "請先登入帳號！";
     res.send(`<script>alert("${alertMessage}"); setTimeout(function() { window.location.href = '/login'; }, 500)</script>`);
+}
+function isAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
 }
 
 // 請在此處添加其他路由，如果有的話
