@@ -5,7 +5,6 @@ function opencheck() {
     const closebtn2 = document.querySelector('.closebtn2');
     const closebtn3 = document.querySelector('.closebtn3');
     const enterbtn = document.getElementById('enterbtn');
-    const cancelbtn = document.getElementById('cancelbtn');
     if (buywindow && overlay && closebtn) {
         buywindow.style.display = 'block';
         overlay.style.display = 'block';
@@ -24,11 +23,6 @@ function opencheck() {
     if (enterbtn) {
         enterbtn.addEventListener('click', function () {
             window.location.href = "/logging"
-        })
-    }
-    if (cancelbtn) {
-        cancelbtn.addEventListener('click', function () {
-            buythree.style.display = 'none';
         })
     }
 
@@ -88,3 +82,5 @@ no.addEventListener('click', function () {
     buywindow.style.display = 'none';
     overlay.style.display = 'none';
 })
+
+

@@ -470,24 +470,24 @@
 
 <!-- JavaScript -->
 <script>
-    // 畫面 < 768px，標題靠左
-    $(document).ready(function () {
-        function MyTitle() {
-            if (window.innerWidth < 768) {
-                $(".MyListTitle").css("text-align ", "");
-                $(".MyListTitle").css("padding-left", "");
-                $(".MyListTitle").css("text-align", "center");
-            } else {
-                $(".MyListTitle").css("text-align", " ");
-                $(".MyListTitle").css("padding-left", "5rem");
-                $(".MyListTitle").css("text-align", "left");
+        // 畫面 < 768px，標題靠左
+        $(document).ready(function () {
+            function MyTitle() {
+                if (window.innerWidth < 768) {
+                    $(".MyListTitle").css("text-align ", "");
+                    $(".MyListTitle").css("padding-left", "");
+                    $(".MyListTitle").css("text-align", "center");
+                } else {
+                    $(".MyListTitle").css("text-align", " ");
+                    $(".MyListTitle").css("padding-left", "5rem");
+                    $(".MyListTitle").css("text-align", "left");
+                }
             }
-        }
-        MyTitle();
-        $(window).resize(function () {
             MyTitle();
-        });
-    })
+            $(window).resize(function () {
+                MyTitle();
+            });
+        })
 
 
     // 輪播樣式的切換

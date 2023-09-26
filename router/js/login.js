@@ -16,6 +16,7 @@ btnLogin.addEventListener("click", async () => {
             const data = await response.json();
             if (data.success) {
                 // 登入成功，可能在這裡處理重定向或其他操作
+                alert("登入成功!")
                 console.log("登入成功");
                 // window.history.back();
                 window.location.href = "http://localhost:2407/home"

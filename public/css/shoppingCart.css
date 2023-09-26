@@ -135,6 +135,20 @@ th {
     border: none;
 }
 
+.singobtn{
+    width: 70px;
+    height: 30px;
+    background-color: rgb(106, 96, 246);
+    color: #f5f5f5;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+}
+
+.singobtn:hover{
+    background-color: rgb(60, 50, 196);
+}
+
 .delbtn:hover {
     background-color: rgb(200, 46, 8);
 }
@@ -238,18 +252,11 @@ div input {
 }
 
 .enterbtn:hover,
-.enterbtn:hover {
+.enterbtn2:hover {
     background-color: #79bfc8;
 }
 
-.cancelbtn {
-    width: 40px;
-    height: 30px;
-    font-size: 15px;
-    background-color: #f15879;
-    border-radius: 5px;
-    font-weight: bolder;
-}
+
 
 
 @media screen and (max-width: 768px) {
@@ -263,4 +270,112 @@ div input {
         overflow-y: auto;
         /* 在表格寬度大於螢幕時添加水平滾動 */
     }
+}
+
+
+
+
+
+
+
+/* 單個結帳畫面 */
+/* 確認畫面 */
+
+.singobuy,
+.singobuytwo,
+.singobuythree {
+    display: none;
+    position: fixed;
+    background-color: #bed4f4;
+    top: 25%;
+    right: 25%;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+    height: 400px;
+    line-height: 2;
+}
+
+.singocard,
+.singocash {
+    letter-spacing: 60px;
+}
+
+#singoclosebtn,
+.singoclosebtn2,
+.singoclosebtn3 {
+    position: absolute;
+    font-size: 50px;
+    top: -35px;
+    right: -5px;
+}
+
+.singonobtn {
+    width: 160px;
+    height: 60px;
+    background-color: rgb(244, 76, 34);
+    border-radius: 15px;
+    color: white;
+    font-size: 25px;
+}
+
+.singonobtn:hover {
+    background-color: rgb(200, 46, 8);
+}
+
+.singoiconbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 75px;
+    transition: color 0.3s;
+    padding-right: 5px;
+}
+
+.singoiconbtn i {
+    color: black;
+    border-radius: 15px;
+    background-color: white;
+    width: 100px;
+    height: 80px;
+}
+
+.singopay {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.singoiconbtn i:hover {
+    background-color: rgb(169, 169, 169);
+}
+
+
+/* 結帳畫面 */
+.singocardinfo {
+    padding-top: 40px;
+}
+
+div input {
+    border: 1px solid lightblue;
+    height: 30px;
+}
+
+.singocardnum,
+.singobacknum {
+    width: 50px;
+}
+
+.singoenterbtn,
+.singoenterbtn2 {
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    background-color: #ace5ed;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+.singoenterbtn:hover,
+.singoenterbtn2:hover {
+    background-color: #79bfc8;
 }
