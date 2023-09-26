@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
                 .then(response => {
                     if (response.status === 200) {
+                        alert("已登出!")
                         window.location.href = '/login';
                     } else {
                         console.error('註銷失敗');
