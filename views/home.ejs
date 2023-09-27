@@ -11,6 +11,7 @@
      <title>Home page</title>
 </head>
 <!--  -->
+
 <body onload="loading()">
      <div id="loading">
           <div class="icon">
@@ -20,14 +21,15 @@
      </div>
      <%- include('share/home_nav.ejs')%>
           <div class="space" style="overflow:hidden;">
-               
+
                <div class="sky"></div>
                <div class="cloud"></div>
                <div class="airWindow"></div>
                <div class="topContent">
                     <div class="search">
                          <input type="text" placeholder="想去哪裡" id="search" required>
-                         <button  id="select" class="btn" style="display: inline-block; background-color: #83C9D2; color: white; height: 50px; position: relative; top: -2px;">
+                         <button id="select" class="btn"
+                              style="display: inline-block; background-color: #83C9D2; color: white; height: 50px; position: relative; top: -2px;">
                               搜尋
                          </button>
                     </div>
@@ -39,6 +41,16 @@
                     <div>起程</div>
                     <img class="arrows" src="/img/twoarrow.png" alt="">
                </div>
+               <div class="sideAirplane"></div>
+               <div class="sideBlock">
+                    <button id="side_1" class="sideBlock_1"></button>
+                    <button id="side_2" class="sideBlock_1"></button>
+                    <button id="side_3" class="sideBlock_1"></button>
+                    <button id="side_4" class="sideBlock_1"></button>
+                    <button id="side_5" class="sideBlock_1"></button>
+               </div>
+               <div style="width: 3px; height: 360px;background-color: gainsboro; z-index: 5;margin-left: 16px;position: fixed; top:228px ;left: 2px;"></div>
+
 
                <script>
                     function loading() {
@@ -48,24 +60,95 @@
                     }
 
                     $('#select').on('click', function () {
-                              console.log($('#search').val());
-                              const text = {
-                                   t:$('#search').val()
-                              }
-                              if(!$('#search').val() == ""){
-                                   $.ajax({
-                                        type: "post",
-                                        url: "/select",
-                                        data: text,
-                                        success: function (e) {
-                                             $(location).attr('href', 'search');
-                                        }
-                                   })
-                              }else{
-                                   alert('請輸入地區')
-                              }
+                         console.log($('#search').val());
+                         const text = {
+                              t: $('#search').val()
+                         }
+                         if (!$('#search').val() == "") {
+                              $.ajax({
+                                   type: "post",
+                                   url: "/select",
+                                   data: text,
+                                   success: function (e) {
+                                        $(location).attr('href', 'search');
+                                   }
+                              })
+                         } else {
+                              alert('請輸入地區')
+                         }
 
+                    })
+
+                    $('#side_1').on('click', function () {
+                         window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth'
                          })
+                    })
+                    $('#side_2').on('click', function () {
+                         window.scrollTo({
+                              top: 697,
+                              behavior: 'smooth'
+                         })
+                    })
+                    $('#side_3').on('click', function () {
+                         window.scrollTo({
+                              top: 1428,
+                              behavior: 'smooth'
+                         })
+                    })
+                    $('#side_4').on('click', function () {
+                         window.scrollTo({
+                              top: 2414,
+                              behavior: 'smooth'
+                         })
+                    })
+                    $('#side_5').on('click', function () {
+                         window.scrollTo({
+                              top: 3100,
+                              behavior: 'smooth'
+                         })
+                    })
+
+                    $(document).on('scroll',function(){
+                         var y = $(document).scrollTop();
+                         // console.log(y);
+                         if ( y >= 0 && y < 696) {
+                              $('.sideAirplane').css('transform','translateY(0px)');
+                         }else if(y >= 697 && y < 1381) {
+                              $('.sideAirplane').css('transform','translateY(90px)');
+                         }else if(y >= 1382 && y < 2413){
+                              $('.sideAirplane').css('transform','translateY(180px)');
+                         }else if(y >= 2414 && y < 3070){
+                              $('.sideAirplane').css('transform','translateY(270px)');
+                         }else{
+                              $('.sideAirplane').css('transform','translateY(360px)');
+                         }
+                         // switch (y) {
+                         //      case y<696:
+                         //           $('#side_1').css('background', '#83C9D2');
+                         //           break;
+     
+                         //      case 697:
+                         //           $('#side_2').css('background', '#83C9D2');
+                         //           break;
+                         //      case 1428:
+                         //           $('#side_3').css('background', '#83C9D2');
+                         //           break;
+                         //      case 2414:
+                         //           $('#side_4').css('background', '#83C9D2');
+                         //           break;
+                         //      case 3100:
+                         //           $('#side_5').css('background', '#83C9D2');
+                         //           break;
+                         // }
+
+                    })
+
+
+
+
+
 
                </script>
 
@@ -115,8 +198,8 @@
                          data: newsData,
                          success: function (e) {
                               $(location).attr('href', 'newsview');
-                              
-                              
+
+
                          }
                     })
                }
@@ -136,7 +219,8 @@
                                    <img src="/img/airplane_w.png" alt=""
                                         style="width: 30px;height:30px;object-fit: cover;position: relative;top: -150px;left: 10px;">
                               </div>
-                              <div class="col-8 tic" style="background-image: url(/img/FUJI.jpg); border-radius:0 5px 5px 0;overflow: hidden;">
+                              <div class="col-8 tic"
+                                   style="background-image: url(/img/FUJI.jpg); border-radius:0 5px 5px 0;overflow: hidden;">
                                    <div class="tic_in">
                                         <img src="/img/airplane_2.png" alt="">
                                         <h4 class="ticinFont" style="top: -40px; left:0px">銀妝富士山五日</h4>
@@ -146,7 +230,7 @@
                                         <h3 class="ticinFont" style="top: 10px; left:370px">NT$ 76800</h3>
                                    </div>
                               </div>
-                              <div class="col-3" style="border-left: 2px dashed black; border-radius: 5px;" >
+                              <div class="col-3" style="border-left: 2px dashed black; border-radius: 5px;">
                                    <div style="margin-top: 35px; margin-left: 25px;">
                                         <h4>銀妝富士山</h4>
                                         <h4>五天四夜</h4>
@@ -158,7 +242,7 @@
                               </div>
                          </div>
                     </a>
-                    <a href="/IntroduceScheduleh/2" style="color: black; text-decoration: none;" class="mt-5 ticket" >
+                    <a href="/IntroduceScheduleh/2" style="color: black; text-decoration: none;" class="mt-5 ticket">
                          <div class="row"
                               style="width:810px;height: 250px; background-color: white;border-radius: 5px;overflow: hidden;">
                               <div class="col-1" style="background-color: #83C9D2;">
@@ -166,7 +250,8 @@
                                    <img src="/img/airplane_w.png" alt=""
                                         style="width: 30px;height:30px;object-fit: cover;position: relative;top: -150px;left: 10px;">
                               </div>
-                              <div class="col-8 tic" style="background-image: url(/img/Universal.jpg); border-radius:0 5px 5px 0;overflow: hidden;">
+                              <div class="col-8 tic"
+                                   style="background-image: url(/img/Universal.jpg); border-radius:0 5px 5px 0;overflow: hidden;">
                                    <div class="tic_in">
                                         <img src="/img/airplane_2.png" alt="">
                                         <h4 class="ticinFont" style="top: -40px; left:0px">炫動環球影城五日</h4>
@@ -196,7 +281,8 @@
                                    <img src="/img/airplane_w.png" alt=""
                                         style="width: 30px;height:30px;object-fit: cover;position: relative;top: -150px;left: 10px;">
                               </div>
-                              <div class="col-8 tic" style="background-image: url(/img/Area-1.png); border-radius:0 5px 5px 0;overflow: hidden;">
+                              <div class="col-8 tic"
+                                   style="background-image: url(/img/Area-1.png); border-radius:0 5px 5px 0;overflow: hidden;">
                                    <div class="tic_in">
                                         <img src="/img/airplane_2.png" alt="">
                                         <h4 class="ticinFont" style="top: -40px; left:0px">秋釀河口湖五日</h4>
@@ -279,35 +365,35 @@
                </div>
                <%- include('share/home_footer.ejs')%>
 
-               <!-- Back to top -->
-               <script>
-                    $('.place_center').on('swipe',function(){
-                         $('.place_center').addClass('sroll')
-                    })
-          
-               </script>
-               <button class="GoTop" id="GoTop">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-bar-up"
-                         viewBox="0 0 16 16">
-                         <path fill-rule="evenodd"
-                              d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-               </button>
-               <script>
-                    var GoTop = document.getElementById('GoTop');
-          
-                    GoTop.addEventListener('click', () => {
-                         window.scrollTo({
-                              top: 0,
-                              behavior: 'smooth'  // 使用平滑滾動
+                    <!-- Back to top -->
+                    <script>
+                         $('.place_center').on('swipe', function () {
+                              $('.place_center').addClass('sroll')
+                         })
+
+                    </script>
+                    <button class="GoTop" id="GoTop">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                              class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd"
+                                   d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z" />
+                         </svg>
+                    </button>
+                    <script>
+                         var GoTop = document.getElementById('GoTop');
+
+                         GoTop.addEventListener('click', () => {
+                              window.scrollTo({
+                                   top: 0,
+                                   behavior: 'smooth'  // 使用平滑滾動
+                              });
                          });
-                    });
-               </script>
+                    </script>
 
 
 
-               
-               
+
+
 
 
 

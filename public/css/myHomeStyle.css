@@ -333,6 +333,46 @@ nav>span {
           left: 23%;
      }
 }
+.sideAirplane{
+     z-index: 7;
+     width: 35px;
+     height: 35px;
+     background-image: url(/img/airplane_d.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     position: fixed;
+     top: 27%;
+     left: 2px;
+     transition: 1s;
+     
+}
+.sideBlock{
+     z-index: 6;
+     width: 28px;
+     position: fixed;
+     top: 28%;
+     left: 2px;
+
+}
+.sideBlock_1{
+     z-index: 6;
+     width: 15px;
+     height: 15px;
+     border-radius:50%;
+     /* border-style: none; */
+     /* background-color: #CEE1E3; */
+     border: 1px solid #CEE1E3;
+     /* color:white; */
+     transition: 0.3s;
+     font-size: 14px;
+     margin-bottom: 70px;
+     margin-left: 10px;
+}
+.sideBlock_1:hover{
+     /* background-color: #898d8f; */
+     border: 1px solid black;
+
+}
 
 
 .garyZone {
@@ -366,118 +406,6 @@ nav>span {
      display: inline-block;
 }
 
-.search_space {
-     overflow: hidden;
-     width: 1000px;
-     height: 420px;
-     background-color: #F5F5F5;
-     background-image: url(/img/airticket.png);
-     background-size: cover;
-     border-radius: 30px;
-     border: 1px solid black;
-     /* margin-top: 25%; */
-     margin-left: 50%;
-     position: absolute;
-     left: -500px;
-     top: 150px;
-     z-index: 7;
-}
-
-.searchFont {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 24px;
-     color: #FFF;
-     margin-left: 20px;
-     margin-top: 15px;
-     position: relative;
-     left: 80px;
-
-}
-
-.searchFontA {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 30px;
-     color: #FFF;
-     margin-left: 160px;
-     margin-top: 15px;
-
-}
-
-.searchFontB {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 20px;
-     color: #FFF;
-     margin-left: 160px;
-     margin-top: 20px;
-
-}
-
-.searchFontc {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 20px;
-     color: #FFF;
-     position: relative;
-     left: 10px;
-}
-
-.searchSelect {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 30px;
-     color: #FFF;
-     background-color: #83C9D2;
-     border-style: none;
-
-     appearance: none;
-     -moz-appearance: none;
-     -webkit-appearance: none;
-     background: url(/img/arrow.png)no-repeat right center transparent;
-
-     position: relative;
-     left: 300px;
-
-}
-
-.searchDate {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 20px;
-     color: #83C9D2;
-     margin-left: 20px;
-     margin-top: 40px;
-     background-color: #FFF;
-     border-radius: 5px;
-     border-style: none;
-}
-
-.searchForm {
-     margin-top: 40px;
-}
-
-.searchFormA {
-     margin-top: 100px;
-
-}
-
-.searchBtn {
-     width: 150px;
-     height: 150px;
-     border-radius: 75px;
-     margin-top: 60%;
-     margin-left: 20px;
-     text-align: center;
-}
-
-.searchBtn>span {
-     font-size: 10px;
-     position: relative;
-     top: 10px;
-}
-
-.searchBtn>p {
-     font-size: 20px;
-     position: relative;
-     top: 10px;
-
-}
 
 .arrows {
      position: absolute;
