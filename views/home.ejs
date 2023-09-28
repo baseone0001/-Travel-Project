@@ -113,9 +113,9 @@
                     $(document).on('scroll',function(){
                          var y = $(document).scrollTop();
                          // console.log(y);
-                         if ( y >= 0 && y < 696) {
+                         if ( y >= 0 && y < 695) {
                               $('.sideAirplane').css('transform','translateY(0px)');
-                         }else if(y >= 697 && y < 1381) {
+                         }else if(y >= 695 && y < 1381) {
                               $('.sideAirplane').css('transform','translateY(90px)');
                          }else if(y >= 1382 && y < 2413){
                               $('.sideAirplane').css('transform','translateY(180px)');
@@ -124,24 +124,7 @@
                          }else{
                               $('.sideAirplane').css('transform','translateY(360px)');
                          }
-                         // switch (y) {
-                         //      case y<696:
-                         //           $('#side_1').css('background', '#83C9D2');
-                         //           break;
-     
-                         //      case 697:
-                         //           $('#side_2').css('background', '#83C9D2');
-                         //           break;
-                         //      case 1428:
-                         //           $('#side_3').css('background', '#83C9D2');
-                         //           break;
-                         //      case 2414:
-                         //           $('#side_4').css('background', '#83C9D2');
-                         //           break;
-                         //      case 3100:
-                         //           $('#side_5').css('background', '#83C9D2');
-                         //           break;
-                         // }
+                         
 
                     })
 

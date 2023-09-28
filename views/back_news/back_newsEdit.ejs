@@ -8,6 +8,19 @@
      <link rel="stylesheet" href="/css/myBackStyle.css">
      <script src="/js/jquery-3.6.0.js"></script>
      <title>Document</title>
+     <style>
+          textarea{
+               width: 500px;
+               height: 300px;
+          }
+          #newsTitle{
+               width: 500px;
+          }
+          #submit{
+               margin-top: 10%;
+               margin-bottom: 30%;
+          }
+     </style>
 </head>
 <body>
      <header class="d-flex justify-content-start">
@@ -15,21 +28,23 @@
                <%- include('../share/back_nav.ejs')%> 
           </div>
           <div class="backBlock"></div>
-          <div>
+          <div style="margin-left: 15%;">
                <div style="height: 50px; width: 100%;"></div>
                <h2 style="display:inline ;">消息修改</h2>
                <a href="/background/news" class="btn btn-info float-end">回消息管理</a>
                <form action="/newsuplowd" method="post" enctype="multipart/form-data">
                     <label for="newsTitle">題目</label>
+                    <br>
                     <input id="newsTitle" type="text" value="<%= row.title %>">
                     <br>
                     <!-- newsContext -->
                     <label for="newsContext">內容</label>
+                    <br>
                     <textarea  id="newsContext" cols="30" rows="5" ><%= row.contents %></textarea>
                     <br>
                     <input type="file" id="newsImg" name="newsImg" multiple>
                     <br>
-                    <img id="img" src="<%= row.img %>" style="width: 300px; height: 200px; object-fit: cover;
+                    <img id="img" src="<%= row.img %>" style="width: 500px; height: 250px; object-fit: cover;
                     overflow: hidden;">
                     <br>
 
