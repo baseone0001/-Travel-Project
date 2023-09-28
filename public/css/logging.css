@@ -68,6 +68,9 @@ tr:nth-child(even) td {
     transform: translateX(-50%);
     color: black;
 }
+.pagetable a {
+    text-decoration: none;
+}
 
 .pagebtn {
     width: 80px;

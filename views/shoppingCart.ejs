@@ -7,6 +7,7 @@
     <title>訂單資訊</title>
     <link rel="stylesheet" type="text/css" href="/css/shoppingCart.css">
     <script src="https://kit.fontawesome.com/a0c576b9c8.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -24,6 +25,7 @@
                             <th>回程</th>
                             <th>價格</th>
                             <th>編輯</th>
+                            <th>付款</th>
                         </tr>
                         <div class="contentdiv">
                             <% let allOrdersTotalPrice=0; %>
@@ -56,10 +58,98 @@
                                                             value="<%= order.order_id %>">
                                                         <button type="submit" class="delbtn">刪除訂單</button>
                                                     </form>
-                                                    <!-- <input type="hidden" name="order_id" -->
-                                                    <!-- value="<%= order.order_id %>"> -->
-                                                    <button type="submit" class="singobtn"
-                                                        onclick="singo()">送出訂單</button>
+                                                </td>
+                                                <td>
+                                                    <button class="creditCardButton">信用卡</button>
+                                                    <button class="remitbutton">匯款</button>
+                                                    <div class="singobuytwo" id="singobuytwo">
+                                                        <span id="singoclosebtn2" class="singoclosebtn2">
+                                                            <i class="fa-solid fa-xmark" style="color: #000000;">
+                                                            </i>
+                                                        </span>
+                                                        <h1 class="singocardinfo">請輸入卡片資訊</h1>
+                                                        <div class="pay">
+                                                            <div>
+                                                                <label for="singocardname">持卡人姓名</label>
+                                                                <input type="text" name="singocardname"
+                                                                    id="singocardname" class="singocardname" required>
+                                                            </div>
+                                                            <div>
+                                                                <label for="singocardnum">信用卡卡號</label>
+                                                                <input type="text" name="singocardnum"
+                                                                    id="singocardnum1" class="singocardnum">-
+                                                                <input type="text" name="singocardnum"
+                                                                    id="singocardnum2" class="singocardnum">-
+                                                                <input type="text" name="singocardnum"
+                                                                    id="singocardnum3" class="singocardnum">
+                                                            </div>
+                                                            <div>
+                                                                <label for="singocarddate">信用卡有效年月</label>
+                                                                <input type="month" name="singocarddate"
+                                                                    id="singocarddate" required>
+                                                            </div>
+                                                            <div class="singoinputflex">
+                                                                <label for="singobacknum" id="singotext">信用卡後三碼</label>
+                                                                <input type="text" name="" id="singobacknum"
+                                                                    name="singobacknum" class="singobacknum" required>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div>
+                                                            <form action="/singobought" method="post">
+                                                                <input type="hidden" name="order_id"
+                                                                    value="<%= order.order_id %>">
+                                                                <input type="hidden" name="order_title"
+                                                                    value="<%= order.Title %>">
+                                                                <input type="hidden" name="order_GoTo"
+                                                                    value="<%= order.GoTo %>">
+                                                                <input type="hidden" name="order_GoDate"
+                                                                    value="<%= order.GoDate %>">
+                                                                <input type="hidden" name="order_ArrDate"
+                                                                    value="<%= order.ArrDate %>">
+                                                                <input type="hidden" name="order_Price"
+                                                                    value="<%= order.Price %>">
+                                                                <button class="singoenterbtn"
+                                                                    id="singoenterbtn">確定</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="singobuythree" id="singobuythree">
+                                                        <div class="singopaycash">
+                                                            <span id="singoclosebtn3" class="singoclosebtn3">
+                                                                <i class="fa-solid fa-xmark" style="color: #000000;">
+                                                                </i>
+                                                            </span>
+                                                            <h1 class="singocardinfo">匯款資訊</h1>
+                                                            <h3>請輸入以下資訊，我們將會人工審核 <br> 需3-5工作天</h3>
+                                                            <div>
+                                                                <label for="singocashname">姓名：</label>
+                                                                <input type="text" id="singocashname">
+                                                            </div>
+                                                            <div>
+                                                                <label for="singocashfive">匯款後五碼：</label>
+                                                                <input type="text" id="singocashfive">
+                                                            </div>
+                                                            <br>
+                                                            <form action="/singonobought" method="post">
+                                                                <input type="hidden" name="order_id"
+                                                                    value="<%= order.order_id %>">
+                                                                <input type="hidden" name="order_title"
+                                                                    value="<%= order.Title %>">
+                                                                <input type="hidden" name="order_GoTo"
+                                                                    value="<%= order.GoTo %>">
+                                                                <input type="hidden" name="order_GoDate"
+                                                                    value="<%= order.GoDate %>">
+                                                                <input type="hidden" name="order_ArrDate"
+                                                                    value="<%= order.ArrDate %>">
+                                                                <input type="hidden" name="order_Price"
+                                                                    value="<%= order.Price %>">
+                                                                <button class="singoenterbtn2"
+                                                                    id="singoenterbtn1">確定</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
 
                                                 </td>
                                             </tr>
@@ -72,38 +162,41 @@
                                                     </tr>
                                                     <% } else{%>
                                                         <tr class="content">
-                                                            <td colspan="6">暫無訂單</td>
+                                                            <td colspan="7">暫無訂單</td>
                                                         </tr>
+
                                                         <%}%>
+
                         </div>
-                    </table>
-                    <div class="pagetable">
-                        <div class="pagination">
-                            <!-- <% if(currentPage>1){%> -->
-                            <!-- <%}%> -->
-                            <a href="/shoppingCart?page=<%=currentPage -1%>">
-                                <button class="pagebtn">上一頁</button>
+                </div>
+                </table>
+                <div class="pagetable">
+                    <div class="pagination">
+                        <!-- <% if(currentPage>1){%> -->
+                        <!-- <%}%> -->
+                        <a href="/shoppingCart?page=<%=currentPage -1%>">
+                            <button class="pagebtn">上一頁</button>
+                        </a>
+                        <span>第<%=currentPage%>頁</span>
+                        <% if(!nextPageDisabled){%>
+                            <a href="/shoppingCart?page=<%=currentPage +1%>">
+                                <button class="pagebtn">下一頁</button>
                             </a>
-                            <span>當前頁:<%=currentPage%></span>
-                            <% if(!nextPageDisabled){%>
-                                <a href="/shoppingCart?page=<%=currentPage +1%>">
-                                    <button class="pagebtn">下一頁</button>
-                                </a>
-                                <%}else {%>
-                                    <button class="pagebtn" disabled>下一頁</button>
-                                    <%}%>
-                        </div>
-                    </div>
-                    <div class="table2">
-                        總價:
-                        $: <span id="allOrdersTotalPrice">
-                            <%= allOrdersTotalPrice %>
-                        </span>
-                        <button class="gobtn" onclick="opencheck()">送出訂單</button>
-                        <br><br>
+                            <%}else {%>
+                                <button class="pagebtn" disabled>下一頁</button>
+                                <%}%>
                     </div>
                 </div>
+                <div class="table2">
+                    總價:
+                    $: <span id="allOrdersTotalPrice">
+                        <%= allOrdersTotalPrice %>
+                    </span>
+                    <button class="gobtn" onclick="opencheck()">送出所有訂單</button>
+                    <br><br>
+                </div>
             </div>
+        </div>
         </div>
 
         <!-- 全部送出的 -->
@@ -188,89 +281,7 @@
 
         <!-- 單個送出的 -->
 
-        <div class="singobuy" id="singobuy">
-            <div class="model">
-                <br>
-                <h1>確定送出訂單？</h1>
-                <h2>請選擇信用卡或匯款</h2>
-                <span id="singoclosebtn" class="singoclosebtn">
-                    <i class="fa-solid fa-xmark" style="color: #000000;">
-                    </i>
-                </span>
-            </div>
-            <div class="singocarddiv" id="singocarddiv">
-                <button class="singoiconbtn" id="singoiconbtn1">
-                    <i class="fa-solid fa-credit-card" id="icon1"></i>
-                </button>
-                <button class="singoiconbtn" id="singoiconbtn2">
-                    <i class="fa-solid fa-dollar-sign" id="icon2"></i>
-                </button>
-            </div>
-            <br>
-            <div>
-                <button class="singonobtn" id="btnno">取消結帳</button>
-            </div>
-            <br>
-        </div>
 
-        <div id="over" class="over"></div>
-
-        <div class="singobuytwo" id="singobuytwo">
-            <span id="singoclosebtn2" class="singoclosebtn2">
-                <i class="fa-solid fa-xmark" style="color: #000000;">
-                </i>
-            </span>
-            <h1 class="singocardinfo">請輸入卡片資訊</h1>
-            <div class="pay">
-                <div>
-                    <label for="singocardname">持卡人姓名</label>
-                    <input type="text" name="singocardname" id="singocardname" class="singocardname" required>
-                </div>
-                <div>
-                    <label for="singocardnum">信用卡卡號</label>
-                    <input type="text" name="singocardnum" id="singocardnum1" class="singocardnum">-
-                    <input type="text" name="singocardnum" id="singocardnum2" class="singocardnum">-
-                    <input type="text" name="singocardnum" id="singocardnum3" class="singocardnum">
-                </div>
-                <div>
-                    <label for="singocarddate">信用卡有效年月</label>
-                    <input type="month" name="singocarddate" id="singocarddate" required>
-                </div>
-                <div class="singoinputflex">
-                    <label for="singobacknum" id="singotext">信用卡後三碼</label>
-                    <input type="text" name="" id="singobacknum" name="singobacknum" class="singobacknum" required>
-                </div>
-            </div>
-            <br>
-            <div>
-                <form action="/singobought" method="post">
-                    <button class="singoenterbtn" id="singoenterbtn">確定</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="singobuythree" id="singobuythree">
-            <div class="singopaycash">
-                <span id="singoclosebtn3" class="singoclosebtn3">
-                    <i class="fa-solid fa-xmark" style="color: #000000;">
-                    </i>
-                </span>
-                <h1 class="singocardinfo">匯款資訊</h1>
-                <h3>請輸入以下資訊，我們將會人工審核 <br> 需3-5工作天</h3>
-                <div>
-                    <label for="singocashname">姓名：</label>
-                    <input type="text" id="singocashname">
-                </div>
-                <div>
-                    <label for="singocashfive">匯款後五碼：</label>
-                    <input type="text" id="singocashfive">
-                </div>
-                <br>
-                <form action="/singonobought" method="post">
-                    <button class="singoenterbtn2" id="singoenterbtn1">確定</button>
-                </form>
-            </div>
-        </div>
 
 </body>
 

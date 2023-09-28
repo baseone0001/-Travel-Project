@@ -19,7 +19,7 @@ btnLogin.addEventListener("click", async () => {
                 alert("登入成功!")
                 console.log("登入成功");
                 // window.history.back();
-                window.location.href = "http://localhost:2407/home"
+                window.location.href = "http://localhost:2407/shoppingCart"
 
             } else {
                 // 登入失敗，處理錯誤訊息

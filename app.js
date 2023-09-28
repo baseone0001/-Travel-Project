@@ -36,7 +36,7 @@ app.use(passport.session());
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    password: 'root',
+    password: '',
     database: 'travel',
     port: 3306,
     multipleStatements: true,
@@ -221,7 +221,7 @@ app.post('/add-to-order', isAuthenticatedlogin, (req, res) => {
 app.get('/shoppingCart', isAuthenticated, (req, res) => {
     const userId = req.user.uid;
     const page = parseInt(req.query.page) || 1;
-    const itemsPerPage = 3;
+    const itemsPerPage = 5;
     const startIndex = (page - 1) * itemsPerPage;
     const SQL =
         `SELECT id,Area,Title,GoTo,Price,order_id,GoDate,ArrDate From orderinfo
@@ -277,10 +277,70 @@ app.post('/deleteCart', isAuthenticated, (req, res) => {
     })
 })
 
+
+app.post('/singobought', isAuthenticated, async (req, res) => {
+    const userId = req.user.uid;
+    const orderId = req.body.order_id;
+    const title = req.body.order_title;
+    const goto = req.body.order_GoTo;
+    const godate = req.body.order_GoDate;
+    const arrdate = req.body.order_ArrDate;
+    const price = req.body.order_Price;
+    console.log([title, goto, godate, arrdate, price, orderId]);
+    const insertSQL = "INSERT INTO logging (user_id, logtitle, loggoto, loggodate, logarrdate, logprice, pay) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    const values = [userId, title, goto, godate, arrdate, price, true]
+    db.query(insertSQL, values, (err, results) => {
+        if (err) {
+            console.error('購物車內容為空', err);
+            res.redirect('/shoppingCart');
+        } else {
+            const SQL = `Delete FROM \`order\` WHERE order_id=? AND user_id =?`;
+            db.query(SQL, [orderId, userId], (err, results) => {
+                if (err) {
+                    console.error('刪除失敗', err);
+                } else {
+                    console.log("刪除成功");
+                    res.redirect('/shoppingCart');
+                }
+            })
+        }
+    });
+
+});
+app.post('/singonobought', isAuthenticated, async (req, res) => {
+    const userId = req.user.uid;
+    const orderId = req.body.order_id;
+    const title = req.body.order_title;
+    const goto = req.body.order_GoTo;
+    const godate = req.body.order_GoDate;
+    const arrdate = req.body.order_ArrDate;
+    const price = req.body.order_Price;
+    console.log([title, goto, godate, arrdate, price, orderId]);
+    const insertSQL = "INSERT INTO logging (user_id, logtitle, loggoto, loggodate, logarrdate, logprice, pay) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    const values = [userId, title, goto, godate, arrdate, price, false]
+    db.query(insertSQL, values, (err, results) => {
+        if (err) {
+            console.error('購物車內容為空', err);
+            res.redirect('/shoppingCart');
+        } else {
+            const SQL = `Delete FROM \`order\` WHERE order_id=? AND user_id =?`;
+            db.query(SQL, [orderId, userId], (err, results) => {
+                if (err) {
+                    console.error('刪除失敗', err);
+                } else {
+                    console.log("刪除成功");
+                    res.redirect('/shoppingCart');
+                }
+            })
+        }
+    });
+
+});
+
+
+
 app.post('/bought', isAuthenticated, (req, res) => {
     const userId = req.user.uid;
-
-
     const shoppingCartContents = req.session.shoppingCartContents;
     if (!shoppingCartContents || shoppingCartContents.length === 0) {
         console.error('購物車內容為空');
@@ -369,7 +429,7 @@ app.get('/logging', isAuthenticated, (req, res) => {
         const nextPageDisabled = page >= totalPages;
         const currentPageValid = Math.min(currentPage, totalPages);
         const SQL = `SELECT logging_id, user_id,logtitle,loggoto,loggodate,logarrdate,logprice,pay
-  FROM logging WHERE user_id = ? LIMIT ? OFFSET ?`;
+  FROM logging WHERE user_id = ? ORDER BY logging_id DESC LIMIT ? OFFSET ?`;
         db.query(SQL, [userId, itemsPerPage, offset], (err, results) => {
             if (err) {
                 console.error('出錯', err);
