@@ -3,13 +3,13 @@ const btnRegister = document.querySelector(".btnregister");
 let sex = "";
 
 const sexInputs = document.querySelectorAll('input[name="sex"]');
-   sexInputs.forEach((sexInput) => {
-        sexInput.addEventListener("change", function () {
-            if (sexInput.checked) {
-                sex = sexInput.value;
-            }
-        })
+sexInputs.forEach((sexInput) => {
+    sexInput.addEventListener("change", function () {
+        if (sexInput.checked) {
+            sex = sexInput.value;
+        }
     })
+})
 btnRegister.addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -27,7 +27,19 @@ btnRegister.addEventListener("click", function (event) {
         alert("請填寫所有表格")
         return;
     }
+    const regex = /^[A-Z][1-2]\d{8}$/;
+    if (!regex.test(identity)) {
+        alert("身分證字號格式不正確");
+        return;
+    }
 
+    const regexphone = /^09\d{8}$/;
+    if (!regexphone.test()) {
+        alert("手機號碼格式不正確");
+        return;
+    }
+    
+    
     const userData = {
         email: email,
         username: username,
@@ -68,3 +80,38 @@ document.querySelector(".btnlogin").addEventListener("click", function (event) {
     event.preventDefault();
     window.location.href = "http://localhost:2407/login";
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    var identity = document.getElementById('identity');
+    var results = document.getElementById('results');
+
+    identity.addEventListener("input", function () {
+        var identityid = identity.value;
+        var regex = /^[A-Z][1-2]\d{8}$/;
+        if (identityid === "") {
+            results.innerHTML = "";
+        } else if (regex.test(identityid)) {
+            results.innerHTML = "";
+        } else {
+            results.innerHTML = "身份證字號格式不正確"
+        }
+    })
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+    var phone = document.getElementById('phone');
+    var resultsphone = document.getElementById('resultsphone');
+    phone.addEventListener("input", function () {
+        var phoneid = phone.value;
+        var regexphone = /^09\d{8}$/;
+        if (phoneid === "") {
+            resultsphone.innerHTML = "";
+        } else if (regexphone.test(phoneid)) {
+            resultsphone.innerHTML = "";
+        } else {
+            resultsphone.innerHTML = "手機號碼格式不正確";
+        }
+    })
+})

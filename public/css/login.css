@@ -44,7 +44,7 @@
     margin-top: 10px;
     line-height: 2;
     width: 60px;
-    margin-left: 60%;
+    margin-left: 70%;
     background-color:#ace5ed;
     border-radius: 5px;
     font-weight: bolder;
@@ -60,6 +60,13 @@
 }
 .btnregister:hover{
     background-color: rgb(112, 142, 81);
+}
+
+.forgotPassword{
+    margin-left: 45%;
+}
+.forgotPassword a {
+    color: red;
 }
 
 @media screen and (max-width: 900px) {

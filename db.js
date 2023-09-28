@@ -6,7 +6,7 @@ function db(sql,data,callback) {
           host: 'localhost',
           port: '3306',
           user: 'root',
-          password: '',
+          password: "",
           database: 'travel',
 
           //是否允許使用者一口氣傳入很多sql指令

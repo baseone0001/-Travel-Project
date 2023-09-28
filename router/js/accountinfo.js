@@ -18,6 +18,20 @@ btnaccountinfo.addEventListener('click', async () => {
         alert("請填寫所有表格")
         return;
     }
+
+    const regex = /^[A-Z][1-2]\d{8}$/;
+    if (!regex.test(identity)) {
+        alert("身分證字號格式不正確");
+        return;
+    }
+
+    const regexphone = /^09\d{8}$/;
+    if (!regexphone.test()) {
+        alert("手機號碼格式不正確");
+        return;
+    }
+    
+
     const userData = {
         name: name,
         identity: identity,
@@ -52,4 +66,38 @@ btnaccountinfo.addEventListener('click', async () => {
     }
 });
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    var identity = document.getElementById('identity');
+    var results = document.getElementById('results');
+
+    identity.addEventListener("input", function () {
+        var identityid = identity.value;
+        var regex = /^[A-Z][1-2]\d{8}$/;
+        if (identityid === "") {
+            results.innerHTML = "";
+        } else if (regex.test(identityid)) {
+            results.innerHTML = "";
+        } else {
+            results.innerHTML = "身份證字號格式不正確"
+        }
+    })
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+    var phone = document.getElementById('phone');
+    var resultsphone = document.getElementById('resultsphone');
+    phone.addEventListener("input", function () {
+        var phoneid = phone.value;
+        var regexphone = /^09\d{8}$/;
+        if (phoneid === "") {
+            resultsphone.innerHTML = "";
+        } else if (regexphone.test(phoneid)) {
+            resultsphone.innerHTML = "";
+        } else {
+            resultsphone.innerHTML = "手機號碼格式不正確";
+        }
+    })
+})
 

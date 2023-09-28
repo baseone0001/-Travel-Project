@@ -58,17 +58,21 @@
     margin-top: 10px;
     line-height: 2;
     width: 60px;
-    margin-left: 60%;
+    margin-left: 70%;
     width: 70px;
-    height: 45px;
+    height: 40px;
     font-size: 15px;
     background-color: #ace5ed;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: bolder;
+    
 }
 
 .btnaccountinfo:hover {
     background-color: #83C9D2;
+}
+#results,#resultsphone{
+    color:red;
 }
 
 @media screen and (max-width:768px) {

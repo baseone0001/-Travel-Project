@@ -75,11 +75,11 @@ tr:nth-child(even) td {
 
 .pagetable {
     position: absolute;
-    bottom: 100px;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
     color: black;
-    z-index: -1;
+  
 }
 
 .pagebtn {
@@ -101,11 +101,11 @@ tr:nth-child(even) td {
     width: 85%;
     position: absolute;
     vertical-align: bottom;
-    bottom: 0;
+    bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 30px;
-    z-index: -1;
+    
 }
 
 th {
@@ -165,7 +165,7 @@ th {
     display: none;
     position: fixed;
     background-color: #bed4f4;
-    top: 25%;
+    top: 20%;
     right: 25%;
     border-radius: 15px;
     text-align: center;
@@ -195,7 +195,6 @@ th {
     border-radius: 15px;
     color: white;
     font-size: 25px;
-
 }
 
 .nobtn:hover {
@@ -289,7 +288,7 @@ div input {
     display: none;
     position: fixed;
     background-color: #bed4f4;
-    top: 25%;
+    top:0;
     right: 25%;
     border-radius: 15px;
     text-align: center;

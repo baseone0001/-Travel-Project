@@ -60,7 +60,7 @@ div>label,
     margin-top: 10px;
     line-height: 2;
     width: 60px;
-    margin-left: 60%;
+    margin-left: 70%;
     background-color: #ace5ed;
     border-radius: 5px;
     font-weight: bolder;
@@ -83,6 +83,9 @@ div>label,
     color: red;
 }
 
+#results,#resultsphone{
+    color:red;
+}
 /* 縮放設定 */
 @media screen and (max-width:1000px) {
     .registerPage {
